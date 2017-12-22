@@ -1,9 +1,10 @@
 // - coreJs -
 var coreJs = {
-    menu: $('.core__menu-nav__ul'),
+    menu: null,
     width: null,
 
     init: function () {
+        this.menu = $('.core__menu-nav__ul');
         this.resize();
     },
     active: function ($this) {
@@ -33,11 +34,12 @@ var coreJs = {
 var coreJsResize = {
     // Переменные
     // ...
-    $arElements : $('[data-js-core-resize]'),
+    $arElements : null,
     width : null,
 
     //...
     init: function () {
+        this.$arElements = $('[data-js-core-resize]');
         this.load();
     },
     load: function () {
@@ -101,9 +103,10 @@ var coreJsResize = {
 var coreJsFormCheckbox = {
     // Переменные
     // ...
-    $arElements : $('[data-js-core-form-checkbox]'),
+    $arElements : null,
     //...
     init: function () {
+        this.$arElements = $('[data-js-core-form-checkbox]');
         this.load();
     },
     load: function () {
@@ -131,12 +134,14 @@ var coreJsFormCheckbox = {
 var coreJsTabs = {
     // Переменные
     // ...
-    $arElementsNav : $('[data-js-core-tabs-nav]').find('a'),
-    $arElementsTabs : $('[data-js-core-tabs]'),
+    $arElementsNav : null,
+    $arElementsTabs: null,
     id : 1,
     num: null,
     //...
     init: function () {
+        this.$arElementsNav = $('[data-js-core-tabs-nav]').find('a');
+        this.$arElementsTabs = $('[data-js-core-tabs]');
         this.load();
     },
     load: function () {
@@ -199,11 +204,14 @@ var coreJsTabs = {
 var coreJsMobile = {
     // Переменные
     // ...
-    $body :    $('.body-content'),
-    $menu :    $('.core__mobile__menu'),
-    $buttonX : $('.core__mobile__button'),
+    $body :     null,
+    $menu :     null,
+    $buttonX :  null,
 
     init: function () {
+        this.$body =    $('.body-content');
+        this.$menu =    $('.core__mobile__menu');
+        this.$buttonX = $('.core__mobile__button');
         this.load();
     },
     load: function () {
@@ -222,11 +230,14 @@ var coreJsMobileMenu = {
 
     // Переменные
     // ...
-    $body :    $('.body-content'),
-    $menu :    $('.core__menu-nav__mobile__alert__menu'),
-    $buttonX : $('.core__menu-nav__mobile__button'),
+    $body : null,
+    $menu : null,
+    $buttonX : null,
 
     init: function () {
+        this.$body =    $('.body-content');
+        this.$menu =    $('.core__menu-nav__mobile__alert__menu');
+        this.$buttonX = $('.core__menu-nav__mobile__button');
         core = $.extend(true, {} , this);
         this.load();
     },
@@ -293,9 +304,10 @@ var coreJsMobileMenu = {
 var coreJsSwitchElement = {
     // Переменные
     // ...
-    $arElements : $('[data-js-core-switch-element]'),
+    $arElements : null,
     //...
     init: function () {
+        this.$arElements = $('[data-js-core-switch-element]');
         this.load();
     },
     load: function () {

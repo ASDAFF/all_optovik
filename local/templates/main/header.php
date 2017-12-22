@@ -1,6 +1,7 @@
 <?php
 if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
     die();
+
 use \Lema\Common\AssetManager,
     \Bitrix\Main\Localization\Loc;
 
@@ -24,7 +25,7 @@ Loc::loadMessages(__FILE__);
             '/assets/js/lib/jquery.min.js',
             '/assets/js/lib/slick.js',
             '/assets/js/lib/fancybox/fancybox.min.js',
-            '/assets/js/scripts.min.js',
+            '/assets/js/scripts.js',
             '/assets/js/main.min.js',
         ));
     ?>
@@ -41,15 +42,21 @@ Loc::loadMessages(__FILE__);
     <title><? $APPLICATION->ShowTitle(); ?></title>
 </head>
 <body class="body-content">
+
 <? $APPLICATION->ShowPanel(); ?>
+
 <header>
     <!-- MOBILE MENU -->
     <div class="core__menu-nav__mobile__alert">
         <!-- После адоптации - это меню откроется  -->
         <div class="core__menu-nav__mobile__alert__user">
             <div class="core__menu-nav__mobile__alert__user__login">
-                <a href="" title="Вход">Вход</a>
-                <a href="" title="Регистрация">Регистрация</a>
+                <a href="" title="<?=Loc::getMessage('LEMA_AUTH_LINK_TITLE');?>">
+                    <?=Loc::getMessage('LEMA_AUTH_LINK_TITLE');?>
+                </a>
+                <a href="" title="<?=Loc::getMessage('LEMA_REGISTER_LINK_TITLE');?>">
+                    <?=Loc::getMessage('LEMA_REGISTER_LINK_TITLE');?>
+                </a>
             </div>
         </div>
         <div class="core__menu-nav__mobile__alert__menu" data-core-name="Меню" data-js-core-resize-after="menu">
@@ -70,17 +77,38 @@ Loc::loadMessages(__FILE__);
                 <div class="header__logo">
                     <a href="<?=SITE_DIR;?>" title="logo">
                         <img src="/assets/img/logo.png" alt="logo">
-                        <span>Рекламная площадка для оптовых<br>продавцов и покупателей</span>
+                        <span><? $APPLICATION->IncludeFile(SITE_DIR . 'include/header/logo_title.php'); ?></span>
                     </a>
                 </div>
                 <div class="header__banner">
-                    <a href="" title="" style="background-image: url('/assets/img/header/banner.jpg')"></a>
+                    <? $APPLICATION->IncludeComponent('bitrix:news.line', 'header_top_banner', array(
+                            'IBLOCK_TYPE' => 'content',
+                            'IBLOCKS' => array('1'),
+                            'NEWS_COUNT' => '20',
+                            'FIELD_CODE' => array('ID', 'PREVIEW_PICTURE', 'PROPERTY_URL'),
+                            'SORT_BY1' => 'ACTIVE_FROM',
+                            'SORT_ORDER1' => 'DESC',
+                            'SORT_BY2' => 'SORT',
+                            'SORT_ORDER2' => 'ASC',
+                            'DETAIL_URL' => '',
+                            'ACTIVE_DATE_FORMAT' => 'd.m.Y',
+                            'CACHE_TYPE' => 'A',
+                            'CACHE_TIME' => '300',
+                            'CACHE_GROUPS' => 'Y',
+                        )
+                    ); ?>
                 </div>
+
                 <div class="header__form">
                     <div class="header__form__btn">
-                        <a href="" title="" class="header__form__btn__login">Вход</a>
+                        <a href="" title="<?=Loc::getMessage('LEMA_AUTH_LINK_TITLE');?>"
+                           class="header__form__btn__login">
+                            <?=Loc::getMessage('LEMA_AUTH_LINK_TITLE');?>
+                        </a>
                         <span>|</span>
-                        <a href="" title="" class="header__form__btn__registration">Регистрация</a>
+                        <a href="" title="<?=Loc::getMessage('LEMA_REGISTER_LINK_TITLE');?>" class="header__form__btn__registration">
+                            <?=Loc::getMessage('LEMA_REGISTER_LINK_TITLE');?>
+                        </a>
                     </div>
                     <div class="header__form__search">
                         <div class="header__form__search__input">
@@ -94,52 +122,77 @@ Loc::loadMessages(__FILE__);
         <div class="container-fluid header__menu">
             <div class="container">
                 <nav class="header__menu__line">
-                    <ul>
-                        <li>
-                            <a href="#" title="" data-js-core-switch-element="header">Женская одежда оптом</a>
-                        </li>
-                        <li>
-                            <a href="#" title="" data-js-core-switch-element="header">Одежда и товары для детей</a>
-                        </li>
-                        <li>
-                            <a href="#" title="" data-js-core-switch-element="header">Красота и здоровье</a>
-                        </li>
-                        <li>
-                            <a href="#" title="" data-js-core-switch-element="header">Хозяйственные товары</a>
-                        </li>
-                    </ul>
+                    <? $APPLICATION->IncludeComponent('bitrix:menu', 'top_menu', array(
+                        'ALLOW_MULTI_SELECT' => 'N',
+                        'ROOT_MENU_TYPE' => 'top',
+                        'CHILD_MENU_TYPE' => 'left',
+                        'DELAY' => 'N',
+                        'MAX_LEVEL' => 1,
+                        'MENU_CACHE_GET_VARS' => array(),
+                        'MENU_CACHE_TIME' => '3600',
+                        'MENU_CACHE_TYPE' => 'A',
+                        'MENU_CACHE_USE_GROUPS' => 'N',
+                        'USE_EXT' => 'Y',
+                        'COMPONENT_TEMPLATE' => '',
+                    )); ?>
                 </nav>
             </div>
         </div>
         <div class="container-fluid">
             <div class="container">
                 <nav class="header__menu__list">
-                    <ul>
-                        <li><a href="" title=""> Производители женской одежды</a></li>
-                        <li><a href="" title="">Трикотаж оптом</a></li>
-                        <li><a href="" title="">Одежда больших размеров</a></li>
-                        <li><a href="" title="">Домашняя одежда оптом</a></li>
-                        <li><a href="" title="">Платья, сарафаны оптом</a></li>
-                        <li><a href="" title="">Блузки, туники, рубашки оптом</a></li>
-                        <li><a href="" title="">Юбки, брюки оптом</a></li>
-                    </ul>
-                    <ul>
-                        <li><a href="" title="">Одежда для новорожденных</a></li>
-                        <li><a href="" title="">Детский трикотаж оптом</a></li>
-                        <li><a href="" title="">Подростковая одежда оптом</a></li>
-                        <li><a href="" title="">Школьная форма оптом</a></li>
-                        <li><a href="" title="">Детская одежда для мальчиков</a></li>
-                        <li><a href="" title="">Детская одежда для девочек</a></li>
-                        <li><a href="" title="">Памперсы, подгузники оптом</a></li>
-                    </ul>
-                    <ul>
-                        <li><a href="" title="">Крема, лосьоны, маски</a></li>
-                        <li><a href="" title="">Уход за детской кожей</a></li>
-                        <li><a href="" title="">Парфюмерия, косметика</a></li>
-                    </ul>
-                    <ul>
-                        <li><a href="" title="">Бытовая химия оптом</a></li>
-                    </ul>
+                    <? $APPLICATION->IncludeComponent('bitrix:menu', 'top_submenu', array(
+                        'ALLOW_MULTI_SELECT' => 'N',
+                        'ROOT_MENU_TYPE' => 'top_sub1',
+                        'CHILD_MENU_TYPE' => 'left',
+                        'DELAY' => 'N',
+                        'MAX_LEVEL' => 1,
+                        'MENU_CACHE_GET_VARS' => array(),
+                        'MENU_CACHE_TIME' => '3600',
+                        'MENU_CACHE_TYPE' => 'A',
+                        'MENU_CACHE_USE_GROUPS' => 'N',
+                        'USE_EXT' => 'Y',
+                        'COMPONENT_TEMPLATE' => '',
+                    )); ?>
+                    <? $APPLICATION->IncludeComponent('bitrix:menu', 'top_submenu', array(
+                        'ALLOW_MULTI_SELECT' => 'N',
+                        'ROOT_MENU_TYPE' => 'top_sub2',
+                        'CHILD_MENU_TYPE' => 'left',
+                        'DELAY' => 'N',
+                        'MAX_LEVEL' => 1,
+                        'MENU_CACHE_GET_VARS' => array(),
+                        'MENU_CACHE_TIME' => '3600',
+                        'MENU_CACHE_TYPE' => 'A',
+                        'MENU_CACHE_USE_GROUPS' => 'N',
+                        'USE_EXT' => 'Y',
+                        'COMPONENT_TEMPLATE' => '',
+                    )); ?>
+                    <? $APPLICATION->IncludeComponent('bitrix:menu', 'top_submenu', array(
+                        'ALLOW_MULTI_SELECT' => 'N',
+                        'ROOT_MENU_TYPE' => 'top_sub3',
+                        'CHILD_MENU_TYPE' => 'left',
+                        'DELAY' => 'N',
+                        'MAX_LEVEL' => 1,
+                        'MENU_CACHE_GET_VARS' => array(),
+                        'MENU_CACHE_TIME' => '3600',
+                        'MENU_CACHE_TYPE' => 'A',
+                        'MENU_CACHE_USE_GROUPS' => 'N',
+                        'USE_EXT' => 'Y',
+                        'COMPONENT_TEMPLATE' => '',
+                    )); ?>
+                    <? $APPLICATION->IncludeComponent('bitrix:menu', 'top_submenu', array(
+                        'ALLOW_MULTI_SELECT' => 'N',
+                        'ROOT_MENU_TYPE' => 'top_sub4',
+                        'CHILD_MENU_TYPE' => 'left',
+                        'DELAY' => 'N',
+                        'MAX_LEVEL' => 1,
+                        'MENU_CACHE_GET_VARS' => array(),
+                        'MENU_CACHE_TIME' => '3600',
+                        'MENU_CACHE_TYPE' => 'A',
+                        'MENU_CACHE_USE_GROUPS' => 'N',
+                        'USE_EXT' => 'Y',
+                        'COMPONENT_TEMPLATE' => '',
+                    )); ?>
                 </nav>
             </div>
         </div>

@@ -15,7 +15,8 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                         </div>
                         <div class="footer__search">
                             <div class="footer__search__input">
-                                <input class="footer__search__input__control core__form__input__control core__form__input__control" placeholder="Поиск поставщика">
+                                <input class="footer__search__input__control core__form__input__control core__form__input__control"
+                                       placeholder="Поиск поставщика">
                             </div>
                             <div class="footer__search__btn">
                                 <button class="footer__search__btn__control core__btn">найти</button>
@@ -24,63 +25,83 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                     </div>
                     <ul class="footer__menu" data-js-core-resize="menu" data-js-core-resize-width="lg">
                         <li class="footer__menu__group">
-                            <a href="" title="" class="footer__menu__group__title">Женская одежда оптом</a>
-                            <ul>
-                                <li><a href="" title="">Производители женской одежды</a></li>
-                                <li><a href="" title="">Трикотаж оптом</a></li>
-                                <li><a href="" title="">Одежда больших размеров</a></li>
-                                <li><a href="" title="">Домашняя одежда оптом</a></li>
-                                <li><a href="" title="">Платья, сарафаны оптом</a></li>
-                                <li><a href="" title="">Блузки, туники, рубашки оптом</a></li>
-                                <li><a href="" title="">Юбки, брюки оптом</a></li>
-                            </ul>
+                            <? $APPLICATION->IncludeFile(SITE_DIR . 'include/footer/sub_menu1_title.php'); ?>
+                            <? $APPLICATION->IncludeComponent('bitrix:menu', 'top_submenu', array(
+                                'ALLOW_MULTI_SELECT' => 'N',
+                                'ROOT_MENU_TYPE' => 'top_sub1',
+                                'CHILD_MENU_TYPE' => 'left',
+                                'DELAY' => 'N',
+                                'MAX_LEVEL' => 1,
+                                'MENU_CACHE_GET_VARS' => array(),
+                                'MENU_CACHE_TIME' => '3600',
+                                'MENU_CACHE_TYPE' => 'A',
+                                'MENU_CACHE_USE_GROUPS' => 'N',
+                                'USE_EXT' => 'Y',
+                                'COMPONENT_TEMPLATE' => '',
+                            )); ?>
                         </li>
                         <li class="footer__menu__group">
-                            <a href="" title="" class="footer__menu__group__title">одежда и товары для детей</a>
-                            <ul>
-                                <li><a href="" title="">Одежда для новорожденных</a></li>
-                                <li><a href="" title="">Детский трикотаж оптом</a></li>
-                                <li><a href="" title="">Подростковая одежда оптом</a></li>
-                                <li><a href="" title="">Школьная форма оптом</a></li>
-                                <li><a href="" title="">Детская одежда для мальчиков</a></li>
-                                <li><a href="" title="">Детская одежда для девочек</a></li>
-                                <li><a href="" title="">Памперсы, подгузники оптом</a></li>
-                            </ul>
+                            <? $APPLICATION->IncludeFile(SITE_DIR . 'include/footer/sub_menu2_title.php'); ?>
+                            <? $APPLICATION->IncludeComponent('bitrix:menu', 'top_submenu', array(
+                                'ALLOW_MULTI_SELECT' => 'N',
+                                'ROOT_MENU_TYPE' => 'top_sub2',
+                                'CHILD_MENU_TYPE' => 'left',
+                                'DELAY' => 'N',
+                                'MAX_LEVEL' => 1,
+                                'MENU_CACHE_GET_VARS' => array(),
+                                'MENU_CACHE_TIME' => '3600',
+                                'MENU_CACHE_TYPE' => 'A',
+                                'MENU_CACHE_USE_GROUPS' => 'N',
+                                'USE_EXT' => 'Y',
+                                'COMPONENT_TEMPLATE' => '',
+                            )); ?>
                         </li>
                         <li class="footer__menu__group">
-                            <a href="" title="" class="footer__menu__group__title">Красота и здоровье</a>
-                            <ul>
-                                <li><a href="" title="">Крема, лосьоны, маски</a></li>
-                                <li><a href="" title="">Уход за детской кожей</a></li>
-                                <li><a href="" title="">Парфюмерия, косметика</a></li>
-                            </ul>
+                            <? $APPLICATION->IncludeFile(SITE_DIR . 'include/footer/sub_menu3_title.php'); ?>
+                            <? $APPLICATION->IncludeComponent('bitrix:menu', 'top_submenu', array(
+                                'ALLOW_MULTI_SELECT' => 'N',
+                                'ROOT_MENU_TYPE' => 'top_sub3',
+                                'CHILD_MENU_TYPE' => 'left',
+                                'DELAY' => 'N',
+                                'MAX_LEVEL' => 1,
+                                'MENU_CACHE_GET_VARS' => array(),
+                                'MENU_CACHE_TIME' => '3600',
+                                'MENU_CACHE_TYPE' => 'A',
+                                'MENU_CACHE_USE_GROUPS' => 'N',
+                                'USE_EXT' => 'Y',
+                                'COMPONENT_TEMPLATE' => '',
+                            )); ?>
                         </li>
                         <li class="footer__menu__group">
-                            <a href="" title="" class="footer__menu__group__title">Хозяйственные товары</a>
-                            <ul>
-                                <li><a href="" title="">Бытовая химия оптом</a></li>
-                            </ul>
+                            <? $APPLICATION->IncludeFile(SITE_DIR . 'include/footer/sub_menu4_title.php'); ?>
+                            <? $APPLICATION->IncludeComponent('bitrix:menu', 'top_submenu', array(
+                                'ALLOW_MULTI_SELECT' => 'N',
+                                'ROOT_MENU_TYPE' => 'top_sub4',
+                                'CHILD_MENU_TYPE' => 'left',
+                                'DELAY' => 'N',
+                                'MAX_LEVEL' => 1,
+                                'MENU_CACHE_GET_VARS' => array(),
+                                'MENU_CACHE_TIME' => '3600',
+                                'MENU_CACHE_TYPE' => 'A',
+                                'MENU_CACHE_USE_GROUPS' => 'N',
+                                'USE_EXT' => 'Y',
+                                'COMPONENT_TEMPLATE' => '',
+                            )); ?>
                         </li>
                     </ul>
                 </div>
                 <div class="col-5 col-md-24">
                     <div class="footer__title">
-                        <span>контакты</span>
+                        <span><? $APPLICATION->IncludeFile(SITE_DIR . 'include/footer/contacts_title.php'); ?></span>
                     </div>
-                    <ul class="footer__social">
-                        <li><a href="" title="" class="footer__social__icon footer__social__icon_fb"></a></li>
-                        <li><a href="" title="" class="footer__social__icon footer__social__icon_tw"></a></li>
-                        <li><a href="" title="" class="footer__social__icon footer__social__icon_gl"></a></li>
-                        <li><a href="" title="" class="footer__social__icon footer__social__icon_yt"></a></li>
-                    </ul>
+                    <? $APPLICATION->IncludeFile(SITE_DIR . 'include/footer/social.php'); ?>
                     <div class="footer__line"></div>
                     <div class="footer__phone">
-                        <a href="" title="Позвонить"><span>8-800-2000600</span></a>
-                        <a href="" title="Позвонить"><span>8-800-2000600</span></a>
+                        <? $APPLICATION->IncludeFile(SITE_DIR . 'include/footer/phones.php'); ?>
                     </div>
                     <div class="footer__line"></div>
                     <div class="footer__email">
-                        <a href="" title="Написать нам"><span>adress@mail.com</span></a>
+                        <? $APPLICATION->IncludeFile(SITE_DIR . 'include/footer/email_link.php'); ?>
                     </div>
                 </div>
             </div>
@@ -88,7 +109,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
     </div>
     <div class="container-fluid footer_down">
         <div class="container">
-            <span>© All-optovik 2017</span>
+            <span><? $APPLICATION->IncludeFile(SITE_DIR . 'include/footer/copyright.php'); ?></span>
         </div>
     </div>
 </footer>
@@ -120,7 +141,8 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                 <input id="form__checkbox__personal" type="checkbox">
                 <label for="form__checkbox__personal">
                     <small>
-                        Даю согласие на обработку персональных данных в соответствии с федеральным законом «О персональных данных» от 27.07.2006 N 152-ФЗ
+                        Даю согласие на обработку персональных данных в соответствии с федеральным законом «О персональных данных» от 27.07.2006 N
+                        152-ФЗ
                     </small>
                 </label>
             </div>
