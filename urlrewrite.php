@@ -3,7 +3,7 @@ $arUrlRewrite = array(
 	array(
 		"CONDITION" => "#^/online/([\\.\\-0-9a-zA-Z]+)(/?)([^/]*)#",
 		"RULE" => "alias=\$1",
-		"ID" => "bitrix:im.router",
+		"ID" => "",
 		"PATH" => "/desktop_app/router.php",
 	),
 	array(
@@ -15,7 +15,7 @@ $arUrlRewrite = array(
 	array(
 		"CONDITION" => "#^/online/(/?)([^/]*)#",
 		"RULE" => "",
-		"ID" => "bitrix:im.router",
+		"ID" => "",
 		"PATH" => "/desktop_app/router.php",
 	),
 	array(
