@@ -19,6 +19,7 @@ Loc::loadMessages(__FILE__);
             'https://fonts.googleapis.com/css?family=PT+Sans:400,700',
             '/assets/js/lib/fancybox/fancybox.min.css',
             '/assets/css/style.min.css',
+            '/assets/css/custom.css',
         ))
         ->init(array('fx'))
         ->addJsArray(array(
@@ -27,6 +28,7 @@ Loc::loadMessages(__FILE__);
             '/assets/js/lib/fancybox/fancybox.min.js',
             '/assets/js/scripts.js',
             '/assets/js/main.min.js',
+            '/assets/js/custom.js',
         ));
     ?>
 
