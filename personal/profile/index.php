@@ -57,7 +57,7 @@ $APPLICATION->SetTitle('Личный кабинет');
                     </div>
                     <div class="form__item">
                         <div class="core__form__file">
-                            <div class="core__form__file__text">Каталоги и прайс-листы</div>
+                            <div class="core__form__file__text">Прайс-лист</div>
                             <div class="core__form__file__input js-field-block">
                                 <input class="core__form__file__input__control" name="prices" type="file"/>
                                 <div class="core__form__input__log core__form__input__log_danger"></div>

@@ -38,18 +38,20 @@ if($form->validate())
         'WORK_CITY' => $form->getField('city'),
         'WORK_STREET' => $form->getField('address'),
         'WORK_PROFILE' => $form->getField('description'),
+        'UF_WORK_COND' => $form->getField('work_conditions'),
+        'UF_DELIVERY_COND' => $form->getField('delivery_conditions'),
+        'UF_PAY_COND' => $form->getField('pay_conditions'),
+        'UF_DISCOUNTS' => $form->getField('discounts'),
     );
-    $fields['UF_WORK_COND'] = $form->getField('work_conditions');
-    $fields['UF_DELIVERY_COND'] = $form->getField('delivery_conditions');
-    $fields['UF_PAY_COND'] = $form->getField('pay_conditions');
-    $fields['UF_DISCOUNTS'] = $form->getField('discounts');
+
     if(!empty($_FILES['logo']['tmp_name']))
     {
         $types = '(?:jpe?g|png|gif)';
         if(preg_match('~\\.' . $types . '$~iu', $_FILES['logo']['name']) && preg_match('~/' . $types . '$~iu', $_FILES['logo']['type']))
             $fields['WORK_LOGO'] = \CFile::SaveFile($_FILES['logo']);
     }
-    $user->Update(User::get()->GetId(), $fields);
+
+    $status = $user->Update(User::get()->GetId(), $fields);
 
     /*$status = $form->formActionFull(
     //iblock id
