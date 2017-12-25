@@ -1,6 +1,9 @@
 <?
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 $APPLICATION->SetTitle('Личный кабинет');
+
+use Lema\IBlock\Section;
+
 ?>
     <div class="container">
         <div class="core__title">
@@ -65,21 +68,24 @@ $APPLICATION->SetTitle('Личный кабинет');
                         </div>
                     </div>
                     <br>
-                    <div class="core__form__title">
-                        <span>Выберите раздел</span>
-                    </div>
-                    <div class="form__item">
-                        <div class="core__form__select js-field-block">
-                            <select name="section" class="core__form__select__control">
-                                <option selected="selected">Выберите</option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                            </select>
-                            <div class="core__form__input__log core__form__input__log_danger"></div>
+                    <?php
+                    $sections = Section::getAllD7(LIblock::getId('catalog'));
+                    if(!empty($sections)):?>
+                        <div class="core__form__title">
+                            <span>Выберите раздел</span>
                         </div>
-                    </div>
+                        <div class="form__item">
+                            <div class="core__form__select js-field-block">
+                                <select name="section" class="core__form__select__control">
+                                    <option selected="selected">Выберите</option>
+                                    <? foreach($sections as $sectionId => $section):?>
+                                        <option value="<?=$sectionId;?>"><?=$section['NAME'];?></option>
+                                    <? endforeach; ?>
+                                </select>
+                                <div class="core__form__input__log core__form__input__log_danger"></div>
+                            </div>
+                        </div>
+                    <? endif; ?>
                 </div>
                 <div class="form__user__right">
                     <div class="form__item">
