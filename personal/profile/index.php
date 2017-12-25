@@ -69,6 +69,7 @@ use Lema\IBlock\Section;
                     </div>
                     <br>
                     <?php
+                    LemaISection::getSectionsByLevelD7(LIblock::getId('catalog'));
                     $sections = Section::getAllD7(LIblock::getId('catalog'));
                     if(!empty($sections)):?>
                         <div class="core__form__title">

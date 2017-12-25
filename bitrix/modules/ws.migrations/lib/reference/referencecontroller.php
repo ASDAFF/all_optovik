@@ -227,7 +227,8 @@ class ReferenceController {
     public function getReferenceValue($id, $group, $dbVersion = null) {
         $item = $this->getItemById($id, $group, $dbVersion);
         if (!$item) {
-            throw new \Exception('References item not exists by '.var_export(array('id' => $id, 'group' => $group, 'dbVersion' => $dbVersion), true));
+            return false;
+            //throw new \Exception('References item not exists by '.var_export(array('id' => $id, 'group' => $group, 'dbVersion' => $dbVersion), true));
         }
         return $item->reference;
     }
@@ -249,7 +250,8 @@ class ReferenceController {
             )
         ));
         if (!$data = $res->fetch()) {
-            throw new \Exception('References item not exists by '.var_export(array('id' => $id, 'group' => $group, 'dbVersion' => $dbVersion), true));
+            return false;
+            //throw new \Exception('References item not exists by '.var_export(array('id' => $id, 'group' => $group, 'dbVersion' => $dbVersion), true));
         }
         return $this->_initItemByDBData($data);
     }
@@ -309,7 +311,8 @@ class ReferenceController {
     public function getCurrentIdByOtherVersion($id, $group, $dbVersion) {
         $reference = $this->getReferenceValue($id, $group, $dbVersion);
         if (!$reference) {
-            throw new \Exception('References not exists by '.var_export(array('id' => $id, 'group' => $group, 'dbVersion' => $dbVersion), true));
+            return false;
+            //throw new \Exception('References not exists by '.var_export(array('id' => $id, 'group' => $group, 'dbVersion' => $dbVersion), true));
         }
         try {
             $item = $this->getItemCurrentVersionByReference($reference);
