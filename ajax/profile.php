@@ -21,6 +21,7 @@ $form = new \Lema\Forms\AjaxForm(array(
     //array('delivery_conditions', 'required', array('message' => 'Условия доставки обязательны к заполнению')),
     //array('pay_conditions', 'required', array('message' => 'Условия оплаты обязательны к заполнению')),
     //array('discounts', 'required', array('message' => 'Скидки обязательны к заполнению')),
+    array('agreement', 'required', array('message' => 'Вы не согласились с условиями')),
 
 ),
     $_POST
@@ -38,6 +39,16 @@ if($form->validate())
         'WORK_STREET' => $form->getField('address'),
         'WORK_PROFILE' => $form->getField('description'),
     );
+    $fields['UF_WORK_COND'] = $form->getField('work_conditions');
+    $fields['UF_DELIVERY_COND'] = $form->getField('delivery_conditions');
+    $fields['UF_PAY_COND'] = $form->getField('pay_conditions');
+    $fields['UF_DISCOUNTS'] = $form->getField('discounts');
+    if(!empty($_FILES['logo']['tmp_name']))
+    {
+        $types = '(?:jpe?g|png|gif)';
+        if(preg_match('~\\.' . $types . '$~iu', $_FILES['logo']['name']) && preg_match('~/' . $types . '$~iu', $_FILES['logo']['type']))
+            $fields['WORK_LOGO'] = \CFile::SaveFile($_FILES['logo']);
+    }
     $user->Update(User::get()->GetId(), $fields);
 
     /*$status = $form->formActionFull(

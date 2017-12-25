@@ -8,32 +8,37 @@ $APPLICATION->SetTitle('Личный кабинет');
         </div>
         <div class="core__line_bg"></div>
         <br>
-        <form method="post" action="/ajax/profile.php" enctype="multipart/form-data">
+        <form method="post" action="/ajax/profile.php" enctype="multipart/form-data" class="js-profile-form">
             <div class="form form__user">
                 <div class="form__user__left">
                     <div class="form__item">
                         <div class="core__form__title">
                             <span>Персональная информация</span>
                         </div>
-                        <div class="core__form__input">
+                        <div class="core__form__input js-field-block">
                             <input class="core__form__input__control" name="company_name" placeholder="Название компании">
+                            <div class="core__form__input__log core__form__input__log_danger"></div>
                         </div>
-                        <div class="core__form__input">
+                        <div class="core__form__input js-field-block">
                             <input class="core__form__input__control" name="email" placeholder="Электронная почта">
+                            <div class="core__form__input__log core__form__input__log_danger"></div>
                         </div>
-                        <div class="core__form__input">
+                        <div class="core__form__input js-field-block">
                             <input class=" core__form__input__control" name="site" placeholder="Сайт (не обязательно)">
+                            <div class="core__form__input__log core__form__input__log_danger"></div>
                         </div>
-                        <div class="core__form__input">
+                        <div class="core__form__input js-field-block">
                             <input class="core__form__input__control" name="city" placeholder="Ваш город">
                             <div class="core__form__input__log core__form__input__log_danger"></div>
                         </div>
-                        <div class="core__form__input">
+                        <div class="core__form__input js-field-block">
                             <input class="core__form__input__control" name="address" placeholder="Ваш адрес">
+                            <div class="core__form__input__log core__form__input__log_danger"></div>
                         </div>
-                        <div class="core__form__textarea">
-                            <textarea class="core__form__textarea__control" name="description" placeholder="Описание деятельности компании
-"></textarea>
+                        <div class="core__form__textarea js-field-block">
+                            <textarea class="core__form__textarea__control" name="description"
+                                      placeholder="Описание деятельности компании"></textarea>
+                            <div class="core__form__input__log core__form__input__log_danger"></div>
                         </div>
                     </div>
                     <br>
@@ -44,16 +49,18 @@ $APPLICATION->SetTitle('Личный кабинет');
                     <div class="form__item">
                         <div class="core__form__file">
                             <div class="core__form__file__text">Загрузить каталог (не обязательно)</div>
-                            <div class="core__form__file__input">
+                            <div class="core__form__file__input js-field-block">
                                 <input class="core__form__file__input__control" name="catalog" type="file"/>
+                                <div class="core__form__input__log core__form__input__log_danger"></div>
                             </div>
                         </div>
                     </div>
                     <div class="form__item">
                         <div class="core__form__file">
                             <div class="core__form__file__text">Каталоги и прайс-листы</div>
-                            <div class="core__form__file__input">
+                            <div class="core__form__file__input js-field-block">
                                 <input class="core__form__file__input__control" name="prices" type="file"/>
+                                <div class="core__form__input__log core__form__input__log_danger"></div>
                             </div>
                         </div>
                     </div>
@@ -62,7 +69,7 @@ $APPLICATION->SetTitle('Личный кабинет');
                         <span>Выберите раздел</span>
                     </div>
                     <div class="form__item">
-                        <div class="core__form__select">
+                        <div class="core__form__select js-field-block">
                             <select name="section" class="core__form__select__control">
                                 <option selected="selected">Выберите</option>
                                 <option>1</option>
@@ -70,6 +77,7 @@ $APPLICATION->SetTitle('Личный кабинет');
                                 <option>3</option>
                                 <option>4</option>
                             </select>
+                            <div class="core__form__input__log core__form__input__log_danger"></div>
                         </div>
                     </div>
                 </div>
@@ -78,26 +86,30 @@ $APPLICATION->SetTitle('Личный кабинет');
                         <div class="core__form__title">
                             <span>Условия работы</span>
                         </div>
-                        <div class="core__form__textarea">
+                        <div class="core__form__textarea js-field-block">
                             <textarea class="core__form__textarea__control" name="work_conditions" placeholder="Условия работы"></textarea>
+                            <div class="core__form__input__log core__form__input__log_danger"></div>
                         </div>
                         <div class="core__form__title">
                             <span>Условия доставки</span>
                         </div>
-                        <div class="core__form__textarea">
+                        <div class="core__form__textarea js-field-block">
                             <textarea class="core__form__textarea__control" name="delivery_conditions" placeholder="Условия доставки"></textarea>
+                            <div class="core__form__input__log core__form__input__log_danger"></div>
                         </div>
                         <div class="core__form__title">
                             <span>Условия оплаты</span>
                         </div>
-                        <div class="core__form__textarea">
+                        <div class="core__form__textarea js-field-block">
                             <textarea class="core__form__textarea__control" name="pay_conditions" placeholder="Условия оплаты"></textarea>
+                            <div class="core__form__input__log core__form__input__log_danger"></div>
                         </div>
                         <div class="core__form__title">
                             <span>Скидки</span>
                         </div>
-                        <div class="core__form__textarea">
+                        <div class="core__form__textarea js-field-block">
                             <textarea class="core__form__textarea__control" name="discounts" placeholder="Скидки"></textarea>
+                            <div class="core__form__input__log core__form__input__log_danger"></div>
                         </div>
                     </div>
                     <br>
@@ -108,8 +120,9 @@ $APPLICATION->SetTitle('Личный кабинет');
                         <div class="form__item">
                             <div class="core__form__file">
                                 <div class="core__form__file__text">Загрузить картинки</div>
-                                <div class="core__form__file__input">
+                                <div class="core__form__file__input js-field-block">
                                     <input class="core__form__file__input__control" name="pictures" type="file" multiple/>
+                                    <div class="core__form__input__log core__form__input__log_danger"></div>
                                 </div>
                             </div>
                             <div class="core__form__description">
@@ -119,8 +132,9 @@ $APPLICATION->SetTitle('Личный кабинет');
                         <div class="form__item">
                             <div class="core__form__file">
                                 <div class="core__form__file__text">Загрузить картинки для анонса 5 шт.</div>
-                                <div class="core__form__file__input">
+                                <div class="core__form__file__input js-field-block">
                                     <input class="core__form__file__input__control" name="preview_pictures" type="file" multiple/>
+                                    <div class="core__form__input__log core__form__input__log_danger"></div>
                                 </div>
                             </div>
                             <div class="core__form__description">
@@ -130,14 +144,15 @@ $APPLICATION->SetTitle('Личный кабинет');
                         <div class="form__item">
                             <div class="core__form__file">
                                 <div class="core__form__file__text">Загрузить логотип компании</div>
-                                <div class="core__form__file__input">
+                                <div class="core__form__file__input js-field-block">
                                     <input class="core__form__file__input__control" name="logo" type="file"/>
+                                    <div class="core__form__input__log core__form__input__log_danger"></div>
                                 </div>
                             </div>
                         </div>
                         <br>
                         <div class="core__form__check">
-                            <div class="core__form__checkbox">
+                            <div class="core__form__checkbox js-field-block">
                                 <input id="form__checkbox__personal" name="agreement" type="checkbox">
                                 <label for="form__checkbox__personal">
                                     <small>
@@ -145,6 +160,7 @@ $APPLICATION->SetTitle('Личный кабинет');
                                         27.07.2006 N 152-ФЗ
                                     </small>
                                 </label>
+                                <div class="core__form__input__log core__form__input__log_danger"></div>
                             </div>
                         </div>
                     </div>
