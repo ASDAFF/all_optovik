@@ -62,7 +62,7 @@ use Lema\IBlock\Section;
                         <div class="core__form__file">
                             <div class="core__form__file__text">Прайс-лист</div>
                             <div class="core__form__file__input js-field-block">
-                                <input class="core__form__file__input__control" name="prices" type="file"/>
+                                <input class="core__form__file__input__control" name="price" type="file"/>
                                 <div class="core__form__input__log core__form__input__log_danger"></div>
                             </div>
                         </div>
@@ -128,7 +128,7 @@ use Lema\IBlock\Section;
                             <div class="core__form__file">
                                 <div class="core__form__file__text">Загрузить картинки</div>
                                 <div class="core__form__file__input js-field-block">
-                                    <input class="core__form__file__input__control" name="pictures" type="file" multiple/>
+                                    <input class="core__form__file__input__control" id="js-pictures" name="pictures" type="file" multiple/>
                                     <div class="core__form__input__log core__form__input__log_danger"></div>
                                 </div>
                             </div>
@@ -140,7 +140,7 @@ use Lema\IBlock\Section;
                             <div class="core__form__file">
                                 <div class="core__form__file__text">Загрузить картинки для анонса 5 шт.</div>
                                 <div class="core__form__file__input js-field-block">
-                                    <input class="core__form__file__input__control" name="preview_pictures" type="file" multiple/>
+                                    <input class="core__form__file__input__control" id="js-preview-pictures" name="preview_pictures" type="file" multiple/>
                                     <div class="core__form__input__log core__form__input__log_danger"></div>
                                 </div>
                             </div>

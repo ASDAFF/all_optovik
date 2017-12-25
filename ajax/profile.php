@@ -53,6 +53,19 @@ if($form->validate())
 
     $status = $user->Update(User::get()->GetId(), $fields);
 
+    //upload catalog file
+    if(!empty($_FILES['catalog']['tmp_name']))
+        $catalogData = \uploadFileData($_FILES['catalog']);
+    //upload price file
+    if(!empty($_FILES['price']['tmp_name']))
+        $catalogData = \uploadFileData($_FILES['catalog']);
+    //upload preview pictures
+    if(!empty($_FILES['preview_pictures']['tmp_name']))
+        $previewPicturesData = \uploadFileData($_FILES['preview_pictures']);
+    //upload pictures
+    if(!empty($_FILES['pictures']['tmp_name']))
+        $picturesData = \uploadFileData($_FILES['pictures']);
+
     /*$status = $form->formActionFull(
     //iblock id
         2,

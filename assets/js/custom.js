@@ -5,12 +5,16 @@ $(function () {
 
             var curForm = $(this),
                 formData = new FormData(curForm.get(0)),
-                waitElement = curForm.find('input[type="submit"], button[type="submit"]').get(0)/*,
-                files = document.getElementById('change-file').files,
-                cntFiles = files.length*/;
+                waitElement = curForm.find('input[type="submit"], button[type="submit"]').get(0),
+                pictures = document.getElementById('js-pictures').files,
+                cntPictures = pictures.length,
+                prevPictures = document.getElementById('js-preview-pictures').files,
+                cntPrevPictures = pictures.length;
 
-            /*for (var x = 0; x < cntFiles; ++x)
-                formData.append('files[' + x + ']', files[x]);*/
+            for (var x = 0; x < cntPictures; ++x)
+                formData.append('pictures[' + x + ']', pictures[x]);
+            for (var x = 0; x < cntPrevPictures; ++x)
+                formData.append('preview_pictures[' + x + ']', prevPictures[x]);
 
             BX.showWait(waitElement);
 
