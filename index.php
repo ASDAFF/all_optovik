@@ -307,6 +307,5 @@ $APPLICATION->SetTitle("1С-Битрикс: Управление сайтом");
     </div>
 <?include ('test/template/banner-2.php');?>
 <?include ('test/template/work.php')?>
-<?include ('test/template/feedback.php');?>
 
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
