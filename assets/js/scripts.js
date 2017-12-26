@@ -194,10 +194,10 @@ var coreJsTabs = {
                 $('[data-js-core-tabs=' + $this.data().name + ']').find('[data-js-core-tabs-id]').removeClass('active');
                 $this.data().tab.toggleClass('active');
 
-                var JSarray = anime({
+                /*var JSarray = anime({
                     targets: $('[data-js-core-tabs=' + $this.data().name + ']').find('[data-js-core-tabs-id]'),
                     translateX: 250
-                });
+                });*/
             });
         });
     }
