@@ -1,6 +1,6 @@
 <?php
 
-function uploadFileData(array $files)
+function uploadFileData(array $files, $maxCount = null)
 {
     $returnData = array(
         'fileIds' => array(),
@@ -25,7 +25,16 @@ function uploadFileData(array $files)
 
     //multiple files
     $pushData = array_flip(array_keys($files));
-    for($i = 0, $cnt = count($files['tmp_name']); $i < $cnt; ++$i)
+
+    //max count of uploaded files
+    $cnt = count($files['tmp_name']);
+    if(isset($maxCount))
+    {
+        if($maxCount < count($files['tmp_name']))
+            $cnt = $maxCount;
+    }
+
+    for($i = 0; $i < $cnt; ++$i)
     {
         foreach($pushData as $key => $v)
             $pushData[$key] = $files[$key][$i];
