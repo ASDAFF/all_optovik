@@ -1,0 +1,3 @@
+<?
+$MESS['TAB_NEWS_LIST_MORE_INFO']='Подробнее';
+$MESS['TAB_NEWS_LIST_MORE']='Ещё';
