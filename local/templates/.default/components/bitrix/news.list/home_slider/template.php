@@ -18,8 +18,9 @@ if (empty($arResult['ITEMS']))
 
 $data = new \Lema\Template\TemplateHelper($this);
 foreach ($data->items() as $item):?>
-    <a href="<?= $item->get('PROPERTY_LINK_VALUE'); ?>"
+    <a href="<?= $item->propVal('LINK'); ?>"
        title="<?= $item->getName(); ?>"
        class="block__item"
-       style="background-image: url('<?= $item->previewPicture(); ?>')" <?=$item->editId();?>></a>
+       style="background-image: url('<?= $item->previewPicture(); ?>')" <?=$item->editId();?>>
+    </a>
 <?endforeach;

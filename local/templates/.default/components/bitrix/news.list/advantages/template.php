@@ -25,7 +25,7 @@ $data = new \Lema\Template\TemplateHelper($this);
             <div class="utp__item__icon">
                 <img src="<?= $item->previewPicture(); ?>">
             </div>
-            <div class="utp__item__number">1</div>
+            <div class="utp__item__number"><?=$item->getName();?></div>
             <div class="utp__item__text">
                 <span>
                     <?= $item->previewText(); ?>
