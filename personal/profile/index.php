@@ -2,7 +2,7 @@
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 $APPLICATION->SetTitle('Личный кабинет');
 
-use Lema\IBlock\Section;
+$user = new UserData();
 
 ?>
     <div class="container">
@@ -19,28 +19,32 @@ use Lema\IBlock\Section;
                             <span>Персональная информация</span>
                         </div>
                         <div class="core__form__input js-field-block">
-                            <input class="core__form__input__control" name="company_name" placeholder="Название компании">
+                            <input class="core__form__input__control" value="<?=$user->get('WORK_COMPANY')?>"
+                                   name="company_name" placeholder="Название компании">
                             <div class="core__form__input__log core__form__input__log_danger"></div>
                         </div>
                         <div class="core__form__input js-field-block">
-                            <input class="core__form__input__control" name="email" placeholder="Электронная почта">
+                            <input class="core__form__input__control" name="email" value="<?=$user->get('WORK_MAILBOX')?>"
+                                   placeholder="Электронная почта">
                             <div class="core__form__input__log core__form__input__log_danger"></div>
                         </div>
                         <div class="core__form__input js-field-block">
-                            <input class=" core__form__input__control" name="site" placeholder="Сайт (не обязательно)">
+                            <input class=" core__form__input__control" name="site" value="<?=$user->get('WORK_WWW')?>"
+                                   placeholder="Сайт (не обязательно)">
                             <div class="core__form__input__log core__form__input__log_danger"></div>
                         </div>
                         <div class="core__form__input js-field-block">
-                            <input class="core__form__input__control" name="city" placeholder="Ваш город">
+                            <input class="core__form__input__control" name="city" value="<?=$user->get('WORK_CITY')?>" placeholder="Ваш город">
                             <div class="core__form__input__log core__form__input__log_danger"></div>
                         </div>
                         <div class="core__form__input js-field-block">
-                            <input class="core__form__input__control" name="address" placeholder="Ваш адрес">
+                            <input class="core__form__input__control" name="address" value="<?=$user->get('WORK_STREET')?>" placeholder="Ваш адрес">
                             <div class="core__form__input__log core__form__input__log_danger"></div>
                         </div>
                         <div class="core__form__textarea js-field-block">
-                            <textarea class="core__form__textarea__control" name="description"
-                                      placeholder="Описание деятельности компании"></textarea>
+                            <textarea class="core__form__textarea__control" name="description" placeholder="Описание деятельности компании"><?=
+                                $user->get('WORK_PROFILE');
+                                ?></textarea>
                             <div class="core__form__input__log core__form__input__log_danger"></div>
                         </div>
                     </div>
@@ -77,7 +81,7 @@ use Lema\IBlock\Section;
                         <div class="form__item">
                             <div class="core__form__select js-field-block">
                                 <select name="section" class="core__form__select__control">
-                                    <option selected="selected">Выберите</option>
+                                    <option selected="selected" value="">Выберите</option>
                                     <? foreach($sections as $sectionId => $section): ?>
                                         <? if(empty($section['SECTIONS'])): ?>
                                             <option value="<?=$sectionId;?>"><?=$section['NAME'];?></option>
@@ -101,28 +105,36 @@ use Lema\IBlock\Section;
                             <span>Условия работы</span>
                         </div>
                         <div class="core__form__textarea js-field-block">
-                            <textarea class="core__form__textarea__control" name="work_conditions" placeholder="Условия работы"></textarea>
+                            <textarea class="core__form__textarea__control" name="work_conditions" placeholder="Условия работы"><?=
+                                $user->get('UF_WORK_COND');
+                                ?></textarea>
                             <div class="core__form__input__log core__form__input__log_danger"></div>
                         </div>
                         <div class="core__form__title">
                             <span>Условия доставки</span>
                         </div>
                         <div class="core__form__textarea js-field-block">
-                            <textarea class="core__form__textarea__control" name="delivery_conditions" placeholder="Условия доставки"></textarea>
+                            <textarea class="core__form__textarea__control" name="delivery_conditions" placeholder="Условия доставки"><?=
+                                $user->get('UF_DELIVERY_COND');
+                                ?></textarea>
                             <div class="core__form__input__log core__form__input__log_danger"></div>
                         </div>
                         <div class="core__form__title">
                             <span>Условия оплаты</span>
                         </div>
                         <div class="core__form__textarea js-field-block">
-                            <textarea class="core__form__textarea__control" name="pay_conditions" placeholder="Условия оплаты"></textarea>
+                            <textarea class="core__form__textarea__control" name="pay_conditions" placeholder="Условия оплаты"><?=
+                                $user->get('UF_PAY_COND');
+                                ?></textarea>
                             <div class="core__form__input__log core__form__input__log_danger"></div>
                         </div>
                         <div class="core__form__title">
                             <span>Скидки</span>
                         </div>
                         <div class="core__form__textarea js-field-block">
-                            <textarea class="core__form__textarea__control" name="discounts" placeholder="Скидки"></textarea>
+                            <textarea class="core__form__textarea__control" name="discounts" placeholder="Скидки"><?=
+                                $user->get('UF_DISCOUNTS');
+                                ?></textarea>
                             <div class="core__form__input__log core__form__input__log_danger"></div>
                         </div>
                     </div>

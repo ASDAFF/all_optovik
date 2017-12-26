@@ -2,8 +2,16 @@
 
 \Bitrix\Main\Loader::includeModule('lema.lib');
 
+/**
+ * Class LemaISection
+ */
 class LemaISection extends \Lema\IBlock\Section
 {
+    /**
+     * @param $iblock
+     * @param array $params
+     * @return array
+     */
     public static function getSectionsByLevelD7($iblock, array $params = array())
     {
         $return = array();
@@ -38,5 +46,47 @@ class LemaISection extends \Lema\IBlock\Section
         }
 
         return $return;
+    }
+}
+
+/**
+ * Class UserData
+ */
+class UserData
+{
+    /**
+     * @var null
+     */
+    protected $userData = null;
+
+    /**
+     * UserData constructor.
+     * @param null $id
+     */
+    public function __construct($id = null)
+    {
+        if(empty($id))
+            $id = \Lema\Common\User::get()->GetId();
+        $this->loadUserData($id);
+    }
+
+    /**
+     * @param $id
+     * @throws \Bitrix\Main\ArgumentException
+     */
+    public function loadUserData($id)
+    {
+        $res = \Bitrix\Main\UserTable::getByPrimary($id, array('select' => array('*', 'UF_*')));
+        if($row = $res->fetch())
+            $this->userData = $row;
+    }
+
+    /**
+     * @param $field
+     * @return null|string
+     */
+    public function get($field)
+    {
+        return isset($this->userData[$field]) ? htmlspecialcharsbx($this->userData[$field]) : null;
     }
 }
