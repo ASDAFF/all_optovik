@@ -57,7 +57,35 @@ class AjaxForm extends Form
 
         if(!$el->Add(array_merge(array('IBLOCK_ID' => $iblockId), $data)))
         {
-            $this->setError('add_record', 'Произошла ошибка при добавлени записи: ' . $el->LAST_ERROR);
+            $this->setError('add_record', 'Произошла ошибка при добавлении записи: ' . $el->LAST_ERROR);
+            return false;
+        }
+        return true;
+    }
+    /**
+     * Update record in iblock
+     *
+     * @param $iblockId
+     * @param array $data
+     * @return bool
+     *
+     * @access public
+     */
+    public function updateRecord($iblockId, $elementId, array $data)
+    {
+        if(empty($iblockId))
+        {
+            $this->setError('empty_iblock', 'Не указан инфоблок');
+            return false;
+        }
+
+        \Bitrix\Main\Loader::IncludeModule('iblock');
+
+        $el = new \CIBlockElement();
+
+        if(!$el->Update($elementId, array_merge(array('IBLOCK_ID' => $iblockId), $data)))
+        {
+            $this->setError('update_record', 'Произошла ошибка при обновлении записи: ' . $el->LAST_ERROR);
             return false;
         }
         return true;

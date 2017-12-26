@@ -30,6 +30,8 @@ $form = new \Lema\Forms\AjaxForm(array(
 //check form fields
 if($form->validate())
 {
+    \Bitrix\Main\Loader::includeModule('iblock');
+
     $user = new \CUser();
     $fields = array(
         'WORK_MAILBOX' => $form->getField('email'),
@@ -53,44 +55,72 @@ if($form->validate())
 
     $status = $user->Update(User::get()->GetId(), $fields);
 
-    //upload catalog file
-    if(!empty($_FILES['catalog']['tmp_name']))
-        $catalogData = \uploadFileData($_FILES['catalog']);
-    //upload price file
-    if(!empty($_FILES['price']['tmp_name']))
-        $priceData = \uploadFileData($_FILES['price']);
-    //upload preview pictures
-    if(!empty($_FILES['preview_pictures']['tmp_name']))
-        $previewPicturesData = \uploadFileData($_FILES['preview_pictures']);
-    //upload pictures
-    if(!empty($_FILES['pictures']['tmp_name']))
-        $picturesData = \uploadFileData($_FILES['pictures']);
-
     if($form->getField('section'))
     {
 
-        $status = $form->formActionFull(
-        //iblock id
-            LIblock::getId('catalog'),
-            //iblock add params
-            array(
+        //upload catalog file
+        if(!empty($_FILES['catalog']['tmp_name']))
+            $catalogData = \uploadFileData($_FILES['catalog']);
+        //upload price file
+        if(!empty($_FILES['price']['tmp_name']))
+            $priceData = \uploadFileData($_FILES['price']);
+        //upload preview pictures
+        if(!empty($_FILES['preview_pictures']['tmp_name']))
+            $previewPicturesData = \uploadFileData($_FILES['preview_pictures']);
+        //upload pictures
+        if(!empty($_FILES['pictures']['tmp_name']))
+            $picturesData = \uploadFileData($_FILES['pictures']);
+
+        //check record for exists
+        $existElement = \Lema\IBlock\Element::getList(array(
+            'filter' => array(
+                'IBLOCK_ID' => LIblock::getId('catalog'),
                 'NAME' => Helper::enc($form->getField('company_name')),
-                'PROPERTY_VALUES' => array(
-                    'OPT_USER' => User::get()->GetId(),
-                    'CATALOG_FILE' => $catalogData['fileData'],
-                    'PRICE_FILE' => $priceData['fileData'],
-                    'PREVIEW_PICTURES' => $previewPicturesData['fileData'],
-                    'PICTURES' => $picturesData['fileData'],
-                ),
-                'ACTIVE' => 'Y',
+                'IBLOCK_SECTION_ID' => (int) $form->getField('section'),
             ),
-            //email event name
-            'OPT_USER_FORM',
-            //email send params
-            array(
-                'AUTHOR' => $form->getField('company_name'),
-            )
-        );
+            'arSelect' => array('ID'),
+        ));
+
+        //delete files for existing element
+        if($existElement)
+        {
+            $res = \CIBlockElement::GetProperty(
+                LIblock::getId('catalog'),
+                $existElement['ID']
+            );
+            $props = array();
+            while($row = $res->Fetch())
+            {
+                $props[$row['CODE']] = $row['ID'];
+            }
+        }
+        else
+        {
+            $status = $form->formActionFull(
+            //iblock id
+                LIblock::getId('catalog'),
+                //iblock add params
+                array(
+                    'IBLOCK_SECTION_ID' => (int) $form->getField('section'),
+                    'NAME' => Helper::enc($form->getField('company_name')),
+                    'CODE' => \CUtil::translit(Helper::enc($form->getField('company_name')), 'RU'),
+                    'PROPERTY_VALUES' => array(
+                        'OPT_USER' => User::get()->GetId(),
+                        'CATALOG_FILE' => $catalogData['fileData'],
+                        'PRICE_FILE' => $priceData['fileData'],
+                        'PREVIEW_PICTURES' => $previewPicturesData['fileData'],
+                        'PICTURES' => $picturesData['fileData'],
+                    ),
+                    'ACTIVE' => 'Y',
+                ),
+                //email event name
+                'OPT_USER_FORM',
+                //email send params
+                array(
+                    'AUTHOR' => $form->getField('company_name'),
+                )
+            );
+        }
     }
 
     echo json_encode($status ? array('success' => true) : array('errors' => $form->getErrors()));
