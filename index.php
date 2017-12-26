@@ -7,7 +7,7 @@ $APPLICATION->SetTitle("1С-Битрикс: Управление сайтом");
             <div class="row">
                 <div class="col-6 col-md-24">
                     <div class="block block_h2">
-                        <?$APPLICATION->IncludeComponent(
+                        <? $APPLICATION->IncludeComponent(
                             "bitrix:news.list",
                             "home_slider",
                             array(
@@ -349,16 +349,16 @@ $APPLICATION->SetTitle("1С-Битрикс: Управление сайтом");
     <div class="container-fluid page__index__about">
         <div class="container">
             <div class="page__index__about__title">
-                <span><?\lema\Components\IncludeArea::inc('', array('PATH' => SITE_DIR . 'include/home/about_company/title.php'));?></span>
+                <span><? \lema\Components\IncludeArea::inc('', array('PATH' => SITE_DIR . 'include/home/about_company/title.php')); ?></span>
             </div>
             <div class="page__index__about__text">
                 <p>
-                    <?\lema\Components\IncludeArea::inc('', array('PATH' => SITE_DIR . 'include/home/about_company/description.php'));?>
+                    <? \lema\Components\IncludeArea::inc('', array('PATH' => SITE_DIR . 'include/home/about_company/description.php')); ?>
                 </p>
             </div>
             <div class="page__index__about__btn">
                 <a href="" title="" class="core__btn" data-fancybox="modal" data-src="javascript:void(0);core__modal__add">
-                    <?\lema\Components\IncludeArea::inc('', array('PATH' => SITE_DIR . 'include/home/about_company/button_title.php'));?>
+                    <? \lema\Components\IncludeArea::inc('', array('PATH' => SITE_DIR . 'include/home/about_company/button_title.php')); ?>
                 </a>
             </div>
             <div class="core__line_bg"></div>
@@ -429,86 +429,75 @@ $APPLICATION->SetTitle("1С-Битрикс: Управление сайтом");
         <div class="container">
             <div data-js-core-tabs="block">
                 <div data-js-core-tabs-id="1" class="active">
-                    <div class="news__list">
-                        <div class="news__item">
-                            <div class="news__item__img">
-                                <a href="" title="">
-                                    <img src="/assets/img/news/img-1.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="news__item__main">
-                                <a href="" title="" class="news__item__title">
-                                    <div class="news__item__title__date">18 декабря 2017</div>
-                                    <div class="news__item__title__line">/</div>
-                                    <div class="news__item__title__name">Событие выставка</div>
-                                </a>
-                                <div class="news__item__text">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor
-                                        sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus
-                                        et magnis dis parturient montes, nascetur ridiculus mus.
-                                    </p>
-                                </div>
-                                <div class="news__item__btn">
-                                    <a href="" title="">Подробнее</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="news__item">
-                            <div class="news__item__img">
-                                <a href="" title="">
-                                    <img src="/assets/img/news/img-1.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="news__item__main">
-                                <a href="" title="" class="news__item__title">
-                                    <div class="news__item__title__date">18 декабря 2017</div>
-                                    <div class="news__item__title__line">/</div>
-                                    <div class="news__item__title__name">Событие выставка</div>
-                                </a>
-                                <div class="news__item__text">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor
-                                        sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus
-                                        et magnis dis parturient montes, nascetur ridiculus mus.
-                                    </p>
-                                </div>
-                                <div class="news__item__btn">
-                                    <a href="" title="">Подробнее</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="news__item">
-                            <div class="news__item__img">
-                                <a href="" title="">
-                                    <img src="/assets/img/news/img-1.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="news__item__main">
-                                <a href="" title="" class="news__item__title">
-                                    <div class="news__item__title__date">18 декабря 2017</div>
-                                    <div class="news__item__title__line">/</div>
-                                    <div class="news__item__title__name">Событие выставка</div>
-                                </a>
-                                <div class="news__item__text">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor
-                                        sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus
-                                        et magnis dis parturient montes, nascetur ridiculus mus.
-                                    </p>
-                                </div>
-                                <div class="news__item__btn">
-                                    <a href="" title="">Подробнее</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="css_text-center">
-                        <div class="core__btn">
-                            <span>Eще</span>
-                        </div>
-                        <br><br>
-                    </div>
+                    <? $APPLICATION->IncludeComponent(
+                        "bitrix:news.list",
+                        "tab_news_list",
+                        array(
+                            "ACTIVE_DATE_FORMAT" => "d.m.Y",
+                            "ADD_SECTIONS_CHAIN" => "N",
+                            "AJAX_MODE" => "Y",
+                            "AJAX_OPTION_ADDITIONAL" => "",
+                            "AJAX_OPTION_HISTORY" => "N",
+                            "AJAX_OPTION_JUMP" => "Y",
+                            "AJAX_OPTION_STYLE" => "Y",
+                            "CACHE_FILTER" => "N",
+                            "CACHE_GROUPS" => "Y",
+                            "CACHE_TIME" => "36000000",
+                            "CACHE_TYPE" => "A",
+                            "CHECK_DATES" => "Y",
+                            "DETAIL_URL" => "",
+                            "DISPLAY_BOTTOM_PAGER" => "Y",
+                            "DISPLAY_DATE" => "N",
+                            "DISPLAY_NAME" => "N",
+                            "DISPLAY_PICTURE" => "N",
+                            "DISPLAY_PREVIEW_TEXT" => "N",
+                            "DISPLAY_TOP_PAGER" => "N",
+                            "FIELD_CODE" => array(
+                                0 => "NAME",
+                                1 => "PREVIEW_TEXT",
+                                2 => "PREVIEW_PICTURE",
+                                3 => "DATE_ACTIVE_FROM",
+                                4 => "",
+                            ),
+                            "FILTER_NAME" => "",
+                            "HIDE_LINK_WHEN_NO_DETAIL" => "N",
+                            "IBLOCK_ID" => "6",
+                            "IBLOCK_TYPE" => "content",
+                            "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+                            "INCLUDE_SUBSECTIONS" => "N",
+                            "MESSAGE_404" => "",
+                            "NEWS_COUNT" => "3",
+                            "PAGER_BASE_LINK_ENABLE" => "N",
+                            "PAGER_DESC_NUMBERING" => "N",
+                            "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+                            "PAGER_SHOW_ALL" => "N",
+                            "PAGER_SHOW_ALWAYS" => "N",
+                            "PAGER_TEMPLATE" => ".default",
+                            "PAGER_TITLE" => "Новости",
+                            "PARENT_SECTION" => "",
+                            "PARENT_SECTION_CODE" => "",
+                            "PREVIEW_TRUNCATE_LEN" => "",
+                            "PROPERTY_CODE" => array(
+                                0 => "",
+                                1 => "",
+                            ),
+                            "SET_BROWSER_TITLE" => "N",
+                            "SET_LAST_MODIFIED" => "N",
+                            "SET_META_DESCRIPTION" => "N",
+                            "SET_META_KEYWORDS" => "N",
+                            "SET_STATUS_404" => "Y",
+                            "SET_TITLE" => "N",
+                            "SHOW_404" => "Y",
+                            "SORT_BY1" => "ACTIVE_FROM",
+                            "SORT_BY2" => "SORT",
+                            "SORT_ORDER1" => "DESC",
+                            "SORT_ORDER2" => "ASC",
+                            "STRICT_SECTION_CHECK" => "N",
+                            "COMPONENT_TEMPLATE" => "tab_news_list",
+                            "FILE_404" => ""
+                        ),
+                        false
+                    ); ?>
                 </div>
                 <div data-js-core-tabs-id="2">
                     2

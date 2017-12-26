@@ -15,49 +15,66 @@ $this->setFrameMode(true);
 
 if (empty($arResult['ITEMS']))
     return;
+
 use Bitrix\Main\Localization\Loc;
+
 Loc::loadMessages(__FILE__);
 $data = new \Lema\Template\TemplateHelper($this);
+
+$bxAjaxId = CAjax::GetComponentID($component->__name, $component->__template->__name);
+
 ?>
-<div class="news__list">
-    <? foreach ($data->items() as $item): ?>
-    <div class="news__item">
-        <div class="news__item__img">
-            <a href="<?= $item->detailUrl(); ?>" title="<?= $item->getName(); ?>">
-                <img src="<?= $item->previewPicture(); ?>" alt="<?= $item->getName(); ?>">
-            </a>
-        </div>
-        <div class="news__item__main">
-            <a href="<?= $item->detailUrl(); ?>" title="<?= $item->getName(); ?>" class="news__item__title">
-                <div class="news__item__title__date"><??></div>
-                <div class="news__item__title__line">/</div>
-                <div class="news__item__title__name"><?= $item->getName(); ?></div>
-            </a>
-            <div class="news__item__text">
-                <p>
-                    <?= $item->previewText(); ?>
-                </p>
+<div class="ajax_load">
+    <? if ($_REQUEST['showMore'] == '1')
+        $APPLICATION->RestartBuffer(); ?>
+    <div class="news__list">
+        <? foreach ($data->items() as $item): ?>
+            <div class="news__item">
+                <div class="news__item__img">
+                    <a href="<?= $item->detailUrl(); ?>" title="<?= $item->getName(); ?>">
+                        <img src="<?= $item->previewPicture(); ?>" alt="<?= $item->getName(); ?>">
+                    </a>
+                </div>
+                <div class="news__item__main">
+                    <a href="<?= $item->detailUrl(); ?>" title="<?= $item->getName(); ?>" class="news__item__title">
+                        <div class="news__item__title__date"><?= $item->get('DATE_ACTIVE_FROM'); ?></div>
+                        <div class="news__item__title__line">/</div>
+                        <div class="news__item__title__name"><?= $item->getName(); ?></div>
+                    </a>
+                    <div class="news__item__text">
+                        <p>
+                            <?= $item->previewText(); ?>
+                        </p>
+                    </div>
+                    <div class="news__item__btn">
+                        <a href="<?= $item->detailUrl(); ?>" title="<?= $item->getName(); ?>"><? Loc::getMessage('TAB_NEWS_LIST_MORE_INFO'); ?></a>
+                    </div>
+                </div>
             </div>
-            <div class="news__item__btn">
-                <a href="<?= $item->detailUrl(); ?>" title="<?= $item->getName(); ?>"><?Loc::getMessage('TAB_NEWS_LIST_MORE_INFO');?></a>
+        <? endforeach; ?>
+    </div>
+    <? if (empty($_GET['showMore'])): ?>
+        <div class="css_text-center">
+            <div class="core__btn" class="ajax_load_btn_new" data-ajax-id="<?= $bxAjaxId ?>" data-show-more="<?= $arResult["NAV_RESULT"]->NavNum ?>"
+                 data-next-page="<?= ($arResult["NAV_RESULT"]->NavPageNomer + 1) ?>" data-max-page="<?= $arResult["NAV_RESULT"]->nEndPage ?>">
+            <span>
+                <?= Loc::getMessage('TAB_NEWS_LIST_MORE'); ?>
+            </span>
             </div>
         </div>
+        <br>
+        <br>
+    <? endif; ?>
+    <div class="bottom_nav" style="display: none;">
+        <? if ($arParams["DISPLAY_BOTTOM_PAGER"] == "Y") { ?>
+            <?= $arResult["NAV_STRING"] ?>
+        <? } ?>
     </div>
-    <?endforeach;?>
-</div>
-<div class="css_text-center">
-    <div class="core__btn">
-        <span><?Loc::getMessage('TAB_NEWS_LIST_MORE');?></span>
-    </div>
-    <br><br>
+    <? if ($_REQUEST['showMore'] == '1')
+        die(); ?>
 </div>
 <script>
     $(document).ready(function () {
-        $('.news__item .news__item__main .news__item__title__name').sliceHeight();
-        $('.news__item .news__item__main .cost').sliceHeight();
-        $('.news__item .item_info').sliceHeight({classNull: '.footer_button'});
-        $('.news__item').sliceHeight({classNull: '.footer_button'});
-
         $(document).off('click').on('click', '[data-show-more]', function (e) {
 
             e.preventDefault();
@@ -86,7 +103,7 @@ $data = new \Lema\Template\TemplateHelper($this);
                     BX.closeWait(waitElement);
                     btn.attr('data-next-page', page * 1 + 1);
                     //btn.remove();
-                    $.when($('.ajax_load .news__item').first().append(data)).then(function () {
+                    $.when($('.ajax_load .news__list').first().append(data)).then(function () {
                         $('.bottom_nav').html($('.bottom_nav').eq(-2).html());
                     });
                 }
@@ -94,11 +111,4 @@ $data = new \Lema\Template\TemplateHelper($this);
         });
 
     });
-
-    BX.message({
-        QUANTITY_AVAILIABLE: '<? echo COption::GetOptionString("aspro.optimus", "EXPRESSION_FOR_EXISTS", GetMessage("EXPRESSION_FOR_EXISTS_DEFAULT"), SITE_ID); ?>',
-        QUANTITY_NOT_AVAILIABLE: '<? echo COption::GetOptionString("aspro.optimus", "EXPRESSION_FOR_NOTEXISTS", GetMessage("EXPRESSION_FOR_NOTEXISTS"), SITE_ID); ?>',
-        ADD_ERROR_BASKET: '<? echo GetMessage("ADD_ERROR_BASKET"); ?>',
-        ADD_ERROR_COMPARE: '<? echo GetMessage("ADD_ERROR_COMPARE"); ?>',
-    })
 </script>
