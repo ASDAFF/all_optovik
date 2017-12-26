@@ -16,7 +16,7 @@ $data = new \Lema\Template\TemplateHelper($this);
 
 ?>
 <? foreach($data->items() as $item): ?>
-    <a href="<?=$item->get('PROPERTY_URL_VALUE');?>"
+    <a href="<?=$item->propVal('URL');?>"
        title="<?=$item->getName();?>"
        style="background-image: url('<?=$item->previewPicture();?>')" <?=$item->editId();?>></a>
 <? endforeach; ?>
