@@ -146,7 +146,8 @@ var coreJsTabs = {
     },
     load: function () {
         // Переменные
-        var tempLastName = null;
+        var tempLastName = null,
+        _this = this;
 
         this.$arElementsNav.each(function () {
             var $this = $(this),
@@ -167,7 +168,7 @@ var coreJsTabs = {
                 coreJsTabs.num = 1;
             }
 
-            var $tab = coreJsTabs.$arElementsTabs.find('[data-js-core-tabs-id ='+ id + ']');
+            var $tab = _this.$arElementsTabs.find('[data-js-core-tabs-id ='+ id + ']');
 
             $this.data({
                 id:         id,
