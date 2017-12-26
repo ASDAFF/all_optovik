@@ -78,8 +78,16 @@ use Lema\IBlock\Section;
                             <div class="core__form__select js-field-block">
                                 <select name="section" class="core__form__select__control">
                                     <option selected="selected">Выберите</option>
-                                    <? foreach($sections as $sectionId => $section):?>
-                                        <option value="<?=$sectionId;?>"><?=$section['NAME'];?></option>
+                                    <? foreach($sections as $sectionId => $section): ?>
+                                        <? if(empty($section['SECTIONS'])): ?>
+                                            <option value="<?=$sectionId;?>"><?=$section['NAME'];?></option>
+                                        <? else: ?>
+                                            <optgroup label="<?=$section['NAME'];?>">
+                                                <?foreach($section['SECTIONS'] as $innerSectionId => $innerSection):?>
+                                                    <option value="<?=$innerSectionId;?>"><?=$innerSection['NAME'];?></option>
+                                                <?endforeach;?>
+                                            </optgroup>
+                                        <? endif; ?>
                                     <? endforeach; ?>
                                 </select>
                                 <div class="core__form__input__log core__form__input__log_danger"></div>
@@ -139,7 +147,8 @@ use Lema\IBlock\Section;
                             <div class="core__form__file">
                                 <div class="core__form__file__text">Загрузить картинки для анонса 5 шт.</div>
                                 <div class="core__form__file__input js-field-block">
-                                    <input class="core__form__file__input__control" id="js-preview-pictures" name="preview_pictures" type="file" multiple/>
+                                    <input class="core__form__file__input__control" id="js-preview-pictures" name="preview_pictures" type="file"
+                                           multiple/>
                                     <div class="core__form__input__log core__form__input__log_danger"></div>
                                 </div>
                             </div>
