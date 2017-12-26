@@ -22,7 +22,7 @@ $data = new \Lema\Template\TemplateHelper($this);
 <div class="container-fluid banner__two">
     <div class="container">
         <? foreach ($data->items() as $item): ?>
-            <a href="<?= $item->propVal('LINK'); ?>" title="<?= $item->getName(); ?>" class="banner__two__item" <?= $item->editId(); ?>>
+            <a href="<?= $item->propVal('URL'); ?>" title="<?= $item->getName(); ?>" class="banner__two__item" <?= $item->editId(); ?>>
                 <img src="<?= $item->previewPicture(); ?>" title="<?= $item->getName(); ?>">
             </a>
         <? endforeach; ?>
