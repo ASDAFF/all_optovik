@@ -58,7 +58,7 @@ if($form->validate())
         $catalogData = \uploadFileData($_FILES['catalog']);
     //upload price file
     if(!empty($_FILES['price']['tmp_name']))
-        $catalogData = \uploadFileData($_FILES['catalog']);
+        $priceData = \uploadFileData($_FILES['price']);
     //upload preview pictures
     if(!empty($_FILES['preview_pictures']['tmp_name']))
         $previewPicturesData = \uploadFileData($_FILES['preview_pictures']);
@@ -66,29 +66,32 @@ if($form->validate())
     if(!empty($_FILES['pictures']['tmp_name']))
         $picturesData = \uploadFileData($_FILES['pictures']);
 
-    /*$status = $form->formActionFull(
-    //iblock id
-        2,
-        //iblock add params
-        array(
-            'NAME' => Helper::enc($form->getField('name')),
-            'PREVIEW_TEXT' => Helper::enc($form->getField('text')),
-            'PROPERTY_VALUES' => array(
-                'EMAIL' => $form->getField('email'),
-                'PHONE' => $form->getField('phone'),
+    if($form->getField('section'))
+    {
+
+        $status = $form->formActionFull(
+        //iblock id
+            LIblock::getId('catalog'),
+            //iblock add params
+            array(
+                'NAME' => Helper::enc($form->getField('company_name')),
+                'PROPERTY_VALUES' => array(
+                    'OPT_USER' => User::get()->GetId(),
+                    'CATALOG_FILE' => $catalogData['fileData'],
+                    'PRICE_FILE' => $priceData['fileData'],
+                    'PREVIEW_PICTURES' => $previewPicturesData['fileData'],
+                    'PICTURES' => $picturesData['fileData'],
+                ),
+                'ACTIVE' => 'Y',
             ),
-            'ACTIVE' => 'Y',
-        ),
-        //email event name
-        'FEEDBACK_FORM',
-        //email send params
-        array(
-            'AUTHOR' => $form->getField('name'),
-            'TEXT' => $form->getField('text'),
-            'EMAIL' => $form->getField('email'),
-            'PHONE' => $form->getField('phone'),
-        )
-    );*/
+            //email event name
+            'OPT_USER_FORM',
+            //email send params
+            array(
+                'AUTHOR' => $form->getField('company_name'),
+            )
+        );
+    }
 
     echo json_encode($status ? array('success' => true) : array('errors' => $form->getErrors()));
 }
