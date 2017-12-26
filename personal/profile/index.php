@@ -83,9 +83,9 @@ use Lema\IBlock\Section;
                                             <option value="<?=$sectionId;?>"><?=$section['NAME'];?></option>
                                         <? else: ?>
                                             <optgroup label="<?=$section['NAME'];?>">
-                                                <?foreach($section['SECTIONS'] as $innerSectionId => $innerSection):?>
+                                                <? foreach($section['SECTIONS'] as $innerSectionId => $innerSection): ?>
                                                     <option value="<?=$innerSectionId;?>"><?=$innerSection['NAME'];?></option>
-                                                <?endforeach;?>
+                                                <? endforeach; ?>
                                             </optgroup>
                                         <? endif; ?>
                                     <? endforeach; ?>
