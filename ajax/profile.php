@@ -72,7 +72,7 @@ if($form->validate())
             $picturesData = \uploadFileData($_FILES['pictures']);
 
         //check record for exists
-        $existElement = \Lema\IBlock\Element::getList(array(
+        $existElement = \Lema\IBlock\Element::getList(LIblock::getId('catalog'), array(
             'filter' => array(
                 'IBLOCK_ID' => LIblock::getId('catalog'),
                 'NAME' => Helper::enc($form->getField('company_name')),
@@ -81,22 +81,40 @@ if($form->validate())
             'arSelect' => array('ID'),
         ));
 
-        //delete files for existing element
+        //update existing element
         if($existElement)
         {
-            $res = \CIBlockElement::GetProperty(
-                LIblock::getId('catalog'),
-                $existElement['ID']
-            );
-            $props = array();
-            while($row = $res->Fetch())
+            $existElement = current($existElement);
+            //delete uploaded files
+            foreach(array('CATALOG_FILE', 'PRICE_FILE', 'PREVIEW_PICTURES', 'PICTURES') as $prop)
             {
-                $props[$row['CODE']] = $row['ID'];
+                \CIBlockElement::SetPropertyValuesEx(
+                    $existElement['ID'],
+                    LIblock::getId('catalog'),
+                    array($prop => array('VALUE' => array('del' => 'Y')))
+                );
             }
+
+            //update element
+            $el = new \CIBlockElement();
+            $status = $status && $el->Update($existElement['ID'], array(
+                'IBLOCK_SECTION_ID' => (int) $form->getField('section'),
+                'NAME' => Helper::enc($form->getField('company_name')),
+                'CODE' => \CUtil::translit(Helper::enc($form->getField('company_name')), 'RU'),
+                'PROPERTY_VALUES' => array(
+                    'OPT_USER' => User::get()->GetId(),
+                    'CATALOG_FILE' => $catalogData['fileData'],
+                    'PRICE_FILE' => $priceData['fileData'],
+                    'PREVIEW_PICTURES' => $previewPicturesData['fileData'],
+                    'PICTURES' => $picturesData['fileData'],
+                ),
+                'ACTIVE' => 'N',
+            ));
         }
+        //add new element
         else
         {
-            $status = $form->formActionFull(
+            $status = $status && $form->formActionFull(
             //iblock id
                 LIblock::getId('catalog'),
                 //iblock add params
@@ -111,7 +129,7 @@ if($form->validate())
                         'PREVIEW_PICTURES' => $previewPicturesData['fileData'],
                         'PICTURES' => $picturesData['fileData'],
                     ),
-                    'ACTIVE' => 'Y',
+                    'ACTIVE' => 'N',
                 ),
                 //email event name
                 'OPT_USER_FORM',
