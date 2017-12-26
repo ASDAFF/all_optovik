@@ -349,16 +349,16 @@ $APPLICATION->SetTitle("1С-Битрикс: Управление сайтом");
     <div class="container-fluid page__index__about">
         <div class="container">
             <div class="page__index__about__title">
-                <span><?\WM\Components\IncludeArea::inc('', array('PATH' => SITE_DIR . 'include/home/about_company/title.php'));?></span>
+                <span><?\lema\Components\IncludeArea::inc('', array('PATH' => SITE_DIR . 'include/home/about_company/title.php'));?></span>
             </div>
             <div class="page__index__about__text">
                 <p>
-                    <?\WM\Components\IncludeArea::inc('', array('PATH' => SITE_DIR . 'include/home/about_company/description.php'));?>
+                    <?\lema\Components\IncludeArea::inc('', array('PATH' => SITE_DIR . 'include/home/about_company/description.php'));?>
                 </p>
             </div>
             <div class="page__index__about__btn">
-                <a href="" title="" class="core__btn" data-fancybox="modal" data-src="#core__modal__add">
-                    <?\WM\Components\IncludeArea::inc('', array('PATH' => SITE_DIR . 'include/home/about_company/button_title.php'));?>
+                <a href="" title="" class="core__btn" data-fancybox="modal" data-src="javascript:void(0);core__modal__add">
+                    <?\lema\Components\IncludeArea::inc('', array('PATH' => SITE_DIR . 'include/home/about_company/button_title.php'));?>
                 </a>
             </div>
             <div class="core__line_bg"></div>
@@ -378,105 +378,12 @@ $APPLICATION->SetTitle("1С-Битрикс: Управление сайтом");
         <div class="container">
             <div class="utp__title">Что Вы получаете?</div>
             <div class="utp__btn" data-js-core-tabs-nav="utp">
-                <a href="#" title="" data-js-core-tabs-nav-id="1" class="active">Как поставщик</a>
-                <a href="#" title="" data-js-core-tabs-nav-id="2">Как покупатель</a>
+                <a href="javascript:void(0);" title="" data-js-core-tabs-nav-id="1" class="active">Как поставщик</a>
+                <a href="javascript:void(0);" title="" data-js-core-tabs-nav-id="2">Как покупатель</a>
             </div>
             <div data-js-core-tabs="utp">
                 <div data-js-core-tabs-id="1" class="active">
-                    <div class="utp__list">
-                        <div class="utp__item">
-                            <div class="utp__item__icon">
-                                <img src="/assets/img/utp/icon-1.png">
-                            </div>
-                            <div class="utp__item__number">1</div>
-                            <div class="utp__item__text">
-                    <span>
-                        On-line заявки от клиентов
-                        через интернет-форму
-                        и по телефону
-                    </span>
-                            </div>
-                        </div>
-                        <div class="utp__item">
-                            <div class="utp__item__icon">
-                                <img src="/assets/img/utp/icon-2.png">
-                            </div>
-                            <div class="utp__item__number">2</div>
-                            <div class="utp__item__text">
-                    <span>
-                        Возможность размещения
-                        на профильных тематических
-                        площадках all-optovik.ru
-                    </span>
-                            </div>
-                        </div>
-                        <div class="utp__item">
-                            <div class="utp__item__icon">
-                                <img src="/assets/img/utp/icon-3.png">
-                            </div>
-                            <div class="utp__item__number">3</div>
-                            <div class="utp__item__text">
-                    <span>
-                        Создание персональной
-                        карточки клиента
-                        (сайта-визитки+размещение
-                        своего каталога)
-                    </span>
-                            </div>
-                        </div>
-                        <div class="utp__item">
-                            <div class="utp__item__icon">
-                                <img src="/assets/img/utp/icon-4.png">
-                            </div>
-                            <div class="utp__item__number">4</div>
-                            <div class="utp__item__text">
-                    <span>
-                        Продвижение товаров
-                        и услуг компании в
-                        Yandex, Google,
-                    </span>
-                            </div>
-                        </div>
-                        <div class="utp__item">
-                            <div class="utp__item__icon">
-                                <img src="/assets/img/utp/icon-5.png">
-                            </div>
-                            <div class="utp__item__number">5</div>
-                            <div class="utp__item__text">
-                    <span>
-                        Размещение
-                        баннера / текстовых блоков
-                        на тематических площадках
-                    </span>
-                            </div>
-                        </div>
-                        <div class="utp__item">
-                            <div class="utp__item__icon">
-                                <img src="/assets/img/utp/icon-6.png">
-                            </div>
-                            <div class="utp__item__number">6</div>
-                            <div class="utp__item__text">
-                    <span>
-                        Открытый доступ к публичным
-                        заявкам выбранного
-                        раздела каталога
-                    </span>
-                            </div>
-                        </div>
-                        <div class="utp__item">
-                            <div class="utp__item__icon">
-                                <img src="/assets/img/utp/icon-7.png">
-                            </div>
-                            <div class="utp__item__number">7</div>
-                            <div class="utp__item__text">
-                    <span>
-                        Возможность публикации
-                        новостей, акций, распродажи
-                        компании
-                    </span>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
                 <div data-js-core-tabs-id="2">
                     2
@@ -505,13 +412,13 @@ $APPLICATION->SetTitle("1С-Битрикс: Управление сайтом");
     <div class="container-fluid">
         <div class="container">
             <div class="menu__block" data-js-core-tabs-nav="block">
-                <a class="menu__block__item menu__block__item_news active" href="#" title="" data-js-core-tabs-nav-id="1">
+                <a class="menu__block__item menu__block__item_news active" href="javascript:void(0);" title="" data-js-core-tabs-nav-id="1">
                     Новости
                 </a>
-                <a class="menu__block__item menu__block__item_articles" href="#" title="" data-js-core-tabs-nav-id="2">
+                <a class="menu__block__item menu__block__item_articles" href="javascript:void(0);" title="" data-js-core-tabs-nav-id="2">
                     Статьи
                 </a>
-                <a class="menu__block__item menu__block__item_actions" href="#" title="" data-js-core-tabs-nav-id="3">
+                <a class="menu__block__item menu__block__item_actions" href="javascript:void(0);" title="" data-js-core-tabs-nav-id="3">
                     Акции
                 </a>
             </div>
