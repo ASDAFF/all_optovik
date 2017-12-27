@@ -13,11 +13,12 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 
-/*if (empty($arResult['SECTIONS']))
-    return;*/
+if (empty($arResult['SECTIONS']))
+    return;
 
 $data = new \Lema\Template\TemplateHelper($this);
 ?>
+
 <div class="container-fluid">
     <div class="container">
         <div class="slider__cat" data-js-slider="all">

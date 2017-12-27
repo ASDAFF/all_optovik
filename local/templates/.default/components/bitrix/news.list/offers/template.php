@@ -20,8 +20,8 @@ $data = new \Lema\Template\TemplateHelper($this);?>
 <div class="container-fluid banner__one">
     <div class="container">
         <a href="<?=$data->items()[0]->propVal('URL');?>" class="banner__one__item" style="background-image: url('<?=$data->items()[0]->previewPicture();?>')">
-            <div class="banner__one__item__small"><span>лучшие</span></div>
-            <div class="banner__one__item__down"><span>Предложения оптовиков</span></div>
+            <div class="banner__one__item__small"><span><?=$data->items()[0]->previewText();?></span></div>
+            <!--<div class="banner__one__item__down"><span>Предложения оптовиков</span></div>-->
         </a>
         <div class="core__line_bg"></div>
     </div>

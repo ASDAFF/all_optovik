@@ -14,35 +14,19 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                 <div class="feedback__form__title">
                     <span>Будьте в курсе!</span>
                 </div>
-                <div class="feedback__form__input core__form__input">
-                    <input class="feedback__form__input__control core__form__input__control" placeholder="your@email.com">
-                </div>
-                <div class="feedback__form__btn">
-                    <a href="" title="" class="core__btn">подписаться</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="container-fluid feedback__form">
-        <div class="container">
-            <div class="feedback__form__block">
-                <div class="feedback__form__title">
-                    <span>Будьте в курсе!</span>
-                </div>
                 <? $APPLICATION->IncludeComponent(
-	"bitrix:subscribe.form", 
-	"subscribe", 
-	array(
-		"CACHE_TIME" => "3600",
-		"CACHE_TYPE" => "A",
-		"PAGE" => "#SITE_DIR#personal/subscribe/",
-		"SHOW_HIDDEN" => "N",
-		"USE_PERSONALIZATION" => "Y",
-		"COMPONENT_TEMPLATE" => "subscribe"
-	),
-	false
-); ?>
+                    "bitrix:subscribe.form",
+                    "subscribe",
+                    array(
+                        "CACHE_TIME" => "3600",
+                        "CACHE_TYPE" => "A",
+                        "PAGE" => "#SITE_DIR#personal/subscribe/",
+                        "SHOW_HIDDEN" => "N",
+                        "USE_PERSONALIZATION" => "Y",
+                        "COMPONENT_TEMPLATE" => "subscribe"
+                    ),
+                    false
+                ); ?>
             </div>
         </div>
     </div>
