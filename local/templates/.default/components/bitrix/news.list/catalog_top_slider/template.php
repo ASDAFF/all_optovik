@@ -23,9 +23,9 @@ $data = new \Lema\Template\TemplateHelper($this);
         <div class="banner__three">
             <? foreach($data->items() as $item): ?>
                 <a href="<?=$item->propValue('URL');?>" title="<?=$item->getName();?>" class="banner__three__item" <?=$item->editId();?>>
-                    <img class="banner__three__item__img" src="<?=$item->previewPicture();?>" title="">
+                    <img class="banner__three__item__img" src="<?=$item->previewPicture();?>" alt="<?=$item->getName();?>">
                     <div class="banner__three__item__work">
-                        <img src="<?=$item->detailPicture();?>" title="<?=$item->getName();?>">
+                        <img src="<?=$item->detailPicture();?>" alt="<?=$item->getName();?>">
                     </div>
                 </a>
             <? endforeach; ?>

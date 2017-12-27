@@ -12,6 +12,10 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 
+use \Bitrix\Main\Localization\Loc;
+
+Loc::loadMessages(__FILE__);
+
 if(empty($arResult['ITEMS']))
     return;
 
@@ -39,7 +43,7 @@ $data = new \Lema\Template\TemplateHelper($this);
                             <p>
                                 <?=$item->previewText();?>
                             </p>
-                            <span class="catalog__list__item__text__mini-title">Товары производителя</span>
+                            <span class="catalog__list__item__text__mini-title"><?=Loc::getMessage('LEMA_OPT_USER_PRODUCTS_TITLE');?></span>
                         </a>
                     </div>
                     <div class="catalog__list__item__footer">
@@ -55,9 +59,9 @@ $data = new \Lema\Template\TemplateHelper($this);
                             </div>
                         <? endif; ?>
                         <div class="catalog__list__item__inf">
-                            <span class="catalog__list__item__inf__price-text">Минимальная цена закупки</span>
+                            <span class="catalog__list__item__inf__price-text"><?=Loc::getMessage('LEMA_MIN_PRICE_TITLE');?></span>
                             <span class="catalog__list__item__inf__price">5000 руб.</span>
-                            <a href="" class="core__btn">отправить запрос</a>
+                            <a href="" class="core__btn"><?=Loc::getMessage('LEMA_SEND_REQUEST_BTN_TITLE');?></a>
                         </div>
                     </div>
                 </div>
