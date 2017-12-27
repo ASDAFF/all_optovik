@@ -1,5 +1,5 @@
 <?php
-if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
+if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
     die();
 
 use \Lema\Common\AssetManager,
@@ -54,19 +54,19 @@ Loc::loadMessages(__FILE__);
         <!-- После адоптации - это меню откроется  -->
         <div class="core__menu-nav__mobile__alert__user">
             <div class="core__menu-nav__mobile__alert__user__login">
-                <? if(User::isGuest()): ?>
-                    <a href="" title="<?=Loc::getMessage('LEMA_AUTH_LINK_TITLE');?>">
-                        <?=Loc::getMessage('LEMA_AUTH_LINK_TITLE');?>
+                <? if (User::isGuest()): ?>
+                    <a href="" title="<?= Loc::getMessage('LEMA_AUTH_LINK_TITLE'); ?>">
+                        <?= Loc::getMessage('LEMA_AUTH_LINK_TITLE'); ?>
                     </a>
-                    <a href="" title="<?=Loc::getMessage('LEMA_REGISTER_LINK_TITLE');?>">
-                        <?=Loc::getMessage('LEMA_REGISTER_LINK_TITLE');?>
+                    <a href="" title="<?= Loc::getMessage('LEMA_REGISTER_LINK_TITLE'); ?>">
+                        <?= Loc::getMessage('LEMA_REGISTER_LINK_TITLE'); ?>
                     </a>
                 <? else: ?>
-                    <a href="?logout=yes" title="<?=Loc::getMessage('LEMA_LOGOUT_LINK_TITLE');?>">
-                        <?=Loc::getMessage('LEMA_LOGOUT_LINK_TITLE');?>
+                    <a href="?logout=yes" title="<?= Loc::getMessage('LEMA_LOGOUT_LINK_TITLE'); ?>">
+                        <?= Loc::getMessage('LEMA_LOGOUT_LINK_TITLE'); ?>
                     </a>
-                    <a href="<?=SITE_DIR?>personal/profile/" title="<?=Loc::getMessage('LEMA_PROFILE_LINK_TITLE');?>">
-                        <?=User::get()->GetLogin();?>
+                    <a href="<?= SITE_DIR ?>personal/profile/" title="<?= Loc::getMessage('LEMA_PROFILE_LINK_TITLE'); ?>">
+                        <?= User::get()->GetLogin(); ?>
                     </a>
                 <? endif; ?>
             </div>
@@ -87,7 +87,7 @@ Loc::loadMessages(__FILE__);
         <div class="container">
             <div class="header__top">
                 <div class="header__logo">
-                    <a href="<?=SITE_DIR;?>" title="logo">
+                    <a href="<?= SITE_DIR; ?>" title="logo">
                         <img src="/assets/img/logo.png" alt="logo">
                         <span><? $APPLICATION->IncludeFile(SITE_DIR . 'include/header/logo_title.php'); ?></span>
                     </a>
@@ -164,32 +164,54 @@ Loc::loadMessages(__FILE__);
 
                 <div class="header__form">
                     <div class="header__form__btn">
-                        <? if(User::isGuest()): ?>
-                            <a href="" title="<?=Loc::getMessage('LEMA_AUTH_LINK_TITLE');?>" class="header__form__btn__login">
-                                <?=Loc::getMessage('LEMA_AUTH_LINK_TITLE');?>
+                        <? if (User::isGuest()): ?>
+                            <a href="" title="<?= Loc::getMessage('LEMA_AUTH_LINK_TITLE'); ?>" class="header__form__btn__login">
+                                <?= Loc::getMessage('LEMA_AUTH_LINK_TITLE'); ?>
                             </a>
                             <span>|</span>
-                            <a href="" title="<?=Loc::getMessage('LEMA_REGISTER_LINK_TITLE');?>" class="header__form__btn__registration">
-                                <?=Loc::getMessage('LEMA_REGISTER_LINK_TITLE');?>
+                            <a href="" title="<?= Loc::getMessage('LEMA_REGISTER_LINK_TITLE'); ?>" class="header__form__btn__registration">
+                                <?= Loc::getMessage('LEMA_REGISTER_LINK_TITLE'); ?>
                             </a>
                         <? else: ?>
-                            <a href="?logout=yes" title="<?=Loc::getMessage('LEMA_LOGOUT_LINK_TITLE');?>" class="header__form__btn__login">
-                                <?=Loc::getMessage('LEMA_LOGOUT_LINK_TITLE');?>
+                            <a href="?logout=yes" title="<?= Loc::getMessage('LEMA_LOGOUT_LINK_TITLE'); ?>" class="header__form__btn__login">
+                                <?= Loc::getMessage('LEMA_LOGOUT_LINK_TITLE'); ?>
                             </a>
                             <span>|</span>
-                            <a href="<?=SITE_DIR?>personal/profile/" title="<?=Loc::getMessage('LEMA_PROFILE_LINK_TITLE');?>"
+                            <a href="<?= SITE_DIR ?>personal/profile/" title="<?= Loc::getMessage('LEMA_PROFILE_LINK_TITLE'); ?>"
                                class="header__form__btn__registration">
-                                <?=User::get()->GetLogin();?>
+                                <?= User::get()->GetLogin(); ?>
                             </a>
                         <? endif; ?>
 
                     </div>
-                    <div class="header__form__search">
-                        <div class="header__form__search__input">
-                            <input class="header__form__search__input__control" type="text" placeholder="Поиск">
-                            <button class="header__form__search__btn"></button>
-                        </div>
-                    </div>
+                    <? $APPLICATION->IncludeComponent("bitrix:search.title", "header", Array(
+                        "CATEGORY_0" => array(    // Ограничение области поиска
+                            0 => "iblock_catalog",
+                        ),
+                        "CATEGORY_0_TITLE" => "",    // Название категории
+                        "CATEGORY_0_iblock_catalog" => array(    // Искать в информационных блоках типа "iblock_catalog"
+                            0 => "4",
+                        ),
+                        "CHECK_DATES" => "N",    // Искать только в активных по дате документах
+                        "CONTAINER_ID" => "title-search",    // ID контейнера, по ширине которого будут выводиться результаты
+                        "CONVERT_CURRENCY" => "N",    // Показывать цены в одной валюте
+                        "INPUT_ID" => "title-search-input",    // ID строки ввода поискового запроса
+                        "NUM_CATEGORIES" => "1",    // Количество категорий поиска
+                        "ORDER" => "date",    // Сортировка результатов
+                        "PAGE" => "#SITE_DIR#search/",    // Страница выдачи результатов поиска (доступен макрос #SITE_DIR#)
+                        "PREVIEW_HEIGHT" => "75",    // Высота картинки
+                        "PREVIEW_TRUNCATE_LEN" => "",    // Максимальная длина анонса для вывода
+                        "PREVIEW_WIDTH" => "75",    // Ширина картинки
+                        "PRICE_CODE" => "",    // Тип цены
+                        "PRICE_VAT_INCLUDE" => "N",    // Включать НДС в цену
+                        "SHOW_INPUT" => "Y",    // Показывать форму ввода поискового запроса
+                        "SHOW_OTHERS" => "N",    // Показывать категорию "прочее"
+                        "SHOW_PREVIEW" => "Y",    // Показать картинку
+                        "TOP_COUNT" => "5",    // Количество результатов в каждой категории
+                        "USE_LANGUAGE_GUESS" => "Y",    // Включить автоопределение раскладки клавиатуры
+                    ),
+                        false
+                    ); ?>
                 </div>
             </div>
         </div>
