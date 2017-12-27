@@ -242,7 +242,7 @@ if($arResult["NavPageCount"] > 1)
             endif*/
             ?>
         </ul>
-        <a href="<?=SITE_DIR;?>" class="core__btn" title="вернуться на главную страницу">вернуться на главную страницу</a>
+        <a href="<?=SITE_DIR;?>" class="core__btn" title="вернуться на главную страницу"><?=GetMessage('LEMA_BACK_TO_MAIN');?></a>
     </div>
     <?
 }

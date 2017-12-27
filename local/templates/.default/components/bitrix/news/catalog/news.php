@@ -11,6 +11,10 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
+
+use \Bitrix\Main\Localization\Loc;
+
+Loc::loadMessages(__FILE__);
 ?>
 <?php
 /*
@@ -231,7 +235,7 @@ $this->setFrameMode(true);
 ); ?>
 <div class="container">
     <div class="core__title">
-        <h2 class="core__title__control">Оптовые площадки</h2>
+        <h2 class="core__title__control"><?=Loc::getMessage('LEMA_OPT_PLATFORM_TITLE');?></h2>
     </div>
 </div>
 <? $APPLICATION->IncludeComponent("bitrix:catalog.section.list", "catalog_category_slider", array(
