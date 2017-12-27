@@ -18,12 +18,12 @@ $(function () {
             pictures = document.getElementById('js-pictures').files,
             cntPictures = pictures.length,
             prevPictures = document.getElementById('js-preview-pictures').files,
-            cntPrevPictures = pictures.length;
+            cntPrevPictures = prevPictures.length;
 
         for (var x = 0; x < cntPictures; ++x)
             formData.append('pictures[' + x + ']', pictures[x]);
-        for (var x = 0; x < cntPrevPictures; ++x)
-            formData.append('preview_pictures[' + x + ']', prevPictures[x]);
+        for (var y = 0; y < cntPrevPictures; ++y)
+            formData.append('preview_pictures[' + y + ']', prevPictures[y]);
 
         BX.showWait(waitElement);
 

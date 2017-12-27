@@ -50,7 +50,10 @@ if($form->validate())
     {
         $types = '(?:jpe?g|png|gif)';
         if(preg_match('~\\.' . $types . '$~iu', $_FILES['logo']['name']) && preg_match('~/' . $types . '$~iu', $_FILES['logo']['type']))
-            $fields['WORK_LOGO'] = \CFile::SaveFile($_FILES['logo']);
+        {
+            $logoData = \uploadFileData($_FILES['logo']);
+            $fields['WORK_LOGO'] = $logoData['fileData'];
+        }
     }
 
     $status = $user->Update(User::get()->GetId(), $fields);
