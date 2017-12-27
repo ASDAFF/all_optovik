@@ -61,7 +61,10 @@ $data = new \Lema\Template\TemplateHelper($this);
                         <div class="catalog__list__item__inf">
                             <span class="catalog__list__item__inf__price-text"><?=Loc::getMessage('LEMA_MIN_PRICE_TITLE');?></span>
                             <span class="catalog__list__item__inf__price">5000 руб.</span>
-                            <a href="" class="core__btn"><?=Loc::getMessage('LEMA_SEND_REQUEST_BTN_TITLE');?></a>
+                            <a href="#" class="core__btn js-request-send" data-user-id="<?=$item->getId();?>" data-fancybox="modal"
+                               data-src="#core__modal__add">
+                                <?=Loc::getMessage('LEMA_SEND_REQUEST_BTN_TITLE');?>
+                            </a>
                         </div>
                     </div>
                 </div>
