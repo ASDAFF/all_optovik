@@ -9,8 +9,9 @@ $maxFiles = $user->get('UF_IS_VIP') ? 5 : 3;
 ?>
     <div class="container">
         <div class="core__title">
-            <span class="core__title__control"><?=trim($user->get('WORK_COMPANY')) ? 'Название компании не указано' : $user->get('WORK_COMPANY');
-            ?></span>
+            <span class="core__title__control">
+                <?=trim($user->get('WORK_COMPANY')) ? $user->get('WORK_COMPANY') : 'Название компании не указано';?>
+            </span>
         </div>
         <div class="core__line_bg"></div>
         <br>
