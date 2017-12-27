@@ -1,8 +1,9 @@
 <?php
-if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
+if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
     die();
 
 use \Lema\Common\AssetManager,
+    \Lema\Common\User,
     \Bitrix\Main\Localization\Loc;
 
 Loc::loadMessages(__FILE__);
@@ -53,12 +54,21 @@ Loc::loadMessages(__FILE__);
         <!-- После адоптации - это меню откроется  -->
         <div class="core__menu-nav__mobile__alert__user">
             <div class="core__menu-nav__mobile__alert__user__login">
-                <a href="" title="<?= Loc::getMessage('LEMA_AUTH_LINK_TITLE'); ?>">
-                    <?= Loc::getMessage('LEMA_AUTH_LINK_TITLE'); ?>
-                </a>
-                <a href="" title="<?= Loc::getMessage('LEMA_REGISTER_LINK_TITLE'); ?>">
-                    <?= Loc::getMessage('LEMA_REGISTER_LINK_TITLE'); ?>
-                </a>
+                <? if(User::isGuest()): ?>
+                    <a href="" title="<?=Loc::getMessage('LEMA_AUTH_LINK_TITLE');?>">
+                        <?=Loc::getMessage('LEMA_AUTH_LINK_TITLE');?>
+                    </a>
+                    <a href="" title="<?=Loc::getMessage('LEMA_REGISTER_LINK_TITLE');?>">
+                        <?=Loc::getMessage('LEMA_REGISTER_LINK_TITLE');?>
+                    </a>
+                <? else: ?>
+                    <a href="?logout=yes" title="<?=Loc::getMessage('LEMA_LOGOUT_LINK_TITLE');?>">
+                        <?=Loc::getMessage('LEMA_LOGOUT_LINK_TITLE');?>
+                    </a>
+                    <a href="<?=SITE_DIR?>personal/profile/" title="<?=Loc::getMessage('LEMA_PROFILE_LINK_TITLE');?>">
+                        <?=User::get()->GetLogin();?>
+                    </a>
+                <? endif; ?>
             </div>
         </div>
         <div class="core__menu-nav__mobile__alert__menu" data-core-name="Меню" data-js-core-resize-after="menu">
@@ -77,7 +87,7 @@ Loc::loadMessages(__FILE__);
         <div class="container">
             <div class="header__top">
                 <div class="header__logo">
-                    <a href="<?= SITE_DIR; ?>" title="logo">
+                    <a href="<?=SITE_DIR;?>" title="logo">
                         <img src="/assets/img/logo.png" alt="logo">
                         <span><? $APPLICATION->IncludeFile(SITE_DIR . 'include/header/logo_title.php'); ?></span>
                     </a>
@@ -146,7 +156,7 @@ Loc::loadMessages(__FILE__);
                             "SORT_ORDER2" => "ASC",
                             "STRICT_SECTION_CHECK" => "N",
                             "COMPONENT_TEMPLATE" => "header_top_banner",
-                            "FILE_404" => ""
+                            "FILE_404" => "",
                         ),
                         false
                     ); ?>
@@ -154,14 +164,25 @@ Loc::loadMessages(__FILE__);
 
                 <div class="header__form">
                     <div class="header__form__btn">
-                        <a href="" title="<?= Loc::getMessage('LEMA_AUTH_LINK_TITLE'); ?>"
-                           class="header__form__btn__login">
-                            <?= Loc::getMessage('LEMA_AUTH_LINK_TITLE'); ?>
-                        </a>
-                        <span>|</span>
-                        <a href="" title="<?= Loc::getMessage('LEMA_REGISTER_LINK_TITLE'); ?>" class="header__form__btn__registration">
-                            <?= Loc::getMessage('LEMA_REGISTER_LINK_TITLE'); ?>
-                        </a>
+                        <? if(User::isGuest()): ?>
+                            <a href="" title="<?=Loc::getMessage('LEMA_AUTH_LINK_TITLE');?>" class="header__form__btn__login">
+                                <?=Loc::getMessage('LEMA_AUTH_LINK_TITLE');?>
+                            </a>
+                            <span>|</span>
+                            <a href="" title="<?=Loc::getMessage('LEMA_REGISTER_LINK_TITLE');?>" class="header__form__btn__registration">
+                                <?=Loc::getMessage('LEMA_REGISTER_LINK_TITLE');?>
+                            </a>
+                        <? else: ?>
+                            <a href="?logout=yes" title="<?=Loc::getMessage('LEMA_LOGOUT_LINK_TITLE');?>" class="header__form__btn__login">
+                                <?=Loc::getMessage('LEMA_LOGOUT_LINK_TITLE');?>
+                            </a>
+                            <span>|</span>
+                            <a href="<?=SITE_DIR?>personal/profile/" title="<?=Loc::getMessage('LEMA_PROFILE_LINK_TITLE');?>"
+                               class="header__form__btn__registration">
+                                <?=User::get()->GetLogin();?>
+                            </a>
+                        <? endif; ?>
+
                     </div>
                     <div class="header__form__search">
                         <div class="header__form__search__input">

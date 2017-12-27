@@ -74,6 +74,10 @@ class UserData
         $this->loadUserData($id);
     }
 
+    /**
+     * @param null $id
+     * @return $this
+     */
     public static function instance($id = null)
     {
         if(null === static::$_instance)
