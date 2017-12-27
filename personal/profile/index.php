@@ -2,16 +2,19 @@
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 $APPLICATION->SetTitle('Личный кабинет');
 
-$user = new UserData();
+$user = new \UserData();
+
+$maxFiles = $user->get('UF_IS_VIP') ? 5 : 3;
 
 ?>
     <div class="container">
         <div class="core__title">
-            <span class="core__title__control">Астра (оптовик)</span>
+            <span class="core__title__control"><?=$user->get('WORK_COMPANY')?></span>
         </div>
         <div class="core__line_bg"></div>
         <br>
         <form method="post" action="/ajax/profile.php" enctype="multipart/form-data" class="js-profile-form">
+            <input type="hidden" id="max_files" value="<?=$maxFiles;?>">
             <div class="form form__user">
                 <div class="form__user__left">
                     <div class="form__item">
@@ -157,7 +160,7 @@ $user = new UserData();
                         </div>
                         <div class="form__item">
                             <div class="core__form__file">
-                                <div class="core__form__file__text">Загрузить картинки для анонса 5 шт.</div>
+                                <div class="core__form__file__text">Загрузить картинки для анонса <?=$maxFiles;?> шт.</div>
                                 <div class="core__form__file__input js-field-block">
                                     <input class="core__form__file__input__control" id="js-preview-pictures" name="preview_pictures" type="file"
                                            multiple/>

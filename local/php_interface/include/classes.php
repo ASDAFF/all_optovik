@@ -57,6 +57,10 @@ class UserData
     /**
      * @var null
      */
+    private static $_instance = null;
+    /**
+     * @var null
+     */
     protected $userData = null;
 
     /**
@@ -68,6 +72,14 @@ class UserData
         if(empty($id))
             $id = \Lema\Common\User::get()->GetId();
         $this->loadUserData($id);
+    }
+
+    public static function instance($id = null)
+    {
+        if(null === static::$_instance)
+            static::$_instance = new static($id);
+
+        return static::$_instance;
     }
 
     /**

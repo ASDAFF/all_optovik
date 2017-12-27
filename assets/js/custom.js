@@ -1,6 +1,6 @@
 $(function () {
     $('#js-preview-pictures').on('change', function() {
-        var maxLength = 5;
+        var maxLength = 1 * $('#max_files').val();
         if(this.files.length > maxLength)
         {
             $.fancybox.open('<div style="padding:25px;margin:25px"><h4>Внимание!</h4>Загрузятся только первые ' +

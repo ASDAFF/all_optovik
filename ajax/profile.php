@@ -66,7 +66,7 @@ if($form->validate())
             $priceData = \uploadFileData($_FILES['price']);
         //upload preview pictures
         if(!empty($_FILES['preview_pictures']['tmp_name']))
-            $previewPicturesData = \uploadFileData($_FILES['preview_pictures']);
+            $previewPicturesData = \uploadFileData($_FILES['preview_pictures'], (\UserData::instance()->get('UF_IS_VIP') ? 5 : 3));
         //upload pictures
         if(!empty($_FILES['pictures']['tmp_name']))
             $picturesData = \uploadFileData($_FILES['pictures']);
@@ -98,27 +98,6 @@ if($form->validate())
             //update element
             $el = new \CIBlockElement();
             $status = $status && $el->Update($existElement['ID'], array(
-                'IBLOCK_SECTION_ID' => (int) $form->getField('section'),
-                'NAME' => Helper::enc($form->getField('company_name')),
-                'CODE' => \CUtil::translit(Helper::enc($form->getField('company_name')), 'RU'),
-                'PROPERTY_VALUES' => array(
-                    'OPT_USER' => User::get()->GetId(),
-                    'CATALOG_FILE' => $catalogData['fileData'],
-                    'PRICE_FILE' => $priceData['fileData'],
-                    'PREVIEW_PICTURES' => $previewPicturesData['fileData'],
-                    'PICTURES' => $picturesData['fileData'],
-                ),
-                'ACTIVE' => 'N',
-            ));
-        }
-        //add new element
-        else
-        {
-            $status = $status && $form->formActionFull(
-            //iblock id
-                LIblock::getId('catalog'),
-                //iblock add params
-                array(
                     'IBLOCK_SECTION_ID' => (int) $form->getField('section'),
                     'NAME' => Helper::enc($form->getField('company_name')),
                     'CODE' => \CUtil::translit(Helper::enc($form->getField('company_name')), 'RU'),
@@ -130,14 +109,35 @@ if($form->validate())
                         'PICTURES' => $picturesData['fileData'],
                     ),
                     'ACTIVE' => 'N',
-                ),
-                //email event name
-                'OPT_USER_FORM',
-                //email send params
-                array(
-                    'AUTHOR' => $form->getField('company_name'),
-                )
-            );
+                ));
+        }
+        //add new element
+        else
+        {
+            $status = $status && $form->formActionFull(
+                //iblock id
+                    LIblock::getId('catalog'),
+                    //iblock add params
+                    array(
+                        'IBLOCK_SECTION_ID' => (int) $form->getField('section'),
+                        'NAME' => Helper::enc($form->getField('company_name')),
+                        'CODE' => \CUtil::translit(Helper::enc($form->getField('company_name')), 'RU'),
+                        'PROPERTY_VALUES' => array(
+                            'OPT_USER' => User::get()->GetId(),
+                            'CATALOG_FILE' => $catalogData['fileData'],
+                            'PRICE_FILE' => $priceData['fileData'],
+                            'PREVIEW_PICTURES' => $previewPicturesData['fileData'],
+                            'PICTURES' => $picturesData['fileData'],
+                        ),
+                        'ACTIVE' => 'N',
+                    ),
+                    //email event name
+                    'OPT_USER_FORM',
+                    //email send params
+                    array(
+                        'AUTHOR' => $form->getField('company_name'),
+                    )
+                );
         }
     }
 
