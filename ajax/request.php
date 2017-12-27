@@ -29,14 +29,13 @@ $form = new \Lema\Forms\AjaxForm(array(
 //check form fields
 if($form->validate())
 {
-    $status = $status && $form->formActionFull(
+    $status = $form->formActionFull(
         //iblock id
-            LIblock::getId('catalog'),
+            LIblock::getId('requests'),
             //iblock add params
             array(
                 'IBLOCK_SECTION_ID' => (int) $form->getField('section'),
                 'NAME' => Helper::enc($form->getField('name')),
-                'CODE' => \CUtil::translit(Helper::enc($form->getField('company_name')), 'RU'),
                 'PREVIEW_TEXT' => Helper::enc($form->getField('request')),
                 'PROPERTY_VALUES' => array(
                     'OPT_USER' => $form->getField('opt_user_id'),
