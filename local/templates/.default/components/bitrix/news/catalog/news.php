@@ -164,301 +164,69 @@ $this->setFrameMode(true);
     ),
     $component
 ); ?>
-
-
-<div class="container">
-    <div class="catalog__list">
-        <!-- LIST  -->
-        <div class="catalog__list__item">
-            <div class="core__line_bg"></div>
-            <div class="catalog__list__item__wrap">
-                <div class="catalog__list__item__main">
-                    <a href="" title="" class="catalog__list__item__img">
-                        <img class="catalog__list__item__img__control" src="/assets/img/news/img-1.jpg">
-                        <span class="catalog__list__item__img__work">
-                            <img src="/assets/img/work/img-2.jpg" title="">
-                        </span>
-                    </a>
-                    <a href="" title="" class="catalog__list__item__text">
-                        <span class="catalog__list__item__text__title">Компания со статусом VIP  3</span>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet
-                            lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis
-                            parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci,
-                            sed rhoncus sapien nunc eget odio.
-                        </p>
-                        <span class="catalog__list__item__text__mini-title">Товары производителя</span>
-                    </a>
-                </div>
-                <div class="catalog__list__item__footer">
-                    <div class="catalog__list__item__list">
-                        <a href="" title="" class="catalog__list__item__list__item">
-                            <div class="catalog__list__item__list__item__wrap">
-                                <img src="/assets/img/catalog/jacket/img-1.jpg" alt="">
-                            </div>
-                        </a>
-                        <a href="" title="" class="catalog__list__item__list__item">
-                            <div class="catalog__list__item__list__item__wrap">
-                                <img src="/assets/img/catalog/jacket/img-2.jpg" alt="">
-                            </div>
-                        </a>
-                        <a href="" title="" class="catalog__list__item__list__item">
-                            <div class="catalog__list__item__list__item__wrap">
-                                <img src="/assets/img/catalog/jacket/img-3.jpg" alt="">
-                            </div>
-                        </a>
-                        <a href="" title="" class="catalog__list__item__list__item">
-                            <div class="catalog__list__item__list__item__wrap">
-                                <img src="/assets/img/catalog/jacket/img-1.jpg" alt="">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="catalog__list__item__inf">
-                        <span class="catalog__list__item__inf__price-text">Минимальная цена закупки</span>
-                        <span class="catalog__list__item__inf__price">5000 руб.</span>
-                        <a href="" class="core__btn">отправить запрос</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="catalog__list__item">
-            <div class="core__line_bg"></div>
-            <div class="catalog__list__item__wrap">
-                <div class="catalog__list__item__main">
-                    <a href="" title="" class="catalog__list__item__img">
-                        <img class="catalog__list__item__img__control" src="/assets/img/news/img-1.jpg">
-                        <span class="catalog__list__item__img__work">
-                            <img src="/assets/img/work/img-2.jpg" title="">
-                        </span>
-                    </a>
-                    <a href="" title="" class="catalog__list__item__text">
-                        <span class="catalog__list__item__text__title">Компания со статусом VIP  3</span>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet
-                            lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis
-                            parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci,
-                            sed rhoncus sapien nunc eget odio.
-                        </p>
-                        <span class="catalog__list__item__text__mini-title">Товары производителя</span>
-                    </a>
-                </div>
-                <div class="catalog__list__item__footer">
-                    <div class="catalog__list__item__list">
-                        <a href="" title="" class="catalog__list__item__list__item">
-                            <div class="catalog__list__item__list__item__wrap">
-                                <img src="/assets/img/catalog/jacket/img-1.jpg" alt="">
-                            </div>
-                        </a>
-                        <a href="" title="" class="catalog__list__item__list__item">
-                            <div class="catalog__list__item__list__item__wrap">
-                                <img src="/assets/img/catalog/jacket/img-2.jpg" alt="">
-                            </div>
-                        </a>
-                        <a href="" title="" class="catalog__list__item__list__item">
-                            <div class="catalog__list__item__list__item__wrap">
-                                <img src="/assets/img/catalog/jacket/img-3.jpg" alt="">
-                            </div>
-                        </a>
-                        <a href="" title="" class="catalog__list__item__list__item">
-                            <div class="catalog__list__item__list__item__wrap">
-                                <img src="/assets/img/catalog/jacket/img-1.jpg" alt="">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="catalog__list__item__inf">
-                        <span class="catalog__list__item__inf__price-text">Минимальная цена закупки</span>
-                        <span class="catalog__list__item__inf__price">5000 руб.</span>
-                        <a href="" class="core__btn">отправить запрос</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="catalog__list__item">
-            <div class="core__line_bg"></div>
-            <div class="catalog__list__item__wrap">
-                <div class="catalog__list__item__main">
-                    <a href="" title="" class="catalog__list__item__img">
-                        <img class="catalog__list__item__img__control" src="/assets/img/news/img-1.jpg">
-                        <span class="catalog__list__item__img__work">
-                            <img src="/assets/img/work/img-2.jpg" title="">
-                        </span>
-                    </a>
-                    <a href="" title="" class="catalog__list__item__text">
-                        <span class="catalog__list__item__text__title">Компания со статусом VIP  3</span>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet
-                            lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis
-                            parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci,
-                            sed rhoncus sapien nunc eget odio.
-                        </p>
-                        <span class="catalog__list__item__text__mini-title">Товары производителя</span>
-                    </a>
-                </div>
-                <div class="catalog__list__item__footer">
-                    <div class="catalog__list__item__list">
-                        <a href="" title="" class="catalog__list__item__list__item">
-                            <div class="catalog__list__item__list__item__wrap">
-                                <img src="/assets/img/catalog/jacket/img-1.jpg" alt="">
-                            </div>
-                        </a>
-                        <a href="" title="" class="catalog__list__item__list__item">
-                            <div class="catalog__list__item__list__item__wrap">
-                                <img src="/assets/img/catalog/jacket/img-2.jpg" alt="">
-                            </div>
-                        </a>
-                        <a href="" title="" class="catalog__list__item__list__item">
-                            <div class="catalog__list__item__list__item__wrap">
-                                <img src="/assets/img/catalog/jacket/img-3.jpg" alt="">
-                            </div>
-                        </a>
-                        <a href="" title="" class="catalog__list__item__list__item">
-                            <div class="catalog__list__item__list__item__wrap">
-                                <img src="/assets/img/catalog/jacket/img-1.jpg" alt="">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="catalog__list__item__inf">
-                        <span class="catalog__list__item__inf__price-text">Минимальная цена закупки</span>
-                        <span class="catalog__list__item__inf__price">5000 руб.</span>
-                        <a href="" class="core__btn">отправить запрос</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="catalog__list__item">
-            <div class="core__line_bg"></div>
-            <div class="catalog__list__item__wrap">
-                <div class="catalog__list__item__main">
-                    <a href="" title="" class="catalog__list__item__img">
-                        <img class="catalog__list__item__img__control" src="/assets/img/news/img-1.jpg">
-                        <span class="catalog__list__item__img__work">
-                            <img src="/assets/img/work/img-2.jpg" title="">
-                        </span>
-                    </a>
-                    <a href="" title="" class="catalog__list__item__text">
-                        <span class="catalog__list__item__text__title">Компания со статусом VIP  3</span>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet
-                            lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis
-                            parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci,
-                            sed rhoncus sapien nunc eget odio.
-                        </p>
-                        <span class="catalog__list__item__text__mini-title">Товары производителя</span>
-                    </a>
-                </div>
-                <div class="catalog__list__item__footer">
-                    <div class="catalog__list__item__list">
-                        <a href="" title="" class="catalog__list__item__list__item">
-                            <div class="catalog__list__item__list__item__wrap">
-                                <img src="/assets/img/catalog/jacket/img-1.jpg" alt="">
-                            </div>
-                        </a>
-                        <a href="" title="" class="catalog__list__item__list__item">
-                            <div class="catalog__list__item__list__item__wrap">
-                                <img src="/assets/img/catalog/jacket/img-2.jpg" alt="">
-                            </div>
-                        </a>
-                        <a href="" title="" class="catalog__list__item__list__item">
-                            <div class="catalog__list__item__list__item__wrap">
-                                <img src="/assets/img/catalog/jacket/img-3.jpg" alt="">
-                            </div>
-                        </a>
-                        <a href="" title="" class="catalog__list__item__list__item">
-                            <div class="catalog__list__item__list__item__wrap">
-                                <img src="/assets/img/catalog/jacket/img-1.jpg" alt="">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="catalog__list__item__inf">
-                        <span class="catalog__list__item__inf__price-text">Минимальная цена закупки</span>
-                        <span class="catalog__list__item__inf__price">5000 руб.</span>
-                        <a href="" class="core__btn">отправить запрос</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="core__line_bg"></div>
-    <div class="pagination">
-        <ul>
-            <li><a href="" title="" class="pagination__button"><</a></li>
-            <li><a href="" title="">1</a></li>
-            <li><span>2</span></li>
-            <li><span class="active">3</span></li>
-            <li><a href="" title="">4</a></li>
-            <li><a href="" title="" class="pagination__button">></a></li>
-            <li><a href="" title="" class="pagination__button">>></a></li>
-        </ul>
-        <a href="" class="core__btn" title="вернуться на главную страницу">вернуться на главную страницу</a>
-    </div>
-</div>
 <br>
-<? $APPLICATION->IncludeComponent(
-    "bitrix:news.list",
-    "banner_two_item",
-    array(
-        "ACTIVE_DATE_FORMAT" => "d.m.Y",
-        "ADD_SECTIONS_CHAIN" => "N",
-        "AJAX_MODE" => "N",
-        "AJAX_OPTION_ADDITIONAL" => "",
-        "AJAX_OPTION_HISTORY" => "N",
-        "AJAX_OPTION_JUMP" => "N",
-        "AJAX_OPTION_STYLE" => "N",
-        "CACHE_FILTER" => "N",
-        "CACHE_GROUPS" => "Y",
-        "CACHE_TIME" => "36000000",
-        "CACHE_TYPE" => "A",
-        "CHECK_DATES" => "Y",
-        "DETAIL_URL" => "",
-        "DISPLAY_BOTTOM_PAGER" => "N",
-        "DISPLAY_DATE" => "N",
-        "DISPLAY_NAME" => "N",
-        "DISPLAY_PICTURE" => "N",
-        "DISPLAY_PREVIEW_TEXT" => "N",
-        "DISPLAY_TOP_PAGER" => "N",
-        "FIELD_CODE" => array(
-            0 => "NAME",
-            1 => "PREVIEW_PICTURE",
-            2 => "",
-        ),
-        "FILTER_NAME" => "",
-        "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-        "IBLOCK_ID" => "1",
-        "IBLOCK_TYPE" => "content",
-        "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
-        "INCLUDE_SUBSECTIONS" => "N",
-        "MESSAGE_404" => "",
-        "NEWS_COUNT" => "20",
-        "PAGER_BASE_LINK_ENABLE" => "N",
-        "PAGER_DESC_NUMBERING" => "N",
-        "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
-        "PAGER_SHOW_ALL" => "N",
-        "PAGER_SHOW_ALWAYS" => "N",
-        "PAGER_TEMPLATE" => ".default",
-        "PAGER_TITLE" => "Новости",
-        "PARENT_SECTION" => "",
-        "PARENT_SECTION_CODE" => "two_banners",
-        "PREVIEW_TRUNCATE_LEN" => "",
-        "PROPERTY_CODE" => array(
-            0 => "URL",
-            1 => "",
-        ),
-        "SET_BROWSER_TITLE" => "N",
-        "SET_LAST_MODIFIED" => "N",
-        "SET_META_DESCRIPTION" => "N",
-        "SET_META_KEYWORDS" => "N",
-        "SET_STATUS_404" => "N",
-        "SET_TITLE" => "N",
-        "SHOW_404" => "N",
-        "SORT_BY1" => "SORT",
-        "SORT_BY2" => "SORT",
-        "SORT_ORDER1" => "ASC",
-        "SORT_ORDER2" => "ASC",
-        "STRICT_SECTION_CHECK" => "N",
-        "COMPONENT_TEMPLATE" => "banner_two_item",
-        "FILE_404" => "",
+<? $APPLICATION->IncludeComponent("bitrix:news.list", "banner_two_item", array(
+    "ACTIVE_DATE_FORMAT" => "d.m.Y",
+    "ADD_SECTIONS_CHAIN" => "N",
+    "AJAX_MODE" => "N",
+    "AJAX_OPTION_ADDITIONAL" => "",
+    "AJAX_OPTION_HISTORY" => "N",
+    "AJAX_OPTION_JUMP" => "N",
+    "AJAX_OPTION_STYLE" => "N",
+    "CACHE_FILTER" => "N",
+    "CACHE_GROUPS" => "Y",
+    "CACHE_TIME" => "36000000",
+    "CACHE_TYPE" => "A",
+    "CHECK_DATES" => "Y",
+    "DETAIL_URL" => "",
+    "DISPLAY_BOTTOM_PAGER" => "N",
+    "DISPLAY_DATE" => "N",
+    "DISPLAY_NAME" => "N",
+    "DISPLAY_PICTURE" => "N",
+    "DISPLAY_PREVIEW_TEXT" => "N",
+    "DISPLAY_TOP_PAGER" => "N",
+    "FIELD_CODE" => array(
+        0 => "NAME",
+        1 => "PREVIEW_PICTURE",
+        2 => "",
     ),
+    "FILTER_NAME" => "",
+    "HIDE_LINK_WHEN_NO_DETAIL" => "N",
+    "IBLOCK_ID" => "1",
+    "IBLOCK_TYPE" => "content",
+    "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+    "INCLUDE_SUBSECTIONS" => "N",
+    "MESSAGE_404" => "",
+    "NEWS_COUNT" => "20",
+    "PAGER_BASE_LINK_ENABLE" => "N",
+    "PAGER_DESC_NUMBERING" => "N",
+    "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+    "PAGER_SHOW_ALL" => "N",
+    "PAGER_SHOW_ALWAYS" => "N",
+    "PAGER_TEMPLATE" => ".default",
+    "PAGER_TITLE" => "Новости",
+    "PARENT_SECTION" => "",
+    "PARENT_SECTION_CODE" => "two_banners",
+    "PREVIEW_TRUNCATE_LEN" => "",
+    "PROPERTY_CODE" => array(
+        0 => "URL",
+        1 => "",
+    ),
+    "SET_BROWSER_TITLE" => "N",
+    "SET_LAST_MODIFIED" => "N",
+    "SET_META_DESCRIPTION" => "N",
+    "SET_META_KEYWORDS" => "N",
+    "SET_STATUS_404" => "N",
+    "SET_TITLE" => "N",
+    "SHOW_404" => "N",
+    "SORT_BY1" => "SORT",
+    "SORT_BY2" => "SORT",
+    "SORT_ORDER1" => "ASC",
+    "SORT_ORDER2" => "ASC",
+    "STRICT_SECTION_CHECK" => "N",
+    "COMPONENT_TEMPLATE" => "banner_two_item",
+    "FILE_404" => "",
+),
     false
 ); ?>
 <div class="container">
