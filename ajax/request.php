@@ -2,8 +2,7 @@
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/bitrix/modules/main/include/prolog_before.php';
 
-use \Lema\Common\Helper,
-    \Lema\Common\User;
+use \Lema\Common\Helper;
 
 //Is POST data sent ?
 empty($_POST) && exit;
@@ -34,7 +33,6 @@ if($form->validate())
             LIblock::getId('requests'),
             //iblock add params
             array(
-                'IBLOCK_SECTION_ID' => (int) $form->getField('section'),
                 'NAME' => Helper::enc($form->getField('name')),
                 'PREVIEW_TEXT' => Helper::enc($form->getField('request')),
                 'PROPERTY_VALUES' => array(
