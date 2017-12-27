@@ -357,7 +357,7 @@ $APPLICATION->SetTitle("1С-Битрикс: Управление сайтом");
                 </p>
             </div>
             <div class="page__index__about__btn">
-                <a href="" title="" class="core__btn" data-fancybox="modal" data-src="#core__modal__add">
+                <a href="javascript:void(0);" title="" class="core__btn" data-fancybox="modal" data-src="#core__modal__add">
                     <? \lema\Components\IncludeArea::inc('', array('PATH' => SITE_DIR . 'include/home/about_company/button_title.php')); ?>
                 </a>
             </div>
@@ -433,10 +433,12 @@ $APPLICATION->SetTitle("1С-Битрикс: Управление сайтом");
 ); ?>
     <div class="container-fluid utp">
         <div class="container">
-            <div class="utp__title">Что Вы получаете?</div>
+            <div class="utp__title">
+                <? \lema\Components\IncludeArea::inc('', array('PATH' => SITE_DIR . 'include/home/advantages/title.php')); ?>
+            </div>
             <div class="utp__btn" data-js-core-tabs-nav="utp">
-                <a href="javascript:void(0);" title="" data-js-core-tabs-nav-id="1" class="active">Как поставщик</a>
-                <a href="javascript:void(0);" title="" data-js-core-tabs-nav-id="2">Как покупатель</a>
+                <a href="javascript:void(0);" title="" data-js-core-tabs-nav-id="1" class="active"><? \lema\Components\IncludeArea::inc('', array('PATH' => SITE_DIR . 'include/home/advantages/provider.php')); ?></a>
+                <a href="javascript:void(0);" title="" data-js-core-tabs-nav-id="2"><? \lema\Components\IncludeArea::inc('', array('PATH' => SITE_DIR . 'include/home/advantages/buyer.php')); ?></a>
             </div>
             <div data-js-core-tabs="utp">
                 <div data-js-core-tabs-id="1" class="active">

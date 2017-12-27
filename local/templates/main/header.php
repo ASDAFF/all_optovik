@@ -165,11 +165,11 @@ Loc::loadMessages(__FILE__);
                 <div class="header__form">
                     <div class="header__form__btn">
                         <? if (User::isGuest()): ?>
-                            <a href="" title="<?= Loc::getMessage('LEMA_AUTH_LINK_TITLE'); ?>" class="header__form__btn__login">
+                            <a href="<?=SITE_DIR?>auth/" title="<?= Loc::getMessage('LEMA_AUTH_LINK_TITLE'); ?>" class="header__form__btn__login">
                                 <?= Loc::getMessage('LEMA_AUTH_LINK_TITLE'); ?>
                             </a>
                             <span>|</span>
-                            <a href="" title="<?= Loc::getMessage('LEMA_REGISTER_LINK_TITLE'); ?>" class="header__form__btn__registration">
+                            <a href="<?=SITE_DIR?>auth/?register=yes" title="<?= Loc::getMessage('LEMA_REGISTER_LINK_TITLE'); ?>" class="header__form__btn__registration">
                                 <?= Loc::getMessage('LEMA_REGISTER_LINK_TITLE'); ?>
                             </a>
                         <? else: ?>
@@ -185,38 +185,37 @@ Loc::loadMessages(__FILE__);
 
                     </div>
                     <? $APPLICATION->IncludeComponent(
-	"bitrix:search.title", 
-	"header", 
-	array(
-		"CATEGORY_0" => array(
-			0 => "iblock_catalog",
-		),
-		"CATEGORY_0_TITLE" => "",
-		"CATEGORY_0_iblock_catalog" => array(
-			0 => "4",
-		),
-		"CHECK_DATES" => "N",
-		"CONTAINER_ID" => "title-search-header",
-		"CONVERT_CURRENCY" => "N",
-		"INPUT_ID" => "title-search-input-header",
-		"NUM_CATEGORIES" => "1",
-		"ORDER" => "date",
-		"PAGE" => "#SITE_DIR#search/",
-		"PREVIEW_HEIGHT" => "75",
-		"PREVIEW_TRUNCATE_LEN" => "",
-		"PREVIEW_WIDTH" => "75",
-		"PRICE_CODE" => array(
-		),
-		"PRICE_VAT_INCLUDE" => "N",
-		"SHOW_INPUT" => "Y",
-		"SHOW_OTHERS" => "N",
-		"SHOW_PREVIEW" => "Y",
-		"TOP_COUNT" => "5",
-		"USE_LANGUAGE_GUESS" => "Y",
-		"COMPONENT_TEMPLATE" => "header"
-	),
-	false
-); ?>
+                        "bitrix:search.title",
+                        "header",
+                        array(
+                            "CATEGORY_0" => array(
+                                0 => "iblock_catalog",
+                            ),
+                            "CATEGORY_0_TITLE" => "",
+                            "CATEGORY_0_iblock_catalog" => array(
+                                0 => "4",
+                            ),
+                            "CHECK_DATES" => "N",
+                            "CONTAINER_ID" => "title-search-header",
+                            "CONVERT_CURRENCY" => "N",
+                            "INPUT_ID" => "title-search-input-header",
+                            "NUM_CATEGORIES" => "1",
+                            "ORDER" => "date",
+                            "PAGE" => "#SITE_DIR#search/",
+                            "PREVIEW_HEIGHT" => "75",
+                            "PREVIEW_TRUNCATE_LEN" => "",
+                            "PREVIEW_WIDTH" => "75",
+                            "PRICE_CODE" => array(),
+                            "PRICE_VAT_INCLUDE" => "N",
+                            "SHOW_INPUT" => "Y",
+                            "SHOW_OTHERS" => "N",
+                            "SHOW_PREVIEW" => "Y",
+                            "TOP_COUNT" => "5",
+                            "USE_LANGUAGE_GUESS" => "Y",
+                            "COMPONENT_TEMPLATE" => "header"
+                        ),
+                        false
+                    ); ?>
                 </div>
             </div>
         </div>
