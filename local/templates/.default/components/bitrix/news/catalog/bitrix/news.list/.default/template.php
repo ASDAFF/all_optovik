@@ -59,8 +59,13 @@ $data = new \Lema\Template\TemplateHelper($this);
                             </div>
                         <? endif; ?>
                         <div class="catalog__list__item__inf">
-                            <span class="catalog__list__item__inf__price-text"><?=Loc::getMessage('LEMA_MIN_PRICE_TITLE');?></span>
-                            <span class="catalog__list__item__inf__price">5000 руб.</span>
+                            <? if($item->propFilled('MIN_PRICE')): ?>
+                                <span class="catalog__list__item__inf__price-text"><?=Loc::getMessage('LEMA_MIN_PRICE_TITLE');?></span>
+                                <span class="catalog__list__item__inf__price">
+                                <?=number_format($item->propValue('MIN_PRICE'), 0, '.', ' ');?>
+                                <?=Loc::getMessage('LEMA_MIN_PRICE_CURRENCY');?>
+                            </span>
+                            <? endif; ?>
                             <a href="#" class="core__btn js-request-send" data-user-id="<?=$item->getId();?>" data-fancybox="modal"
                                data-src="#core__modal__add">
                                 <?=Loc::getMessage('LEMA_SEND_REQUEST_BTN_TITLE');?>
