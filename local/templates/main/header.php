@@ -184,34 +184,39 @@ Loc::loadMessages(__FILE__);
                         <? endif; ?>
 
                     </div>
-                    <? $APPLICATION->IncludeComponent("bitrix:search.title", "header", Array(
-                        "CATEGORY_0" => array(    // Ограничение области поиска
-                            0 => "iblock_catalog",
-                        ),
-                        "CATEGORY_0_TITLE" => "",    // Название категории
-                        "CATEGORY_0_iblock_catalog" => array(    // Искать в информационных блоках типа "iblock_catalog"
-                            0 => "4",
-                        ),
-                        "CHECK_DATES" => "N",    // Искать только в активных по дате документах
-                        "CONTAINER_ID" => "title-search",    // ID контейнера, по ширине которого будут выводиться результаты
-                        "CONVERT_CURRENCY" => "N",    // Показывать цены в одной валюте
-                        "INPUT_ID" => "title-search-input",    // ID строки ввода поискового запроса
-                        "NUM_CATEGORIES" => "1",    // Количество категорий поиска
-                        "ORDER" => "date",    // Сортировка результатов
-                        "PAGE" => "#SITE_DIR#search/",    // Страница выдачи результатов поиска (доступен макрос #SITE_DIR#)
-                        "PREVIEW_HEIGHT" => "75",    // Высота картинки
-                        "PREVIEW_TRUNCATE_LEN" => "",    // Максимальная длина анонса для вывода
-                        "PREVIEW_WIDTH" => "75",    // Ширина картинки
-                        "PRICE_CODE" => "",    // Тип цены
-                        "PRICE_VAT_INCLUDE" => "N",    // Включать НДС в цену
-                        "SHOW_INPUT" => "Y",    // Показывать форму ввода поискового запроса
-                        "SHOW_OTHERS" => "N",    // Показывать категорию "прочее"
-                        "SHOW_PREVIEW" => "Y",    // Показать картинку
-                        "TOP_COUNT" => "5",    // Количество результатов в каждой категории
-                        "USE_LANGUAGE_GUESS" => "Y",    // Включить автоопределение раскладки клавиатуры
-                    ),
-                        false
-                    ); ?>
+                    <? $APPLICATION->IncludeComponent(
+	"bitrix:search.title", 
+	"header", 
+	array(
+		"CATEGORY_0" => array(
+			0 => "iblock_catalog",
+		),
+		"CATEGORY_0_TITLE" => "",
+		"CATEGORY_0_iblock_catalog" => array(
+			0 => "4",
+		),
+		"CHECK_DATES" => "N",
+		"CONTAINER_ID" => "title-search-header",
+		"CONVERT_CURRENCY" => "N",
+		"INPUT_ID" => "title-search-input-header",
+		"NUM_CATEGORIES" => "1",
+		"ORDER" => "date",
+		"PAGE" => "#SITE_DIR#search/",
+		"PREVIEW_HEIGHT" => "75",
+		"PREVIEW_TRUNCATE_LEN" => "",
+		"PREVIEW_WIDTH" => "75",
+		"PRICE_CODE" => array(
+		),
+		"PRICE_VAT_INCLUDE" => "N",
+		"SHOW_INPUT" => "Y",
+		"SHOW_OTHERS" => "N",
+		"SHOW_PREVIEW" => "Y",
+		"TOP_COUNT" => "5",
+		"USE_LANGUAGE_GUESS" => "Y",
+		"COMPONENT_TEMPLATE" => "header"
+	),
+	false
+); ?>
                 </div>
             </div>
         </div>

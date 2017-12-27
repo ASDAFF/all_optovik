@@ -29,20 +29,23 @@ if (strlen($CONTAINER_ID) <= 0)
 $CONTAINER_ID = CUtil::JSEscape($CONTAINER_ID);
 
 if ($arParams["SHOW_INPUT"] !== "N"):?>
-    <div id="<? echo $CONTAINER_ID ?>">
-        <form action="<? echo $arResult["FORM_ACTION"] ?>">
-            <div class="footer__search">
+
+    <div class="footer__search">
+        <div id="<? echo $CONTAINER_ID ?>">
+            <form action="<? echo $arResult["FORM_ACTION"] ?>">
                 <div class="footer__search__input">
                     <input class="footer__search__input__control core__form__input__control core__form__input__control"
-                           placeholder="<?= Loc::getMessage("CT_BST_SEARCH_PROVIDER"); ?>" id="<? echo $INPUT_ID ?>" type="text" name="q" size="40"
+                           placeholder="<?= Loc::getMessage("CT_BST_SEARCH_PROVIDER"); ?>" id="<? echo $INPUT_ID ?>" type="text" name="q" size="20"
                            maxlength="50" autocomplete="off"/>
                 </div>
                 <div class="footer__search__btn">
-                    <button class="footer__search__btn__control core__btn" name="s"
-                            type="submit"><?= Loc::getMessage("CT_BST_SEARCH_BUTTON"); ?></button>
+                    <button class="footer__search__btn__control core__btn" name="s" type="submit">
+                        <?= Loc::getMessage("CT_BST_SEARCH_BUTTON"); ?>
+                    </button>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
+
     </div>
 <? endif ?>
 <script>
