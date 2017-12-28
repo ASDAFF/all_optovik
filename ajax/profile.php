@@ -60,7 +60,7 @@ if($form->validate())
 
     if($form->getField('section'))
     {
-
+        $companyName = \CUtil::translit(Helper::enc($form->getField('company_name')), 'RU');
         //upload catalog file
         if(!empty($_FILES['catalog']['tmp_name']))
             $catalogData = \uploadFileData($_FILES['catalog']);
@@ -103,7 +103,7 @@ if($form->validate())
             $status = $status && $el->Update($existElement['ID'], array(
                     'IBLOCK_SECTION_ID' => (int) $form->getField('section'),
                     'NAME' => Helper::enc($form->getField('company_name')),
-                    'CODE' => \CUtil::translit(Helper::enc($form->getField('company_name')), 'RU'),
+                    'CODE' => \CUtil::translit(Helper::enc($form->getField('company_name')), 'ru'),
                     'PROPERTY_VALUES' => array(
                         'OPT_USER' => User::get()->GetId(),
                         'CATALOG_FILE' => $catalogData['fileData'],

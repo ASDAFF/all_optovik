@@ -48,7 +48,7 @@ foreach($sections as $sectionId => $section)
     if(empty($section['SECTIONS']))
         continue;
     //build section url
-    $section['SECTION_URL'] = sprintf($urlMask, $section['CODE'], $optUserName);
+    $section['SECTION_URL'] = sprintf($urlMask, $section['CODE'], $arResult['CODE']);
     //add section data
     $arResult['ELEMENT_SECTIONS'][$sectionId] = array_merge($section, array('SECTIONS' => array()));
     //add inner sections
@@ -56,7 +56,7 @@ foreach($sections as $sectionId => $section)
     {
         if(!isset($elementsSections[$innerSectionId]))
             continue;
-        $innerSection['SECTION_URL'] = sprintf($urlMask, $innerSection['CODE'], $optUserName);
+        $innerSection['SECTION_URL'] = sprintf($urlMask, $innerSection['CODE'], $arResult['CODE']);
         $arResult['ELEMENT_SECTIONS'][$sectionId]['SECTIONS'][$innerSectionId] = $innerSection;
     }
     //no inner sections, remove it
