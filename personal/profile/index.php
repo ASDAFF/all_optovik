@@ -7,7 +7,9 @@ $APPLICATION->SetTitle('Личный кабинет');
 
 $user = new \UserData();
 
-$maxFiles = $user->get('UF_IS_VIP') ? 5 : 3;
+$isVip = (bool) $user->get('UF_IS_VIP');
+
+$maxFiles = $isVip ? 5 : 3;
 
 $cardShowCount = $requestsCount = 0;
 if($user->get('WORK_COMPANY'))
@@ -42,7 +44,7 @@ if($user->get('WORK_COMPANY'))
             <div class="statistic__item">
                 <div class="statistic__item__left">
                     <div class="statistic__item__text">
-                        Количество переходов  в карточку
+                        Количество переходов в карточку
                     </div>
                 </div>
                 <div class="statistic__item__right">
@@ -107,28 +109,30 @@ if($user->get('WORK_COMPANY'))
                     </div>
                     <br>
 
-                    <div class="core__form__title">
-                        <span>Каталоги и прайс-листы</span>
-                    </div>
-                    <div class="form__item">
-                        <div class="core__form__file">
-                            <div class="core__form__file__text">Загрузить каталог (не обязательно)</div>
-                            <div class="core__form__file__input js-field-block">
-                                <input class="core__form__file__input__control" name="catalog" type="file"/>
-                                <div class="core__form__input__log core__form__input__log_danger"></div>
+                    <? if($isVip): ?>
+                        <div class="core__form__title">
+                            <span>Каталоги и прайс-листы</span>
+                        </div>
+                        <div class="form__item">
+                            <div class="core__form__file">
+                                <div class="core__form__file__text">Загрузить каталог (не обязательно)</div>
+                                <div class="core__form__file__input js-field-block">
+                                    <input class="core__form__file__input__control" name="catalog" type="file"/>
+                                    <div class="core__form__input__log core__form__input__log_danger"></div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="form__item">
-                        <div class="core__form__file">
-                            <div class="core__form__file__text">Прайс-лист</div>
-                            <div class="core__form__file__input js-field-block">
-                                <input class="core__form__file__input__control" name="price" type="file"/>
-                                <div class="core__form__input__log core__form__input__log_danger"></div>
+                        <div class="form__item">
+                            <div class="core__form__file">
+                                <div class="core__form__file__text">Прайс-лист</div>
+                                <div class="core__form__file__input js-field-block">
+                                    <input class="core__form__file__input__control" name="price" type="file"/>
+                                    <div class="core__form__input__log core__form__input__log_danger"></div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <br>
+                        <br>
+                    <? endif; ?>
                     <?php
                     $sections = LemaISection::getSectionsByLevelD7(LIblock::getId('catalog'));
                     if(!empty($sections)):?>
@@ -157,45 +161,47 @@ if($user->get('WORK_COMPANY'))
                     <? endif; ?>
                 </div>
                 <div class="form__user__right">
-                    <div class="form__item">
-                        <div class="core__form__title">
-                            <span>Условия работы</span>
+                    <? if($isVip): ?>
+                        <div class="form__item">
+                            <div class="core__form__title">
+                                <span>Условия работы</span>
+                            </div>
+                            <div class="core__form__textarea js-field-block">
+                                <textarea class="core__form__textarea__control" name="work_conditions" placeholder="Условия работы"><?=
+                                    $user->get('UF_WORK_COND');
+                                    ?></textarea>
+                                <div class="core__form__input__log core__form__input__log_danger"></div>
+                            </div>
+                            <div class="core__form__title">
+                                <span>Условия доставки</span>
+                            </div>
+                            <div class="core__form__textarea js-field-block">
+                                <textarea class="core__form__textarea__control" name="delivery_conditions" placeholder="Условия доставки"><?=
+                                    $user->get('UF_DELIVERY_COND');
+                                    ?></textarea>
+                                <div class="core__form__input__log core__form__input__log_danger"></div>
+                            </div>
+                            <div class="core__form__title">
+                                <span>Условия оплаты</span>
+                            </div>
+                            <div class="core__form__textarea js-field-block">
+                                <textarea class="core__form__textarea__control" name="pay_conditions" placeholder="Условия оплаты"><?=
+                                    $user->get('UF_PAY_COND');
+                                    ?></textarea>
+                                <div class="core__form__input__log core__form__input__log_danger"></div>
+                            </div>
+                            <div class="core__form__title">
+                                <span>Скидки</span>
+                            </div>
+                            <div class="core__form__textarea js-field-block">
+                                <textarea class="core__form__textarea__control" name="discounts" placeholder="Скидки"><?=
+                                    $user->get('UF_DISCOUNTS');
+                                    ?></textarea>
+                                <div class="core__form__input__log core__form__input__log_danger"></div>
+                            </div>
                         </div>
-                        <div class="core__form__textarea js-field-block">
-                            <textarea class="core__form__textarea__control" name="work_conditions" placeholder="Условия работы"><?=
-                                $user->get('UF_WORK_COND');
-                                ?></textarea>
-                            <div class="core__form__input__log core__form__input__log_danger"></div>
-                        </div>
-                        <div class="core__form__title">
-                            <span>Условия доставки</span>
-                        </div>
-                        <div class="core__form__textarea js-field-block">
-                            <textarea class="core__form__textarea__control" name="delivery_conditions" placeholder="Условия доставки"><?=
-                                $user->get('UF_DELIVERY_COND');
-                                ?></textarea>
-                            <div class="core__form__input__log core__form__input__log_danger"></div>
-                        </div>
-                        <div class="core__form__title">
-                            <span>Условия оплаты</span>
-                        </div>
-                        <div class="core__form__textarea js-field-block">
-                            <textarea class="core__form__textarea__control" name="pay_conditions" placeholder="Условия оплаты"><?=
-                                $user->get('UF_PAY_COND');
-                                ?></textarea>
-                            <div class="core__form__input__log core__form__input__log_danger"></div>
-                        </div>
-                        <div class="core__form__title">
-                            <span>Скидки</span>
-                        </div>
-                        <div class="core__form__textarea js-field-block">
-                            <textarea class="core__form__textarea__control" name="discounts" placeholder="Скидки"><?=
-                                $user->get('UF_DISCOUNTS');
-                                ?></textarea>
-                            <div class="core__form__input__log core__form__input__log_danger"></div>
-                        </div>
-                    </div>
-                    <br>
+                        <br>
+                    <? endif; ?>
                     <div class="form__item">
                         <div class="core__form__title">
                             <span>Фотографии товара</span>

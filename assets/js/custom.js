@@ -3,7 +3,7 @@ $(function () {
     $('#js-preview-pictures').on('change', function () {
         var maxLength = 1 * $('#max_files').val();
         if (this.files.length > maxLength) {
-            $.fancybox.open('<div style="padding:25px;margin:25px"><h4>Внимание!</h4>Загрузятся только первые ' +
+            $.fancybox.open('<div style="padding:35px;margin:25px"><h4>Внимание!</h4>Загрузятся только первые ' +
                 maxLength +
                 ' файлов!</div>');
         }
@@ -53,7 +53,7 @@ $(function () {
                     }
                     //show message with errors
                     $.fancybox.open(
-                        '<div style="margin:20px;padding:15px;color:red;">' +
+                        '<div style="margin:25px;padding:35px;color:red;">' +
                         '<b>Пожалуйста, исправьте следующие ошибки:</b><br><br>' +
                         $.map(ans.errors, function (e) {
                             return e;
@@ -63,7 +63,7 @@ $(function () {
                 }
                 else {
                     //show success message
-                    $.fancybox.open('<div style="margin:20px;padding:15px;color:green;text-align:center;">Ваша заявка принята</div>');
+                    $.fancybox.open('<div style="margin:25px;padding:35px;color:green;text-align:center;">Данные успешно сохранены</div>');
                 }
 
                 BX.closeWait(waitElement);
@@ -104,7 +104,7 @@ $(function () {
                 }
                 //show message with errors
                 $.fancybox.open(
-                    '<div style="margin:20px;padding:15px;color:red;">' +
+                    '<div style="margin:25px;padding:35px;color:red;">' +
                     '<b>Пожалуйста, исправьте следующие ошибки:</b><br><br>' +
                     $.map(ans.errors, function (e) {
                         return e;
@@ -114,7 +114,7 @@ $(function () {
             }
             else {
                 //show success message
-                $.fancybox.open('<div style="margin:20px;padding:15px;color:green;text-align:center;">Ваша заявка принята</div>');
+                $.fancybox.open('<div style="margin:25px;padding:35px;color:green;text-align:center;">Ваша заявка принята</div>');
             }
 
         }, 'json');
