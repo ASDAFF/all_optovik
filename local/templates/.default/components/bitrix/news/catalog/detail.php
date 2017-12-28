@@ -12,6 +12,60 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 ?>
+<? $APPLICATION->IncludeComponent('bitrix:news.list', 'catalog_top_slider', array(
+    'DISPLAY_DATE' => 'Y',
+    'DISPLAY_NAME' => 'Y',
+    'DISPLAY_PICTURE' => 'Y',
+    'DISPLAY_PREVIEW_TEXT' => 'Y',
+    'AJAX_MODE' => 'N',
+    'IBLOCK_TYPE' => 'content',
+    'IBLOCK_ID' => '1',
+    'NEWS_COUNT' => '3',
+    'SORT_BY1' => 'ACTIVE_FROM',
+    'SORT_ORDER1' => 'DESC',
+    'SORT_BY2' => 'SORT',
+    'SORT_ORDER2' => 'ASC',
+    'FILTER_NAME' => '',
+    'FIELD_CODE' => array('ID', 'NAME', 'PREVIEW_PICTURE', 'DETAIL_PICTURE'),
+    'PROPERTY_CODE' => array('URL'),
+    'CHECK_DATES' => 'Y',
+    'DETAIL_URL' => '',
+    'PREVIEW_TRUNCATE_LEN' => '',
+    'ACTIVE_DATE_FORMAT' => 'd.m.Y',
+    'SET_TITLE' => 'N',
+    'SET_BROWSER_TITLE' => 'N',
+    'SET_META_KEYWORDS' => 'N',
+    'SET_META_DESCRIPTION' => 'N',
+    'SET_LAST_MODIFIED' => 'N',
+    'INCLUDE_IBLOCK_INTO_CHAIN' => 'N',
+    'ADD_SECTIONS_CHAIN' => 'Y',
+    'HIDE_LINK_WHEN_NO_DETAIL' => 'Y',
+    'PARENT_SECTION' => '',
+    'PARENT_SECTION_CODE' => 'catalog_top_banner',
+    'INCLUDE_SUBSECTIONS' => 'Y',
+    'CACHE_TYPE' => 'A',
+    'CACHE_TIME' => '36000000',
+    'CACHE_FILTER' => 'Y',
+    'CACHE_GROUPS' => 'N',
+    'DISPLAY_TOP_PAGER' => 'N',
+    'DISPLAY_BOTTOM_PAGER' => 'N',
+    'PAGER_TITLE' => 'Элементы',
+    'PAGER_SHOW_ALWAYS' => 'N',
+    'PAGER_TEMPLATE' => '',
+    'PAGER_DESC_NUMBERING' => 'N',
+    'PAGER_DESC_NUMBERING_CACHE_TIME' => '36000',
+    'PAGER_SHOW_ALL' => 'N',
+    'PAGER_BASE_LINK_ENABLE' => 'N',
+    'SET_STATUS_404' => 'N',
+    'SHOW_404' => 'N',
+    'MESSAGE_404' => '',
+    'PAGER_BASE_LINK' => '',
+    'PAGER_PARAMS_NAME' => 'arrPager',
+    'AJAX_OPTION_JUMP' => 'N',
+    'AJAX_OPTION_STYLE' => 'Y',
+    'AJAX_OPTION_HISTORY' => 'N',
+    'AJAX_OPTION_ADDITIONAL' => '',
+)); ?>
 <?$ElementID = $APPLICATION->IncludeComponent(
 	"bitrix:news.detail",
 	"",
@@ -68,6 +122,23 @@ $this->setFrameMode(true);
 	),
 	$component
 );?>
+	<div class="container">
+		<div class="core__line_bg"></div>
+	</div>
+	<div class="container catalog__detail__main__btn">
+		<a href="#" title="" class="core__btn core__btn_hidden js-back-to-top">
+			<span>в начало страницы</span>
+		</a>
+		<a href="" title="" class="core__btn core__btn_hidden js-show-more">
+			<span>больше товара</span>
+		</a>
+		<a href="<?=$arResult["FOLDER"].$arResult["URL_TEMPLATES"]["news"]?>" title="" class="core__btn core__btn_hidden">
+			<span>вернуться к площадкам</span>
+		</a>
+	</div>
+	<div class="container">
+		<div class="core__line_bg"></div>
+	</div>
 <?/*
 <p><a href="<?=$arResult["FOLDER"].$arResult["URL_TEMPLATES"]["news"]?>"><?=GetMessage("T_NEWS_DETAIL_BACK")?></a></p>
 <?if($arParams["USE_RATING"]=="Y" && $ElementID):?>

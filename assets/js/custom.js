@@ -119,7 +119,20 @@ $(function () {
 
         }, 'json');
         return false;
-    })
+    });
 
+    $('.js-back-to-top').on('click', function(e) {
+        e.preventDefault();
+        $('html,body').animate({
+            scrollTop: 0
+        }, 700);
+    });
+
+    $('.js-show-more').on('click', function(e) {
+        e.preventDefault();
+        if($(this).hasClass('inactive'))
+            return false;
+        //..
+    })
 
 });
