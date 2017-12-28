@@ -53,6 +53,13 @@ $bxAjaxId = CAjax::GetComponentID($component->__name, $component->__template->__
             </div>
         <? endforeach; ?>
     </div>
+    <div class="bottom_nav" style="display: none;">
+        <? if ($arParams["DISPLAY_BOTTOM_PAGER"] == "Y") { ?>
+            <?= $arResult["NAV_STRING"] ?>
+        <? } ?>
+    </div>
+    <? if ($_REQUEST['showMore'] == '1')
+        die(); ?>
     <? if (empty($_GET['showMore'])): ?>
         <div class="css_text-center">
             <div class="core__btn" class="ajax_load_btn_new" data-ajax-id="<?= $bxAjaxId ?>" data-show-more="<?= $arResult["NAV_RESULT"]->NavNum ?>"
@@ -65,13 +72,6 @@ $bxAjaxId = CAjax::GetComponentID($component->__name, $component->__template->__
         <br>
         <br>
     <? endif; ?>
-    <div class="bottom_nav" style="display: none;">
-        <? if ($arParams["DISPLAY_BOTTOM_PAGER"] == "Y") { ?>
-            <?= $arResult["NAV_STRING"] ?>
-        <? } ?>
-    </div>
-    <? if ($_REQUEST['showMore'] == '1')
-        die(); ?>
 </div>
 <script>
     $(document).ready(function () {
@@ -84,6 +84,7 @@ $bxAjaxId = CAjax::GetComponentID($component->__name, $component->__template->__
             var page = btn.attr('data-next-page');
             var id = btn.attr('data-show-more');
             var bx_ajax_id = btn.attr('data-ajax-id');
+            var max = btn.attr('data-max-page');
             var parent = btn.closest('.ajax_load_btn_new');
 
             var data = {
@@ -105,6 +106,8 @@ $bxAjaxId = CAjax::GetComponentID($component->__name, $component->__template->__
                     //btn.remove();
                     $.when($('.ajax_load .news__list').first().append(data)).then(function () {
                         $('.bottom_nav').html($('.bottom_nav').eq(-2).html());
+                        if(max == (page * 1))
+                            $('.css_text-center').hide();
                     });
                 }
             });
