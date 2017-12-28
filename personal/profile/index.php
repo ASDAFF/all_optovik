@@ -1,10 +1,35 @@
 <?
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
+
+use \Lema\Common\Helper;
+
 $APPLICATION->SetTitle('Личный кабинет');
 
 $user = new \UserData();
 
 $maxFiles = $user->get('UF_IS_VIP') ? 5 : 3;
+
+$cardShowCount = $requestsCount = 0;
+if($user->get('WORK_COMPANY'))
+{
+    \Bitrix\Main\Loader::includeModule('iblock');
+
+    $elements = \Lema\IBlock\Element::getList(LIblock::getId('catalog'), array(
+        'filter' => array('NAME' => $user->get('WORK_COMPANY')),
+        'arSelect' => array('ID', 'SHOW_COUNTER'),
+    ));
+    if(!empty($elements))
+    {
+        foreach($elements as $element)
+            $cardShowCount += $element['SHOW_COUNTER'];
+    }
+    $requests = \Lema\IBlock\Element::getList(array(
+        'filter' => array('IBLOCK_ID' => LIblock::getId('requests'), 'PROPERTY_OPT_USER' => $user->get('ID')),
+        'select' => array('ID'),
+    ));
+    $requestsCount = count($requests);
+    unset($elements, $requests);
+}
 
 ?>
     <div class="container">
@@ -12,6 +37,33 @@ $maxFiles = $user->get('UF_IS_VIP') ? 5 : 3;
             <span class="core__title__control">
                 <?=trim($user->get('WORK_COMPANY')) ? $user->get('WORK_COMPANY') : 'Название компании не указано';?>
             </span>
+        </div>
+        <div class="statistic">
+            <div class="statistic__item">
+                <div class="statistic__item__left">
+                    <div class="statistic__item__text">
+                        Количество переходов  в карточку
+                    </div>
+                </div>
+                <div class="statistic__item__right">
+                    <div class="statistic__item__number">
+                        <span><?=Helper::pluralizeN($cardShowCount, array('переход', 'перехода', 'переходов'));?></span>
+                    </div>
+                </div>
+            </div>
+            <div class="statistic__item">
+                <div class="statistic__item__left">
+                    <div class="statistic__item__text">
+                        Общее количество запросов, поступивших через портал
+                        <small>общее количество запросов поступивщих через портал другим компаниям</small>
+                    </div>
+                </div>
+                <div class="statistic__item__right">
+                    <div class="statistic__item__number">
+                        <span><?=Helper::pluralizeN($requestsCount, array('запрос', 'запроса', 'запросов'));?></span>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="core__line_bg"></div>
         <br>
