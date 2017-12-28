@@ -73,7 +73,7 @@ $(function () {
     });
 
     //add opt user id to request form
-    $('.js-request-send').on('click', function() {
+    $('.js-request-send').on('click', function () {
         $('input[name="opt_user_id"]').val($(this).data('user-id'));
     });
 
@@ -121,18 +121,33 @@ $(function () {
         return false;
     });
 
-    $('.js-back-to-top').on('click', function(e) {
+    $('.js-back-to-top').on('click', function (e) {
         e.preventDefault();
         $('html,body').animate({
             scrollTop: 0
         }, 700);
     });
 
-    $('.js-show-more').on('click', function(e) {
+    $('.js-show-more').on('click', function (e) {
         e.preventDefault();
-        if($(this).hasClass('inactive'))
+        if ($(this).hasClass('inactive'))
             return false;
-        //..
+        var photoBlock = $('.js-product-photos'),
+            photoLinks = photoBlock.find('a'),
+            lastShowIndex = null,
+            pageSize = photoBlock.data('page-count') * 1;
+        photoLinks.each(function (i, el) {
+            if ($(el).is(':visible'))
+                return;
+            if (!lastShowIndex)
+                lastShowIndex = i + pageSize;
+            if (i < lastShowIndex)
+                $(el).show('slow');
+        });
+        if (lastShowIndex >= photoLinks.length) {
+            $(this).addClass('inactive');
+            lastShowIndex = null;
+        }
     })
 
 });

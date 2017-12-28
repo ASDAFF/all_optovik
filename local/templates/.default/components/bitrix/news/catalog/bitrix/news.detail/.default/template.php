@@ -130,9 +130,14 @@ $item = $data->item();
         </div>
         <div class="catalog__detail__main__right">
             <? if($item->propFilled('PICTURES')): ?>
-                <div class="catalog__detail__main__list">
+                <?php
+                $pageCount = 1;
+                $i = 0;
+                ?>
+                <div data-page-count="<?=$pageCount;?>" class="catalog__detail__main__list js-product-photos">
                     <? foreach($item->prop('PICTURES', 'FILE_DATA') as $file): ?>
-                        <a href="<?=$file['SRC'];?>" title="<?=$file['ORIGINAL_NAME'];?>" class="catalog__detail__main__list__item">
+                        <a href="<?=$file['SRC'];?>" data-fancybox="true" title="<?=$file['ORIGINAL_NAME'];?>"
+                           class="catalog__detail__main__list__item<? if(++$i > $pageCount) { ?> hidden<? } ?>">
                             <div class="catalog__detail__main__list__item__wrap">
                                 <div class="catalog__detail__main__list__item__img">
                                     <img src="<?=$file['SRC'];?>" alt="">

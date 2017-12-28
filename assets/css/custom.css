@@ -1,0 +1,11 @@
+.js-show-more.inactive {
+    opacity: 0.3;
+}
+
+.js-product-photos a.hidden {
+    display: none;
+}
+
+.inquiries__block__item__img img {
+    max-height: 85px;
+}
