@@ -5,7 +5,6 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 ShowMessage($arParams["~AUTH_RESULT"]);
 ShowMessage($arResult['ERROR_MESSAGE']);
 ?>
-
 <div class="bx-auth">
 <?if($arResult["AUTH_SERVICES"]):?>
 	<div class="bx-auth-title"><?echo GetMessage("AUTH_TITLE")?></div>
@@ -99,7 +98,7 @@ try{document.form_auth.USER_LOGIN.focus();}catch(e){}
 
 <?if($arResult["AUTH_SERVICES"]):?>
 <?
-$APPLICATION->IncludeComponent("bitrix:socserv.auth.form", "",
+$APPLICATION->IncludeComponent("bitrix:socserv..default.form", "",
 	array(
 		"AUTH_SERVICES" => $arResult["AUTH_SERVICES"],
 		"CURRENT_SERVICE" => $arResult["CURRENT_SERVICE"],
