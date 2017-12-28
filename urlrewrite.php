@@ -1,9 +1,9 @@
 <?
 $arUrlRewrite = array(
 	array(
-		'CONDITION' => '#^/catalog/#',
+		'CONDITION' => '#^/catalog#',
 		'RULE' => '',
-		'ID' => 'bitrix:catalog',
+		'ID' => 'bitrix:news',
 		'PATH' => '/catalog/index.php',
 	),
 );

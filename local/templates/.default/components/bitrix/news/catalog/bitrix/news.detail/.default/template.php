@@ -14,7 +14,6 @@ $this->setFrameMode(true);
 
 $data = new \Lema\Template\TemplateHelper($this);
 $item = $data->item();
-
 ?>
 <div class="container">
     <div class="core__title">
@@ -112,20 +111,20 @@ $item = $data->item();
                     <span>Товары компании:</span>
                 </div>
                 <ul>
-                    <li>
-                        <a href="" title="">Женская одежда оптом</a>
-                        <ul>
-                            <li><a href="" title="">Одежда больших размеров</a></li>
-                            <li><a href="" title="">Домашняя одежда оптом</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="" title="">Детская одежда и товары для детей</a>
-                        <ul>
-                            <li><a href="" title="">Детская одежда для мальчиков</a></li>
-                            <li><a href="" title="">Детская одежда для девочек</a></li>
-                        </ul>
-                    </li>
+                    <? foreach($arResult['ELEMENT_SECTIONS'] as $section): ?>
+                        <li>
+                            <a href="<?=$section['SECTION_URL'];?>" title="<?=$section['NAME'];?>"><?=$section['NAME'];?></a>
+                            <ul>
+                                <? foreach($section['SECTIONS'] as $innerSection): ?>
+                                    <li>
+                                        <a href="<?=$innerSection['SECTION_URL'];?>" title="<?=$innerSection['NAME'];?>">
+                                            <?=$innerSection['NAME'];?>
+                                        </a>
+                                    </li>
+                                <? endforeach; ?>
+                            </ul>
+                        </li>
+                    <? endforeach; ?>
                 </ul>
             </div>
         </div>

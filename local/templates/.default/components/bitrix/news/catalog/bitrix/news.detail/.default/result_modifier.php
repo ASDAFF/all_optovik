@@ -4,6 +4,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 
 use \Lema\Common\Helper;
 
+$optUserName = null;
 //links to catalog & price files
 $arResult['USER_DATA'] = $arResult['CATALOG_FILE_LINK'] = $arResult['PRICE_FILE_LINK'] = null;
 if(Helper::propFilled('CATALOG_FILE', $arResult))
@@ -18,9 +19,11 @@ if(Helper::propFilled('OPT_USER', $arResult))
 {
     $arResult['USER_DATA'] = \UserData::instance(Helper::propValue('OPT_USER', $arResult));
     $arResult['IS_VIP'] = (bool) \UserData::instance(Helper::propValue('OPT_USER', $arResult))->get('UF_IS_VIP');
+    $optUserName = $arResult['USER_DATA']->get('WORK_COMPANY');
 
+    //get all user elements
     $elements = \Lema\IBlock\Element::getListD7(LIblock::getId('catalog'), array(
-        'filter' => array('NAME' => $arResult['USER_DATA']->get('WORK_COMPANY'), 'ACTIVE' => 'Y'),
+        'filter' => array('NAME' => $optUserName, 'ACTIVE' => 'Y'),
         'select' => array('ID', 'IBLOCK_SECTION_ID'),
     ));
     foreach($elements as $element)
@@ -35,5 +38,28 @@ if(Helper::propFilled('PICTURES', $arResult))
         $arResult['PROPERTIES']['PICTURES']['FILE_DATA'][$k] = \CFile::GetFileArray($fileId);
 }
 
-$sections = LemaISection::getSectionsByLevelD7(LIblock::getId('catalog'));
-$arResult['SECTIONS'] = array();
+//build user section list
+$sections = LemaISection::getSectionsByLevelD7(LIblock::getId('catalog'), array('select' => array('CODE')));
+$arResult['ELEMENT_SECTIONS'] = array();
+$urlMask = SITE_DIR . 'catalog/%s/%s/';
+foreach($sections as $sectionId => $section)
+{
+    //no inner sections, go to next
+    if(empty($section['SECTIONS']))
+        continue;
+    //build section url
+    $section['SECTION_URL'] = sprintf($urlMask, $section['CODE'], $optUserName);
+    //add section data
+    $arResult['ELEMENT_SECTIONS'][$sectionId] = array_merge($section, array('SECTIONS' => array()));
+    //add inner sections
+    foreach($section['SECTIONS'] as $innerSectionId => $innerSection)
+    {
+        if(!isset($elementsSections[$innerSectionId]))
+            continue;
+        $innerSection['SECTION_URL'] = sprintf($urlMask, $innerSection['CODE'], $optUserName);
+        $arResult['ELEMENT_SECTIONS'][$sectionId]['SECTIONS'][$innerSectionId] = $innerSection;
+    }
+    //no inner sections, remove it
+    if(empty($arResult['ELEMENT_SECTIONS'][$sectionId]['SECTIONS']))
+        unset($arResult['ELEMENT_SECTIONS'][$sectionId]);
+}
