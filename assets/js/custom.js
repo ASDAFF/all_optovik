@@ -128,14 +128,20 @@ $(function () {
         }, 700);
     });
 
+    if (!$('.js-product-photos a.hidden').length)
+        $('.js-show-more').addClass('inactive');
+
     $('.js-show-more').on('click', function (e) {
         e.preventDefault();
+
         if ($(this).hasClass('inactive'))
             return false;
+
         var photoBlock = $('.js-product-photos'),
             photoLinks = photoBlock.find('a'),
             lastShowIndex = null,
             pageSize = photoBlock.data('page-count') * 1;
+
         photoLinks.each(function (i, el) {
             if ($(el).is(':visible'))
                 return;

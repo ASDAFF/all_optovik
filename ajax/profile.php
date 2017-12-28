@@ -78,7 +78,7 @@ if($form->validate())
         $existElement = \Lema\IBlock\Element::getList(LIblock::getId('catalog'), array(
             'filter' => array(
                 'IBLOCK_ID' => LIblock::getId('catalog'),
-                'NAME' => Helper::enc($form->getField('company_name')),
+                'PROPERTY_OPT_USER' => User::get()->GetId(),
                 'IBLOCK_SECTION_ID' => (int) $form->getField('section'),
             ),
             'arSelect' => array('ID'),
