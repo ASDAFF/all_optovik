@@ -18,7 +18,11 @@ class LemaISection extends \Lema\IBlock\Section
 
         //get all sections
         $params['order'] = array('LEFT_MARGIN' => 'asc');
-        $params['select'] = array('ID', 'NAME', 'IBLOCK_SECTION_ID');
+        if(empty($params['select']))
+            $params['select'] = array('ID', 'NAME', 'IBLOCK_SECTION_ID');
+        else
+            $params['select'] = array_merge($params['select'], array('ID', 'NAME', 'IBLOCK_SECTION_ID'));
+
         $sections = static::getAllD7($iblock, $params);
 
         if(empty($sections))

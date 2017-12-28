@@ -56,9 +56,9 @@ $APPLICATION->SetTitle("Каталог оптовиков");
     'SEF_FOLDER' => '/catalog/',
     'SEF_MODE' => 'Y',
     'SEF_URL_TEMPLATES' => Array(
-        'detail' => '#ELEMENT_CODE#/',
+        'detail' => '#SECTION_CODE#/#ELEMENT_CODE#/',
         'news' => '',
-        'section' => ''
+        'section' => '#SECTION_CODE#/'
     ),
     'SET_LAST_MODIFIED' => 'N',
     'SET_STATUS_404' => 'Y',
