@@ -47,7 +47,13 @@ if($form->validate())
         'OPT_USER_REQUEST',
         //email send params
         array(
-            'AUTHOR' => $form->getField('company_name'),
+            'EMAIL_TO' => \UserData::instance((int) $form->getField('opt_user_id'))->get('WORK_MAILBOX'),
+            'USER' => Helper::enc($form->getField('name')),
+            'REQUEST' => Helper::enc($form->getField('request')),
+            'EMAIL' => Helper::enc($form->getField('email')),
+            'PHONE' => Helper::enc($form->getField('phone')),
+            'COMPANY_NAME' => Helper::enc($form->getField('company_name')),
+            'PUBLIC' => ($form->getField('request_agreement') ? 'Публичный' : 'Не публичный'),
         )
     );
 
@@ -81,8 +87,12 @@ if($form->validate())
                 {
                     //send message
                     $form->sendMessage('OPT_USER_REQUEST_PUBLIC', array(
-                        '#EMAIL_TO#' => $users[$element['PROPERTY_OPT_USER_VALUE']]['WORK_MAILBOX'],
-                        //...
+                        'EMAIL_TO' => $users[$element['PROPERTY_OPT_USER_VALUE']]['WORK_MAILBOX'],
+                        'USER' => Helper::enc($form->getField('name')),
+                        'REQUEST' => Helper::enc($form->getField('request')),
+                        'EMAIL' => Helper::enc($form->getField('email')),
+                        'PHONE' => Helper::enc($form->getField('phone')),
+                        'COMPANY_NAME' => Helper::enc($form->getField('company_name')),
                     ));
                 }
             }

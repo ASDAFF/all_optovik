@@ -74,6 +74,14 @@ if($form->validate())
         if(!empty($_FILES['pictures']['tmp_name']))
             $picturesData = \uploadFileData($_FILES['pictures']);
 
+        $res = \Bitrix\Iblock\SectionTable::getByPrimary((int) $form->getField('section'), array(
+            'filter' => array('IBLOCK_ID' => LIblock::getId('catalog')),
+            'select' => array('NAME'),
+        ));
+        $sectionName = 'Не указано';
+        if($row = $res->fetch())
+            $sectionName = $row['NAME'];
+
         //check record for exists
         $existElement = \Lema\IBlock\Element::getList(LIblock::getId('catalog'), array(
             'filter' => array(
@@ -101,9 +109,38 @@ if($form->validate())
             //update element
             $el = new \CIBlockElement();
             $status = $status && $el->Update($existElement['ID'], array(
+                'IBLOCK_SECTION_ID' => (int) $form->getField('section'),
+                'NAME' => Helper::enc($form->getField('company_name')),
+                'CODE' => \CUtil::translit(Helper::enc($form->getField('company_name')), 'ru'),
+                'PROPERTY_VALUES' => array(
+                    'OPT_USER' => User::get()->GetId(),
+                    'CATALOG_FILE' => $catalogData['fileData'],
+                    'PRICE_FILE' => $priceData['fileData'],
+                    'PREVIEW_PICTURES' => $previewPicturesData['fileData'],
+                    'PICTURES' => $picturesData['fileData'],
+                ),
+                'ACTIVE' => 'N',
+            ));
+            if($status)
+            {
+                $form->sendMessage('OPT_USER_FORM_UPDATE', array(
+                    'OPT_USER' => $form->getField('company_name'),
+                    'SECTION' => $sectionName,
+                    'SECTION_CODE' => \CUtil::translit(Helper::enc($form->getField('company_name')), 'RU'),
+                ));
+            }
+        }
+        //add new element
+        else
+        {
+            $status = $status && $form->formActionFull(
+            //iblock id
+                LIblock::getId('catalog'),
+                //iblock add params
+                array(
                     'IBLOCK_SECTION_ID' => (int) $form->getField('section'),
                     'NAME' => Helper::enc($form->getField('company_name')),
-                    'CODE' => \CUtil::translit(Helper::enc($form->getField('company_name')), 'ru'),
+                    'CODE' => \CUtil::translit(Helper::enc($form->getField('company_name')), 'RU'),
                     'PROPERTY_VALUES' => array(
                         'OPT_USER' => User::get()->GetId(),
                         'CATALOG_FILE' => $catalogData['fileData'],
@@ -112,35 +149,16 @@ if($form->validate())
                         'PICTURES' => $picturesData['fileData'],
                     ),
                     'ACTIVE' => 'N',
-                ));
-        }
-        //add new element
-        else
-        {
-            $status = $status && $form->formActionFull(
-                //iblock id
-                    LIblock::getId('catalog'),
-                    //iblock add params
-                    array(
-                        'IBLOCK_SECTION_ID' => (int) $form->getField('section'),
-                        'NAME' => Helper::enc($form->getField('company_name')),
-                        'CODE' => \CUtil::translit(Helper::enc($form->getField('company_name')), 'RU'),
-                        'PROPERTY_VALUES' => array(
-                            'OPT_USER' => User::get()->GetId(),
-                            'CATALOG_FILE' => $catalogData['fileData'],
-                            'PRICE_FILE' => $priceData['fileData'],
-                            'PREVIEW_PICTURES' => $previewPicturesData['fileData'],
-                            'PICTURES' => $picturesData['fileData'],
-                        ),
-                        'ACTIVE' => 'N',
-                    ),
-                    //email event name
-                    'OPT_USER_FORM',
-                    //email send params
-                    array(
-                        'AUTHOR' => $form->getField('company_name'),
-                    )
-                );
+                ),
+                //email event name
+                'OPT_USER_FORM_ADD',
+                //email send params
+                array(
+                    'OPT_USER' => $form->getField('company_name'),
+                    'SECTION' => $sectionName,
+                    'SECTION_CODE' => \CUtil::translit(Helper::enc($form->getField('company_name')), 'RU'),
+                )
+            );
         }
     }
 
