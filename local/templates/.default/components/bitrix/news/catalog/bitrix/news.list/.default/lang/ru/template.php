@@ -4,3 +4,4 @@ $MESS['LEMA_OPT_USER_PRODUCTS_TITLE'] = 'Товары производителя
 $MESS['LEMA_MIN_PRICE_TITLE'] = 'Минимальная цена закупки';
 $MESS['LEMA_SEND_REQUEST_BTN_TITLE'] = 'отправить запрос';
 $MESS['LEMA_MIN_PRICE_CURRENCY'] = 'руб.';
+$MESS['LEMA_ERROR'] = 'К сожалению, оптовиков в данной категории не найдено';

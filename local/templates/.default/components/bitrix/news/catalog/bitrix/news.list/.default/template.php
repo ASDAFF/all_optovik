@@ -84,7 +84,7 @@ $data = new \Lema\Template\TemplateHelper($this);
     <div class="container">
         <div class="catalog__list">
             <br><br>
-            К сожалению, оптовиков в данной категории не найдено
+            <?=Loc::getMessage('LEMA_ERROR');?>
             <br><br>
         </div>
 
