@@ -1,3 +1,1 @@
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus
-accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes,
-nascetur ridiculus mus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+All-optovik.ru - сервис онлайн-заявок для &nbsp;оптовиков. Наша цель - помочь сотрудничеству оптовых покупателей и продавцов! По статистике каждый день несколько тысяч оптовиков со всей России заказывают товары оптом через интернет. Мы поможем Вам найти подходящего поставщика, заказать необходимый товар и оперативно связаться с продавцом.
