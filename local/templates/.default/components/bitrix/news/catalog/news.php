@@ -264,7 +264,154 @@ Loc::loadMessages(__FILE__);
 ),
     false
 ); ?>
-<? include($_SERVER['DOCUMENT_ROOT'] . '/test/template/inquiries.php'); ?>
+<div class="container-fluid inquiries">
+    <div class="container">
+        <div class="inquiries__title">
+            <span>Запросы и предложения</span>
+        </div>
+        <div class="inquiries__blocks">
+            <div class="inquiries__block">
+                <? $APPLICATION->IncludeComponent(
+                    "bitrix:news.list",
+                    "requests_and_suggestions",
+                    array(
+                        "ACTIVE_DATE_FORMAT" => "d.m.Y",
+                        "ADD_SECTIONS_CHAIN" => "N",
+                        "AJAX_MODE" => "Y",
+                        "AJAX_OPTION_ADDITIONAL" => "",
+                        "AJAX_OPTION_HISTORY" => "N",
+                        "AJAX_OPTION_JUMP" => "Y",
+                        "AJAX_OPTION_STYLE" => "Y",
+                        "CACHE_FILTER" => "N",
+                        "CACHE_GROUPS" => "Y",
+                        "CACHE_TIME" => "36000000",
+                        "CACHE_TYPE" => "A",
+                        "CHECK_DATES" => "Y",
+                        "DETAIL_URL" => "",
+                        "DISPLAY_BOTTOM_PAGER" => "N",
+                        "DISPLAY_DATE" => "N",
+                        "DISPLAY_NAME" => "N",
+                        "DISPLAY_PICTURE" => "N",
+                        "DISPLAY_PREVIEW_TEXT" => "N",
+                        "DISPLAY_TOP_PAGER" => "N",
+                        "FIELD_CODE" => array(
+                            0 => "PREVIEW_TEXT",
+                            1 => "DATE_ACTIVE_FROM",
+                            2 => "",
+                        ),
+                        "FILTER_NAME" => "",
+                        "HIDE_LINK_WHEN_NO_DETAIL" => "N",
+                        "IBLOCK_ID" => "8",
+                        "IBLOCK_TYPE" => "catalog",
+                        "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+                        "INCLUDE_SUBSECTIONS" => "N",
+                        "MESSAGE_404" => "",
+                        "NEWS_COUNT" => "3",
+                        "PAGER_BASE_LINK_ENABLE" => "N",
+                        "PAGER_DESC_NUMBERING" => "N",
+                        "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+                        "PAGER_SHOW_ALL" => "N",
+                        "PAGER_SHOW_ALWAYS" => "N",
+                        "PAGER_TEMPLATE" => ".default",
+                        "PAGER_TITLE" => "Новости",
+                        "PARENT_SECTION" => "",
+                        "PARENT_SECTION_CODE" => "news",
+                        "PREVIEW_TRUNCATE_LEN" => "",
+                        "PROPERTY_CODE" => array(
+                            0 => "OPT_USER",
+                            1 => "",
+                        ),
+                        "SET_BROWSER_TITLE" => "N",
+                        "SET_LAST_MODIFIED" => "N",
+                        "SET_META_DESCRIPTION" => "N",
+                        "SET_META_KEYWORDS" => "N",
+                        "SET_STATUS_404" => "N",
+                        "SET_TITLE" => "N",
+                        "SHOW_404" => "N",
+                        "SORT_BY1" => "ACTIVE_FROM",
+                        "SORT_BY2" => "SORT",
+                        "SORT_ORDER1" => "DESC",
+                        "SORT_ORDER2" => "ASC",
+                        "STRICT_SECTION_CHECK" => "N",
+                        "COMPONENT_TEMPLATE" => "requests_and_suggestions",
+                        "FILE_404" => ""
+                    ),
+                    false
+                ); ?>
+            </div>
+            <div class="inquiries__block">
+                <? $APPLICATION->IncludeComponent(
+                    "bitrix:news.list",
+                    "requests_and_suggestions",
+                    array(
+                        "ACTIVE_DATE_FORMAT" => "d.m.Y",
+                        "ADD_SECTIONS_CHAIN" => "N",
+                        "AJAX_MODE" => "Y",
+                        "AJAX_OPTION_ADDITIONAL" => "",
+                        "AJAX_OPTION_HISTORY" => "N",
+                        "AJAX_OPTION_JUMP" => "Y",
+                        "AJAX_OPTION_STYLE" => "Y",
+                        "CACHE_FILTER" => "N",
+                        "CACHE_GROUPS" => "Y",
+                        "CACHE_TIME" => "36000000",
+                        "CACHE_TYPE" => "A",
+                        "CHECK_DATES" => "Y",
+                        "DETAIL_URL" => "",
+                        "DISPLAY_BOTTOM_PAGER" => "N",
+                        "DISPLAY_DATE" => "N",
+                        "DISPLAY_NAME" => "N",
+                        "DISPLAY_PICTURE" => "N",
+                        "DISPLAY_PREVIEW_TEXT" => "N",
+                        "DISPLAY_TOP_PAGER" => "N",
+                        "FIELD_CODE" => array(
+                            0 => "PREVIEW_TEXT",
+                            1 => "DATE_ACTIVE_FROM",
+                            2 => "",
+                        ),
+                        "FILTER_NAME" => "",
+                        "HIDE_LINK_WHEN_NO_DETAIL" => "N",
+                        "IBLOCK_ID" => "9",
+                        "IBLOCK_TYPE" => "catalog",
+                        "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+                        "INCLUDE_SUBSECTIONS" => "N",
+                        "MESSAGE_404" => "",
+                        "NEWS_COUNT" => "3",
+                        "PAGER_BASE_LINK_ENABLE" => "N",
+                        "PAGER_DESC_NUMBERING" => "N",
+                        "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+                        "PAGER_SHOW_ALL" => "N",
+                        "PAGER_SHOW_ALWAYS" => "N",
+                        "PAGER_TEMPLATE" => ".default",
+                        "PAGER_TITLE" => "Новости",
+                        "PARENT_SECTION" => "",
+                        "PARENT_SECTION_CODE" => "news",
+                        "PREVIEW_TRUNCATE_LEN" => "",
+                        "PROPERTY_CODE" => array(
+                            0 => "OPT_USER",
+                            1 => "",
+                        ),
+                        "SET_BROWSER_TITLE" => "N",
+                        "SET_LAST_MODIFIED" => "N",
+                        "SET_META_DESCRIPTION" => "N",
+                        "SET_META_KEYWORDS" => "N",
+                        "SET_STATUS_404" => "N",
+                        "SET_TITLE" => "N",
+                        "SHOW_404" => "N",
+                        "SORT_BY1" => "ACTIVE_FROM",
+                        "SORT_BY2" => "SORT",
+                        "SORT_ORDER1" => "DESC",
+                        "SORT_ORDER2" => "ASC",
+                        "STRICT_SECTION_CHECK" => "N",
+                        "COMPONENT_TEMPLATE" => "requests_and_suggestions",
+                        "FILE_404" => ""
+                    ),
+                    false
+                ); ?>
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
 <div class="core__line"></div>
 <div class="container-fluid work">
     <div class="container">
