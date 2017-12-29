@@ -61,10 +61,14 @@ if($form->validate())
     if($form->getField('request_agreement') && $form->getField('element_id'))
     {
         //search element & get it's section id
-        $element = \Bitrix\Iblock\ElementTable::getByPrimary($form->getField('element_id'), array(
+        $res = \Bitrix\Iblock\ElementTable::getByPrimary($form->getField('element_id'), array(
             'filter' => array('IBLOCK_ID' => LIblock::getId('catalog')),
             'select' => array('ID', 'IBLOCK_SECTION_ID'),
         ));
+        if($res)
+        {
+            $element = $res->fetch();
+        }
         if(!empty($element['IBLOCK_SECTION_ID']))
         {
             //get all users
