@@ -63,7 +63,8 @@ $data = new \Lema\Template\TemplateHelper($this);
                                 <?=Loc::getMessage('LEMA_MIN_PRICE_CURRENCY');?>
                             </span>
                                 <? endif; ?>
-                                <a href="#" class="core__btn js-request-send" data-user-id="<?=$item->getId();?>" data-fancybox="modal"
+                                <a href="#" class="core__btn js-request-send" data-element-id="<?=$item->getId();?>"
+                                   data-user-id="<?=$item->propValue('OPT_USER');?>" data-fancybox="modal"
                                    data-src="#core__modal__add">
                                     <?=Loc::getMessage('LEMA_SEND_REQUEST_BTN_TITLE');?>
                                 </a>

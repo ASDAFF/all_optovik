@@ -75,6 +75,7 @@ $(function () {
     //add opt user id to request form
     $('.js-request-send').on('click', function () {
         $('input[name="opt_user_id"]').val($(this).data('user-id'));
+        $('input[name="element_id"]').val($(this).data('element-id'));
     });
 
     //ajax handler for request form

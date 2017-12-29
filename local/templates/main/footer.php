@@ -174,6 +174,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                 <span>Оставить запрос</span>
             </div>
             <input type="hidden" name="opt_user_id" value="">
+            <input type="hidden" name="element_id" value="">
             <div class="core__form__input js-field-block">
                 <input name="name" class="core__form__input__control" placeholder="Ваше имя и фамилия">
                 <div class="core__form__input__log core__form__input__log_danger"></div>
@@ -204,6 +205,14 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                         </small>
                     </label>
                     <div class="core__form__input__log core__form__input__log_danger"></div>
+                </div>
+            </div>
+            <div class="core__form__check">
+                <div class="core__form__checkbox">
+                    <input id="form__checkbox__zal" name="request_agreement" type="checkbox">
+                    <label for="form__checkbox__zal">
+                        Согласен отправить заявку другим компаниям
+                    </label>
                 </div>
             </div>
             <br>

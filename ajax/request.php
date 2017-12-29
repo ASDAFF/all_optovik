@@ -29,27 +29,66 @@ $form = new \Lema\Forms\AjaxForm(array(
 if($form->validate())
 {
     $status = $form->formActionFull(
-        //iblock id
-            LIblock::getId('requests'),
-            //iblock add params
-            array(
-                'NAME' => Helper::enc($form->getField('name')),
-                'PREVIEW_TEXT' => Helper::enc($form->getField('request')),
-                'PROPERTY_VALUES' => array(
-                    'OPT_USER' => $form->getField('opt_user_id'),
-                    'EMAIL' => Helper::enc($form->getField('email')),
-                    'PHONE' => Helper::enc($form->getField('phone')),
-                    'COMPANY_NAME' => Helper::enc($form->getField('company_name')),
-                ),
-                'ACTIVE' => 'N',
+    //iblock id
+        LIblock::getId('requests'),
+        //iblock add params
+        array(
+            'NAME' => Helper::enc($form->getField('name')),
+            'PREVIEW_TEXT' => Helper::enc($form->getField('request')),
+            'PROPERTY_VALUES' => array(
+                'OPT_USER' => (int) $form->getField('opt_user_id'),
+                'EMAIL' => Helper::enc($form->getField('email')),
+                'PHONE' => Helper::enc($form->getField('phone')),
+                'COMPANY_NAME' => Helper::enc($form->getField('company_name')),
             ),
-            //email event name
-            'OPT_USER_REQUEST',
-            //email send params
-            array(
-                'AUTHOR' => $form->getField('company_name'),
-            )
-        );
+            'ACTIVE' => 'N',
+        ),
+        //email event name
+        'OPT_USER_REQUEST',
+        //email send params
+        array(
+            'AUTHOR' => $form->getField('company_name'),
+        )
+    );
+
+    //public requests
+    if($form->getField('request_agreement') && $form->getField('element_id'))
+    {
+        //search element & get it's section id
+        $element = \Bitrix\Iblock\ElementTable::getByPrimary($form->getField('element_id'), array(
+            'filter' => array('IBLOCK_ID' => LIblock::getId('catalog')),
+            'select' => array('ID', 'IBLOCK_SECTION_ID'),
+        ));
+        if(!empty($element['IBLOCK_SECTION_ID']))
+        {
+            //get all users
+            $users = array();
+            $res = \CUser::GetList($by='sort', $order='asc', array(), array(
+                'FIELDS' => array('ID', 'WORK_COMPANY', 'WORK_MAILBOX'),
+            ));
+            while($row = $res->Fetch())
+                $users[$row['ID']] = $row;
+
+            //search elements in this  section
+            $elements = \Lema\IBlock\Element::getList(LIblock::getId('catalog'), array(
+                'filter' => array('IBLOCK_SECTION_ID' => (int) $element['IBLOCK_SECTION_ID'], 'ACTIVE' => 'Y'),
+                'select' => array('ID', 'PROPERTY_OPT_USER'),
+            ));
+            foreach($elements as $element)
+            {
+                //user is found, email is not empty
+                if(!empty($users[$element['PROPERTY_OPT_USER_VALUE']]['WORK_MAILBOX']))
+                {
+                    //send message
+                    $form->sendMessage('OPT_USER_REQUEST_PUBLIC', array(
+                        '#EMAIL_TO#' => $users[$element['PROPERTY_OPT_USER_VALUE']]['WORK_MAILBOX'],
+                        //...
+                    ));
+                }
+            }
+
+        }
+    }
 
     echo json_encode($status ? array('success' => true) : array('errors' => $form->getErrors()));
 }
