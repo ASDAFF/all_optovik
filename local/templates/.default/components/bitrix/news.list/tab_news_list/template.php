@@ -23,11 +23,12 @@ $data = new \Lema\Template\TemplateHelper($this);
 
 $bxAjaxId = CAjax::GetComponentID($component->__name, $component->__template->__name);
 
+$sCode = $arResult['SECTION']['PATH'][0]['CODE'];
 ?>
 <div class="ajax_load">
-    <? if ($_REQUEST['showMore'] == '1')
+    <? if ($_REQUEST['showMore_' . $sCode] == '1')
         $APPLICATION->RestartBuffer(); ?>
-    <div class="news__list">
+    <div class="news__list <?= $sCode; ?>">
         <? foreach ($data->items() as $item): ?>
             <div class="news__item">
                 <div class="news__item__img">
@@ -47,7 +48,7 @@ $bxAjaxId = CAjax::GetComponentID($component->__name, $component->__template->__
                         </p>
                     </div>
                     <div class="news__item__btn">
-                        <a href="<?= $item->detailUrl(); ?>" title="<?= $item->getName(); ?>"><? Loc::getMessage('TAB_NEWS_LIST_MORE_INFO'); ?></a>
+                        <a href="<?= $item->detailUrl(); ?>" title="<?= $item->getName(); ?>"><?=Loc::getMessage('TAB_NEWS_LIST_MORE_INFO'); ?></a>
                     </div>
                 </div>
             </div>
@@ -55,15 +56,16 @@ $bxAjaxId = CAjax::GetComponentID($component->__name, $component->__template->__
     </div>
     <div class="bottom_nav" style="display: none;">
         <? if ($arParams["DISPLAY_BOTTOM_PAGER"] == "Y") { ?>
-            <?= $arResult["NAV_STRING"] ?>
+            <?= $arResult["NAV_STRING"]; ?>
         <? } ?>
     </div>
-    <? if ($_REQUEST['showMore'] == '1')
+    <? if ($_REQUEST['showMore_' . $sCode] == '1')
         die(); ?>
-    <? if (empty($_GET['showMore'])): ?>
-        <div class="css_text-center">
+    <? if (empty($_GET['showMore_' . $sCode])): ?>
+        <div class="css_text-center <?=$sCode;?>">
             <div class="core__btn" class="ajax_load_btn_new" data-ajax-id="<?= $bxAjaxId ?>" data-show-more="<?= $arResult["NAV_RESULT"]->NavNum ?>"
-                 data-next-page="<?= ($arResult["NAV_RESULT"]->NavPageNomer + 1) ?>" data-max-page="<?= $arResult["NAV_RESULT"]->nEndPage ?>">
+                 data-next-page="<?= ($arResult["NAV_RESULT"]->NavPageNomer + 1) ?>" data-max-page="<?= $arResult["NAV_RESULT"]->nEndPage ?>"
+                 data-section-code="<?= $sCode; ?>">
             <span>
                 <?= Loc::getMessage('TAB_NEWS_LIST_MORE'); ?>
             </span>
@@ -86,10 +88,12 @@ $bxAjaxId = CAjax::GetComponentID($component->__name, $component->__template->__
             var bx_ajax_id = btn.attr('data-ajax-id');
             var max = btn.attr('data-max-page');
             var parent = btn.closest('.ajax_load_btn_new');
+            var code = btn.attr('data-section-code');
+            var showMoreSection = 'showMore_' + code + ': 1';
 
-            var data = {
-                showMore: 1
-            };
+            var data = {};
+
+            data['showMore_' + code] = 1;
             data['PAGEN_' + id] = page;
 
             BX.showWait(waitElement);
@@ -104,10 +108,10 @@ $bxAjaxId = CAjax::GetComponentID($component->__name, $component->__template->__
                     BX.closeWait(waitElement);
                     btn.attr('data-next-page', page * 1 + 1);
                     //btn.remove();
-                    $.when($('.ajax_load .news__list').first().append(data)).then(function () {
+                    $.when($('.ajax_load .news__list.'+ code).first().append(data)).then(function () {
                         $('.bottom_nav').html($('.bottom_nav').eq(-2).html());
-                        if(max == (page * 1))
-                            $('.css_text-center').hide();
+                        if (max == (page * 1))
+                            $('.css_text-center.'+ code).hide();
                     });
                 }
             });
