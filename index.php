@@ -357,7 +357,7 @@ $APPLICATION->SetTitle("1С-Битрикс: Управление сайтом");
                 </p>
             </div>
             <div class="page__index__about__btn">
-                <a href="javascript:void(0);" title="" class="core__btn" data-fancybox="modal" data-src="#core__modal__add">
+                <a href="<?=SITE_DIR;?>personal/profile/" title="" class="core__btn" data-fancybox="modal" data-src="#core__modal__add">
                     <? \lema\Components\IncludeArea::inc('', array('PATH' => SITE_DIR . 'include/home/about_company/button_title.php')); ?>
                 </a>
             </div>

@@ -2,9 +2,9 @@
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Предложения поставщиков");
 ?><?$APPLICATION->IncludeComponent(
-	"bitrix:news.list", 
-	"page_requests_and_suggestions", 
-	array(
+	"bitrix:news.list",
+	"page_requests_and_suggestions",
+	Array(
 		"ACTIVE_DATE_FORMAT" => "d.m.Y",
 		"ADD_SECTIONS_CHAIN" => "N",
 		"AJAX_MODE" => "N",
@@ -17,7 +17,6 @@ $APPLICATION->SetTitle("Предложения поставщиков");
 		"CACHE_TIME" => "36000000",
 		"CACHE_TYPE" => "A",
 		"CHECK_DATES" => "Y",
-		"COMPONENT_TEMPLATE" => "page_requests_and_suggestions",
 		"DETAIL_URL" => "",
 		"DISPLAY_BOTTOM_PAGER" => "Y",
 		"DISPLAY_DATE" => "N",
@@ -25,11 +24,7 @@ $APPLICATION->SetTitle("Предложения поставщиков");
 		"DISPLAY_PICTURE" => "N",
 		"DISPLAY_PREVIEW_TEXT" => "N",
 		"DISPLAY_TOP_PAGER" => "N",
-		"FIELD_CODE" => array(
-			0 => "PREVIEW_TEXT",
-			1 => "DATE_ACTIVE_FROM",
-			2 => "",
-		),
+		"FIELD_CODE" => array("PREVIEW_TEXT","DATE_ACTIVE_FROM",""),
 		"FILE_404" => "",
 		"FILTER_NAME" => "",
 		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
@@ -38,7 +33,7 @@ $APPLICATION->SetTitle("Предложения поставщиков");
 		"INCLUDE_IBLOCK_INTO_CHAIN" => "N",
 		"INCLUDE_SUBSECTIONS" => "N",
 		"MESSAGE_404" => "",
-		"NEWS_COUNT" => "3",
+		"NEWS_COUNT" => "20",
 		"PAGER_BASE_LINK_ENABLE" => "N",
 		"PAGER_DESC_NUMBERING" => "N",
 		"PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
@@ -49,10 +44,7 @@ $APPLICATION->SetTitle("Предложения поставщиков");
 		"PARENT_SECTION" => "",
 		"PARENT_SECTION_CODE" => "",
 		"PREVIEW_TRUNCATE_LEN" => "",
-		"PROPERTY_CODE" => array(
-			0 => "OPT_USER",
-			1 => "",
-		),
+		"PROPERTY_CODE" => array("OPT_USER",""),
 		"SET_BROWSER_TITLE" => "N",
 		"SET_LAST_MODIFIED" => "N",
 		"SET_META_DESCRIPTION" => "N",
@@ -65,6 +57,5 @@ $APPLICATION->SetTitle("Предложения поставщиков");
 		"SORT_ORDER1" => "DESC",
 		"SORT_ORDER2" => "ASC",
 		"STRICT_SECTION_CHECK" => "N"
-	),
-	false
+	)
 );?><br><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
