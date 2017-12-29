@@ -9,3 +9,6 @@
 .inquiries__block__item__img img {
     max-height: 85px;
 }
+.footer__search {
+    margin-top: -40px;
+}
