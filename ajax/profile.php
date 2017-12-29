@@ -76,11 +76,14 @@ if($form->validate())
 
         $res = \Bitrix\Iblock\SectionTable::getByPrimary((int) $form->getField('section'), array(
             'filter' => array('IBLOCK_ID' => LIblock::getId('catalog')),
-            'select' => array('NAME'),
+            'select' => array('NAME', 'CODE'),
         ));
         $sectionName = 'Не указано';
         if($row = $res->fetch())
+        {
             $sectionName = $row['NAME'];
+            $sectionCode = $row['CODE'];
+        }
 
         //check record for exists
         $existElement = \Lema\IBlock\Element::getList(LIblock::getId('catalog'), array(
@@ -126,7 +129,7 @@ if($form->validate())
                 $form->sendMessage('OPT_USER_FORM_UPDATE', array(
                     'OPT_USER' => $form->getField('company_name'),
                     'SECTION' => $sectionName,
-                    'SECTION_CODE' => \CUtil::translit(Helper::enc($form->getField('company_name')), 'RU'),
+                    'SECTION_CODE' => $sectionCode,
                 ));
             }
         }
@@ -156,7 +159,7 @@ if($form->validate())
                 array(
                     'OPT_USER' => $form->getField('company_name'),
                     'SECTION' => $sectionName,
-                    'SECTION_CODE' => \CUtil::translit(Helper::enc($form->getField('company_name')), 'RU'),
+                    'SECTION_CODE' => $sectionCode,
                 )
             );
         }
