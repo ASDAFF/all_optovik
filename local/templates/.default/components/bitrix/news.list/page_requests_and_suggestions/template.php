@@ -12,6 +12,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
+
 use Bitrix\Main\Localization\Loc;
 
 Loc::loadMessages(__FILE__);
@@ -20,7 +21,7 @@ if (empty($arResult['ITEMS'])) { ?>
     <div class="core__title">
         <h1 class="core__title__control">
             <br>
-            <? $APPLICATION->ShowTitle(false); ?><?=Loc::getMessage('PAGE_R_AND_S_ERROR');?>
+            <? $APPLICATION->ShowTitle(false); ?><?= Loc::getMessage('PAGE_R_AND_S_ERROR'); ?>
         </h1>
     </div>
     <?
@@ -46,12 +47,12 @@ $data = new \Lema\Template\TemplateHelper($this);
             </div>
             <? endif; ?>
                 <div class="inquiries__block__item__text">
-                <p><?= $item->previewText(); ?></p>
-            </div>
-            <div class="inquiries__block__item__date">
-                <span><?= $item->get('DATE_ACTIVE_FROM'); ?></span>
-            </div>
-        </span>
+                    <p><?= $item->previewText(); ?></p>
+                </div>
+                <div class="inquiries__block__item__date">
+                    <span><?= $item->get('DATE_ACTIVE_FROM'); ?></span>
+                </div>
+            </span>
         <? endforeach; ?>
     </div>
     <? if ($arParams["DISPLAY_BOTTOM_PAGER"]): ?>
