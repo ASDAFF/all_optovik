@@ -54,7 +54,12 @@ $item = $data->item();
                         <?=Loc::getMessage('CATALOG_UPLOAD_PRICE_LIST');?>
                     </a>
                 <? endif; ?>
-                <a href="#" class="core__btn"><?=Loc::getMessage('CATALOG_SUBMIT');?></a>
+                <a href="#" class="core__btn js-request-send"
+                   data-element-id="<?=$item->getId();?>"
+                   data-user-id="<?=$item->propValue('OPT_USER');?>" data-fancybox="modal"
+                   data-src="#core__modal__add">
+                    <?=Loc::getMessage('CATALOG_SUBMIT');?>
+                </a>
             </div>
         </div>
     </div>
