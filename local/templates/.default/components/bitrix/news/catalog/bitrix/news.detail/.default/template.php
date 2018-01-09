@@ -15,7 +15,9 @@ $this->setFrameMode(true);
 use Bitrix\Main\Localization\Loc;
 
 Loc::loadMessages(__FILE__);
+
 $data = new \Lema\Template\TemplateHelper($this);
+
 $item = $data->item();
 ?>
 <div class="container">
@@ -143,17 +145,21 @@ $item = $data->item();
                 ?>
                 <div data-page-count="<?=$pageCount;?>" class="catalog__detail__main__list js-product-photos">
                     <? foreach($item->prop('PICTURES', 'FILE_DATA') as $file): ?>
-                        <a href="<?=$file['SRC'];?>" data-fancybox="true" title="<?=$file['ORIGINAL_NAME'];?>"
+                        <a href="<?=$file['SRC'];?>" data-fancybox="true" title="<?=$file['PRODUCT_NAME'];?>"
                            class="catalog__detail__main__list__item<? if(++$i > $pageCount) { ?> hidden<? } ?>">
                             <div class="catalog__detail__main__list__item__wrap">
                                 <div class="catalog__detail__main__list__item__img">
-                                    <img src="<?=$file['SRC'];?>" alt="">
+                                    <img src="<?=$file['SRC'];?>" alt="<?=$file['PRODUCT_NAME'];?>">
                                 </div>
                                 <div class="catalog__detail__main__list__item__name">
-                                    <span><?=$file['PRODUCT_NAME'];?></span>
+                                    <? if(!empty($file['PRODUCT_NAME'])): ?>
+                                        <span><?=$file['PRODUCT_NAME'];?></span>
+                                    <? endif; ?>
                                 </div>
                                 <div class="catalog__detail__main__list__item__price">
-                                    <span><?=$file['PRODUCT_PRICE'];?> руб.</span>
+                                    <? if(!empty($file['PRODUCT_PRICE'])): ?>
+                                        <span><?=$file['PRODUCT_PRICE'];?> <?=Loc::getMessage('LEMA_CATALOG_DETAIL_PRICE_CURRENCY');?></span>
+                                    <? endif; ?>
                                 </div>
                             </div>
                         </a>
