@@ -1,17 +1,17 @@
 <? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 \Bitrix\Main\Loader::includeModule('iblock');
-$arDir = explode('/',$APPLICATION->GetCurDir());
+$arDir = explode('/', $APPLICATION->GetCurDir());
 $res = \Bitrix\Iblock\ElementTable::getList(array(
-    'filter' => array('IBLOCK_ID' => LIblock::getId('news_articles_shares'), 'ACTIVE' => 'Y', 'IBLOCK_SECTION.CODE'=>$arDir[1], 'CODE' => $_GET['CODE']),
+    'filter' => array('IBLOCK_ID' => LIblock::getId('news_articles_shares'), 'ACTIVE' => 'Y', 'IBLOCK_SECTION.CODE' => $arDir[1], 'CODE' => $_GET['CODE']),
     'select' => array('ID'),
 ));
 $id = 0;
 if($row = $res->fetch())
     $id = $row['ID'];
 ?>
-<?$APPLICATION->IncludeComponent(
+<? $APPLICATION->IncludeComponent(
     "bitrix:news.detail",
-    ".default",
+    "detail",
     array(
         "ACTIVE_DATE_FORMAT" => "d.m.Y",
         "ADD_ELEMENT_CHAIN" => "N",
@@ -36,8 +36,10 @@ if($row = $res->fetch())
         "ELEMENT_CODE" => '',
         "ELEMENT_ID" => $id,
         "FIELD_CODE" => array(
-            0 => "",
-            1 => "",
+            1 => "NAME",
+            2 => 'DETAIL_PICTURE',
+            3 => 'DETAIL_TEXT',
+            4 => 'SECTION_PAGE_URL',
         ),
         "IBLOCK_ID" => "6",
         "IBLOCK_TYPE" => "content",
@@ -65,8 +67,8 @@ if($row = $res->fetch())
         "STRICT_SECTION_CHECK" => "Y",
         "USE_PERMISSIONS" => "N",
         "USE_SHARE" => "N",
-        "COMPONENT_TEMPLATE" => ".default"
+        "COMPONENT_TEMPLATE" => ".default",
     ),
     false
-);?><br>
+); ?><br>
 <? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>
