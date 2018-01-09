@@ -150,10 +150,10 @@ $item = $data->item();
                                     <img src="<?=$file['SRC'];?>" alt="">
                                 </div>
                                 <div class="catalog__detail__main__list__item__name">
-                                    <span><?=$file['ORIGINAL_NAME'];?></span>
+                                    <span><?=$file['PRODUCT_NAME'];?></span>
                                 </div>
                                 <div class="catalog__detail__main__list__item__price">
-                                    <span>5000 руб.</span>
+                                    <span><?=$file['PRODUCT_PRICE'];?> руб.</span>
                                 </div>
                             </div>
                         </a>

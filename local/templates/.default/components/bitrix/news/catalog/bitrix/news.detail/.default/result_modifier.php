@@ -35,7 +35,21 @@ $arResult['PROPERTIES']['PICTURES']['FILE_DATA'] = array();
 if(Helper::propFilled('PICTURES', $arResult))
 {
     foreach($arResult['PROPERTIES']['PICTURES']['VALUE'] as $k => $fileId)
-        $arResult['PROPERTIES']['PICTURES']['FILE_DATA'][$k] = \CFile::GetFileArray($fileId);
+    {
+        $data = \CFile::GetFileArray($fileId);
+        $data['PRODUCT_PRICE'] = $data['PRODUCT_NAME'] = null;
+        //split description by '/' (NAME / PRICE)
+        $tmp = preg_split('~\\s*?/\\s*?~u', $data['DESCRIPTION'], -1, PREG_SPLIT_NO_EMPTY);
+        if(count($tmp) > 1)
+        {
+            $data['PRODUCT_PRICE'] = array_pop($tmp);
+            if(count($tmp) > 1)
+                $data['PRODUCT_NAME'] = join('/', $tmp);
+            else
+                $data['PRODUCT_NAME'] = $tmp[0];
+        }
+        $arResult['PROPERTIES']['PICTURES']['FILE_DATA'][$k] = $data;
+    }
 }
 
 //build user section list
