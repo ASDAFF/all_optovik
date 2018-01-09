@@ -16,7 +16,7 @@ $frame = $this->createFrame("subscribe-form", false)->begin();
     <form action="<?= $arResult["FORM_ACTION"] ?>">
         <div class="feedback__form__input core__form__input">
             <input type="text" name="sf_EMAIL" class="feedback__form__input__control core__form__input__control" size="20"
-                   placeholder="your@email.com" value="<?= $arResult["EMAIL"] ?>" title="<?= GetMessage("subscr_form_email_title") ?>"/>
+                   placeholder="you@mail.com" value="<?= $arResult["EMAIL"] ?>" title="<?= GetMessage("subscr_form_email_title") ?>"/>
         </div>
         <div class="feedback__form__btn">
             <input type="submit" name="OK" class="core__btn" value="<?= GetMessage("subscr_form_button") ?>"/>
