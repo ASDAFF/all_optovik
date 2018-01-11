@@ -182,6 +182,7 @@ Loc::loadMessages(__FILE__);
                                 <?= User::get()->GetLogin(); ?>
                             </a>
                         <? endif; ?>
+                        <a href="/assets/file/tarf.docx" title="Инструкция и тарифы">Инструкция и тарифы</a>
 
                     </div>
                     <? $APPLICATION->IncludeComponent(

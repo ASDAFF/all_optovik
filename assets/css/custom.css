@@ -38,3 +38,7 @@ form[name="bform"],
     display: block;
     max-width: 1140px!important;
     margin: 20px auto;}
+
+.header__form__search {
+    margin-top: 0;
+}
