@@ -29,6 +29,6 @@ $item = $data->item();
         <div>
             <?=$item->detailText();?>
         </div>
+        <a class="core__btn" href="<?=SITE_DIR;?>news/"><span><?=Loc::getMessage('LEMA_NEWS_DETAIL_BACK');?></span></a>
     </div>
-    <a class="core__btn" href="<?=SITE_DIR;?>news/"><span><?=Loc::getMessage('LEMA_NEWS_DETAIL_BACK');?></span></a>
 </div>

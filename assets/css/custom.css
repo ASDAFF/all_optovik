@@ -9,3 +9,32 @@
 .inquiries__block__item__img img {
     max-height: 85px;
 }
+
+
+/* Правки меню */
+
+.header__menu__line li {
+    width: 20%;
+}
+.header__menu__line li a {
+    padding: 10px 40px;
+}
+.news-detail {
+    text-align: center;
+}
+.news-detail h1 {
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+.news-detail img {
+    margin-bottom: 50px;
+}
+.news-detail .core__btn {
+    margin-top: 20px;
+}
+
+form[name="bform"],
+.bx-auth {
+    display: block;
+    max-width: 1140px!important;
+    margin: 20px auto;}
