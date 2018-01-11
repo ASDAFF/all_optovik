@@ -1,6 +1,6 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
-$APPLICATION->SetTitle("1С-Битрикс: Управление сайтом");
+$APPLICATION->SetTitle("All-optovik - рекламная площадка для оптовых покупателей");
 ?>
     <div class="container-fluid blocks">
         <div class="container">

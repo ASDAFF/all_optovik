@@ -1,4 +1,4 @@
-<? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+<? if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /** @var array $arParams */
 /** @var array $arResult */
 /** @global CMain $APPLICATION */
@@ -15,12 +15,14 @@ $this->setFrameMode(true);
 use Bitrix\Main\Localization\Loc;
 
 Loc::loadMessages(__FILE__);
+
 $data = new \Lema\Template\TemplateHelper($this);
+
 $item = $data->item();
 ?>
 <div class="container">
     <div class="core__title">
-        <h1 class="core__title__control"><?= $item->getName(); ?></h1>
+        <h1 class="core__title__control"><?=$item->getName();?></h1>
     </div>
     <div class="core__line_bg"></div>
     <div class="catalog__detail">
@@ -33,30 +35,35 @@ $item = $data->item();
             </div>
             <div class="catalog__detail__head__text">
                 <p>
-                    <?= $item->previewText(); ?>
+                    <?=$item->previewText();?>
                 </p>
                 <p>
-                    <?= $item->detailText(); ?>
+                    <?=$item->detailText();?>
                 </p>
                 <? $APPLICATION->IncludeFile(SITE_DIR . 'include/catalog/phones.php'); ?>
             </div>
             <div class="catalog__detail__head__inf">
-                <i class="catalog__detail__head__inf__icon"></i>
-                <? if ($item->propFilled('CATALOG_FILE')): ?>
-                    <a href="<?= $item->get('CATALOG_FILE_LINK'); ?>" title="<?= Loc::getMessage('CATALOG_UPLOAD'); ?>">
-                        <?= Loc::getMessage('CATALOG_UPLOAD'); ?>
+                <? if($item->propFilled('CATALOG_FILE') || $item->propFilled('PRICE_FILE')): ?>
+                    <i class="catalog__detail__head__inf__icon"></i>
+                    <a href="<?=$item->get('CATALOG_FILE_LINK');?>" title="<?=Loc::getMessage('CATALOG_UPLOAD');?>">
+                        <?=Loc::getMessage('CATALOG_UPLOAD');?>
                     </a>
                 <? endif; ?>
-                <? if ($item->propFilled('PRICE_FILE')): ?>
-                    <a href="<?= $item->get('PRICE_FILE_LINK'); ?>" title="<?= Loc::getMessage('CATALOG_UPLOAD_PRICE_LIST'); ?>">
-                        <?= Loc::getMessage('CATALOG_UPLOAD_PRICE_LIST'); ?>
+                <? if($item->propFilled('PRICE_FILE')): ?>
+                    <a href="<?=$item->get('PRICE_FILE_LINK');?>" title="<?=Loc::getMessage('CATALOG_UPLOAD_PRICE_LIST');?>">
+                        <?=Loc::getMessage('CATALOG_UPLOAD_PRICE_LIST');?>
                     </a>
                 <? endif; ?>
-                <a href="#" class="core__btn"><?= Loc::getMessage('CATALOG_SUBMIT'); ?></a>
+                <a href="#" class="core__btn js-request-send"
+                   data-element-id="<?=$item->getId();?>"
+                   data-user-id="<?=$item->propValue('OPT_USER');?>" data-fancybox="modal"
+                   data-src="#core__modal__add">
+                    <?=Loc::getMessage('CATALOG_SUBMIT');?>
+                </a>
             </div>
         </div>
     </div>
-    <? if ($arResult['IS_VIP']): ?>
+    <? if($arResult['IS_VIP']): ?>
         <div class="tabs">
             <div class="tabs__nav" data-js-core-tabs-nav="tabs">
                 <a href="#" title="" data-js-core-tabs-nav-id="1" class="active"><span><?=Loc::getMessage('CATALOG_WORKING_CONDITIONS');?></span></a>
@@ -69,23 +76,23 @@ $item = $data->item();
                 <div class="tabs__item active" data-js-core-tabs-id="1">
                     <div class="tabs__item__text">
                         <p>
-                            <?= $arResult['USER_DATA']->get('UF_WORK_COND'); ?>
+                            <?=$arResult['USER_DATA']->get('UF_WORK_COND');?>
                         </p>
                     </div>
                 </div>
                 <div class="tabs__item" data-js-core-tabs-id="2">
                     <p>
-                        <?= $arResult['USER_DATA']->get('UF_DELIVERY_COND'); ?>
+                        <?=$arResult['USER_DATA']->get('UF_DELIVERY_COND');?>
                     </p>
                 </div>
                 <div class="tabs__item" data-js-core-tabs-id="3">
                     <p>
-                        <?= $arResult['USER_DATA']->get('UF_PAY_COND'); ?>
+                        <?=$arResult['USER_DATA']->get('UF_PAY_COND');?>
                     </p>
                 </div>
                 <div class="tabs__item" data-js-core-tabs-id="4">
                     <p>
-                        <?= $arResult['USER_DATA']->get('UF_DISCOUNTS'); ?>
+                        <?=$arResult['USER_DATA']->get('UF_DISCOUNTS');?>
                     </p>
                 </div>
                 <div class="tabs__item" data-js-core-tabs-id="5">
@@ -97,13 +104,13 @@ $item = $data->item();
                             'WORK_CITY' => Loc::getMessage('CATALOG_WORK_CITY'),
                             'WORK_STREET' => Loc::getMessage('CATALOG_WORK_ADDRESS'),
                         );
-                        foreach ($data as $k => $title):
+                        foreach($data as $k => $title):
                             $info = $arResult['USER_DATA']->get($k);
-                            if (!$info)
+                            if(!$info)
                                 continue;
                             ?>
-                            <?= $title; ?>:
-                            <?= $info; ?>
+                            <?=$title;?>:
+                            <?=$info;?>
                             <br>
                         <? endforeach; ?>
                     </p>
@@ -118,14 +125,14 @@ $item = $data->item();
                     <span><?=Loc::getMessage('CATALOG_PRODUCTS_COMPANY');?></span>
                 </div>
                 <ul>
-                    <? foreach ($arResult['ELEMENT_SECTIONS'] as $section): ?>
+                    <? foreach($arResult['ELEMENT_SECTIONS'] as $section): ?>
                         <li>
-                            <a href="<?= $section['SECTION_URL']; ?>" title="<?= $section['NAME']; ?>"><?= $section['NAME']; ?></a>
+                            <a href="<?=$section['SECTION_URL'];?>" title="<?=$section['NAME'];?>"><?=$section['NAME'];?></a>
                             <ul>
-                                <? foreach ($section['SECTIONS'] as $innerSection): ?>
+                                <? foreach($section['SECTIONS'] as $innerSection): ?>
                                     <li>
-                                        <a href="<?= $innerSection['SECTION_URL']; ?>" title="<?= $innerSection['NAME']; ?>">
-                                            <?= $innerSection['NAME']; ?>
+                                        <a href="<?=$innerSection['SECTION_URL'];?>" title="<?=$innerSection['NAME'];?>">
+                                            <?=$innerSection['NAME'];?>
                                         </a>
                                     </li>
                                 <? endforeach; ?>
@@ -136,24 +143,28 @@ $item = $data->item();
             </div>
         </div>
         <div class="catalog__detail__main__right">
-            <? if ($item->propFilled('PICTURES')): ?>
+            <? if($item->propFilled('PICTURES')): ?>
                 <?php
                 $pageCount = 1;
                 $i = 0;
                 ?>
-                <div data-page-count="<?= $pageCount; ?>" class="catalog__detail__main__list js-product-photos">
-                    <? foreach ($item->prop('PICTURES', 'FILE_DATA') as $file): ?>
-                        <a href="<?= $file['SRC']; ?>" data-fancybox="true" title="<?= $file['ORIGINAL_NAME']; ?>"
-                           class="catalog__detail__main__list__item<? if (++$i > $pageCount) { ?> hidden<? } ?>">
+                <div data-page-count="<?=$pageCount;?>" class="catalog__detail__main__list js-product-photos">
+                    <? foreach($item->prop('PICTURES', 'FILE_DATA') as $file): ?>
+                        <a href="<?=$file['SRC'];?>" data-fancybox="true" title="<?=$file['PRODUCT_NAME'];?>"
+                           class="catalog__detail__main__list__item<? if(++$i > $pageCount) { ?> hidden<? } ?>">
                             <div class="catalog__detail__main__list__item__wrap">
                                 <div class="catalog__detail__main__list__item__img">
-                                    <img src="<?= $file['SRC']; ?>" alt="">
+                                    <img src="<?=$file['SRC'];?>" alt="<?=$file['PRODUCT_NAME'];?>">
                                 </div>
                                 <div class="catalog__detail__main__list__item__name">
-                                    <span><?= $file['ORIGINAL_NAME']; ?></span>
+                                    <? if(!empty($file['PRODUCT_NAME'])): ?>
+                                        <span><?=$file['PRODUCT_NAME'];?></span>
+                                    <? endif; ?>
                                 </div>
                                 <div class="catalog__detail__main__list__item__price">
-                                    <span>5000 руб.</span>
+                                    <? if(!empty($file['PRODUCT_PRICE'])): ?>
+                                        <span><?=$file['PRODUCT_PRICE'];?> <?=Loc::getMessage('LEMA_CATALOG_DETAIL_PRICE_CURRENCY');?></span>
+                                    <? endif; ?>
                                 </div>
                             </div>
                         </a>

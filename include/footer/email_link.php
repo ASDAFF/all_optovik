@@ -1,1 +1,1 @@
-<a href="mailto:adress@mail.com" title="Написать нам"><span>adress@mail.com</span></a>
+<a href="mailto:info@all-optovik.ru" title="Написать нам">info@all-optovik.ru</a>

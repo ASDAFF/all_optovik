@@ -25,11 +25,7 @@ if($user->get('WORK_COMPANY'))
         foreach($elements as $element)
             $cardShowCount += $element['SHOW_COUNTER'];
     }
-    /*$requests = \Lema\IBlock\Element::getList(array(
-        'filter' => array('IBLOCK_ID' => LIblock::getId('requests'), 'PROPERTY_OPT_USER' => $user->get('ID')),
-        'select' => array('ID'),
-    ));
-    $requestsCount = count($requests);*/
+
     $requests = \Lema\IBlock\Element::getList(LIblock::getId('requests'), array(
         'filter' => array('PROPERTY_OPT_USER' => $user->get('ID')),
         'select' => array('ID'),
