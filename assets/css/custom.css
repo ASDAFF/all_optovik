@@ -13,12 +13,6 @@
 
 /* Правки меню */
 
-.header__menu__line li {
-    width: 20%;
-}
-.header__menu__line li a {
-    padding: 10px 40px;
-}
 .news-detail {
     text-align: center;
 }
