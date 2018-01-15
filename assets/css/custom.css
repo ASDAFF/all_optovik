@@ -41,3 +41,8 @@ form[name="bform"],
 #title-search-input-footer::-moz-placeholder          {color:#fff;}/* Firefox 19+ */
 #title-search-input-footer:-moz-placeholder           {color:#fff;}/* Firefox 18- */
 #title-search-input-footer:-ms-input-placeholder      {color:#fff;}
+
+
+.header__form__btn__file {
+    color: #5db32c!important;
+}
