@@ -28,9 +28,11 @@ $item = $data->item();
     <div class="catalog__detail">
         <div class="catalog__detail__head">
             <div class="catalog__detail__head__img">
-                <img class="catalog__detail__head__img__control" src="/assets/img/news/img-1.jpg">
+                <img class="catalog__detail__head__img__control" src="<?=$item->detailPicture();?>">
                 <div class="catalog__detail__head__img__work">
-                    <img src="/assets/img/work/img-2.jpg" title="">
+                    <? if($item->get('OPT_LOGO')): ?>
+                        <img src="<?=$item->get('OPT_LOGO_SRC');?>" title="<?=$item->getName();?>">
+                    <? endif; ?>
                 </div>
             </div>
             <div class="catalog__detail__head__text">

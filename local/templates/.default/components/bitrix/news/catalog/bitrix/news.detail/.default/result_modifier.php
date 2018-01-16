@@ -77,3 +77,22 @@ foreach($sections as $sectionId => $section)
     if(empty($arResult['ELEMENT_SECTIONS'][$sectionId]['SECTIONS']))
         unset($arResult['ELEMENT_SECTIONS'][$sectionId]);
 }
+//company logo
+$arResult['OPT_LOGO'] = $arResult['OPT_LOGO_SRC'] = null;
+if(Helper::propFilled('OPT_USER', $arResult))
+{
+    $logo = \UserData::instance((int) Helper::propValue('OPT_USER', $arResult))->get('WORK_LOGO');
+    $arResult['OPT_LOGO'] = $logo;
+    $arResult['OPT_LOGO_SRC'] = empty($logo) ? null : \CFile::GetPath($logo);
+}
+//preview pictures for item
+$arResult['PREVIEW_PICTURES'] = array();
+if(Helper::propFilled('PREVIEW_PICTURES', $arResult))
+{
+    $files = Helper::propValue('PREVIEW_PICTURES', $arItem);
+    if(!empty($files))
+    {
+        foreach($files as $fileId)
+            $arResult['PREVIEW_PICTURES'][$fileId] = \CFile::GetPath($fileId);
+    }
+}
