@@ -19,7 +19,7 @@ if(Helper::propFilled('OPT_USER', $arResult))
 {
     $arResult['USER_DATA'] = \UserData::instance(Helper::propValue('OPT_USER', $arResult));
     $arResult['IS_VIP'] = (bool) \UserData::instance(Helper::propValue('OPT_USER', $arResult))->get('UF_IS_VIP');
-    $optUserName = $arResult['USER_DATA']->get('WORK_COMPANY');
+    $optUserName = htmlspecialcharsback($arResult['USER_DATA']->get('WORK_COMPANY'));
 
     //get all user elements
     $elements = \Lema\IBlock\Element::getListD7(LIblock::getId('catalog'), array(
