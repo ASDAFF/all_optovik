@@ -122,7 +122,10 @@ if($row = $res->GetNext()) {
     'AJAX_OPTION_ADDITIONAL' => '',
 )); ?>
 
-<? $APPLICATION->IncludeComponent(
+<?
+global $sectionElementsFilter;
+    $sectionElementsFilter = array('SECTION_CODE' => $arResult['VARIABLES']['SECTION_CODE']);
+$APPLICATION->IncludeComponent(
     "bitrix:news.list",
     "",
     Array(
@@ -132,6 +135,7 @@ if($row = $res->GetNext()) {
         "SORT_BY1" => $arParams["SORT_BY1"],
         "SORT_ORDER1" => $arParams["SORT_ORDER1"],
         "SORT_BY2" => $arParams["SORT_BY2"],
+		"SECTION_CODE"=>$arResult['VARIABLES']['SECTION_CODE'],
         "SORT_ORDER2" => $arParams["SORT_ORDER2"],
         "FIELD_CODE" => $arParams["LIST_FIELD_CODE"],
         "PROPERTY_CODE" => $arParams["LIST_PROPERTY_CODE"],
@@ -169,7 +173,7 @@ if($row = $res->GetNext()) {
         "ACTIVE_DATE_FORMAT" => $arParams["LIST_ACTIVE_DATE_FORMAT"],
         "USE_PERMISSIONS" => $arParams["USE_PERMISSIONS"],
         "GROUP_PERMISSIONS" => $arParams["GROUP_PERMISSIONS"],
-        "FILTER_NAME" => $arParams["FILTER_NAME"],
+        "FILTER_NAME" => "sectionElementsFilter",
         "HIDE_LINK_WHEN_NO_DETAIL" => $arParams["HIDE_LINK_WHEN_NO_DETAIL"],
         "CHECK_DATES" => $arParams["CHECK_DATES"],
     ),
