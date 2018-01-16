@@ -89,7 +89,7 @@ if(Helper::propFilled('OPT_USER', $arResult))
 $arResult['PREVIEW_PICTURES'] = array();
 if(Helper::propFilled('PREVIEW_PICTURES', $arResult))
 {
-    $files = Helper::propValue('PREVIEW_PICTURES', $arItem);
+    $files = Helper::propValue('PREVIEW_PICTURES', $arResult);
     if(!empty($files))
     {
         foreach($files as $fileId)
