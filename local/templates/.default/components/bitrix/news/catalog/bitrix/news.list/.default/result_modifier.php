@@ -10,7 +10,7 @@ foreach($arResult['ITEMS'] as $k => $arItem)
     $arResult['ITEMS'][$k]['OPT_LOGO'] = $arResult['ITEMS'][$k]['OPT_LOGO_SRC'] = null;
     if(Helper::propFilled('OPT_USER', $arItem))
     {
-        $logo = \UserData::instance((int) Helper::propValue('OPT_USER', $arItem))->get('WORK_LOGO');
+        $logo = (new \UserData((int) Helper::propValue('OPT_USER', $arItem)))->get('WORK_LOGO');
         $arResult['ITEMS'][$k]['OPT_LOGO'] = $logo;
         $arResult['ITEMS'][$k]['OPT_LOGO_SRC'] = empty($logo) ? null : \CFile::GetPath($logo);
     }
