@@ -147,7 +147,7 @@ $item = $data->item();
         <div class="catalog__detail__main__right">
             <? if($item->propFilled('PICTURES')): ?>
                 <?php
-                $pageCount = 1;
+                $pageCount = 12;
                 $i = 0;
                 ?>
                 <div data-page-count="<?=$pageCount;?>" class="catalog__detail__main__list js-product-photos">
