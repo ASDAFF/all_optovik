@@ -38,7 +38,7 @@ if($form->validate())
             'EMAIL' => Helper::enc($form->getField('email')),
             'PHONE' => Helper::enc($form->getField('phone')),
             'COMPANY_NAME' => Helper::enc($form->getField('company_name')),
-            'PUBLIC_REQUEST' => ($form->getField('request_agreement') ? 'Y' : false),
+            'PUBLIC_REQUEST' => ($form->getField('request_agreement') ? 'Да' : 'Нет'),
         ),
         'ACTIVE' => 'N',
     ));
