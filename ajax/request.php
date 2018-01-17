@@ -28,25 +28,30 @@ $form = new \Lema\Forms\AjaxForm(array(
 //check form fields
 if($form->validate())
 {
-    $status = $form->formActionFull(
-    //iblock id
-        LIblock::getId('requests'),
-        //iblock add params
-        array(
-            'NAME' => Helper::enc($form->getField('name')),
-            'PREVIEW_TEXT' => Helper::enc($form->getField('request')),
-            'PROPERTY_VALUES' => array(
-                'OPT_USER' => (int) $form->getField('opt_user_id'),
-                'EMAIL' => Helper::enc($form->getField('email')),
-                'PHONE' => Helper::enc($form->getField('phone')),
-                'COMPANY_NAME' => Helper::enc($form->getField('company_name')),
-            ),
-            'ACTIVE' => 'N',
+    //REQUEST_EDIT_LINK
+
+    $elementId = $form->addRecord(LIblock::getId('requests'), array(
+        'NAME' => Helper::enc($form->getField('name')),
+        'PREVIEW_TEXT' => Helper::enc($form->getField('request')),
+        'PROPERTY_VALUES' => array(
+            'OPT_USER' => (int) $form->getField('opt_user_id'),
+            'EMAIL' => Helper::enc($form->getField('email')),
+            'PHONE' => Helper::enc($form->getField('phone')),
+            'COMPANY_NAME' => Helper::enc($form->getField('company_name')),
+            'PUBLIC_REQUEST' => ($form->getField('request_agreement') ? 'Y' : false),
         ),
-        //email event name
-        'OPT_USER_REQUEST',
-        //email send params
-        array(
+        'ACTIVE' => 'N',
+    ));
+    $status = (bool) $elementId;
+
+    $requestEditLink = null;
+    if($status)
+    {
+        $requestEditLink = Helper::getFullUrl(
+            '/bitrix/admin/iblock_element_edit.php?IBLOCK_ID=8&type=catalog&ID=' . $elementId . '&lang=ru&find_section_section=-1'
+        );
+        //send message
+        $status = $form->sendMessage('OPT_USER_REQUEST', array(
             'EMAIL_TO' => \UserData::instance((int) $form->getField('opt_user_id'))->get('WORK_MAILBOX'),
             'USER' => Helper::enc($form->getField('name')),
             'REQUEST' => Helper::enc($form->getField('request')),
@@ -54,8 +59,9 @@ if($form->validate())
             'PHONE' => Helper::enc($form->getField('phone')),
             'COMPANY_NAME' => Helper::enc($form->getField('company_name')),
             'PUBLIC' => ($form->getField('request_agreement') ? 'Публичный' : 'Не публичный'),
-        )
-    );
+            'REQUEST_EDIT_LINK' => $requestEditLink,
+        ));
+    }
 
     //public requests
     if($form->getField('request_agreement') && $form->getField('element_id'))
@@ -73,7 +79,7 @@ if($form->validate())
         {
             //get all users
             $users = array();
-            $res = \CUser::GetList($by='sort', $order='asc', array(), array(
+            $res = \CUser::GetList($by = 'sort', $order = 'asc', array(), array(
                 'FIELDS' => array('ID', 'WORK_COMPANY', 'WORK_MAILBOX'),
             ));
             while($row = $res->Fetch())
@@ -97,6 +103,7 @@ if($form->validate())
                         'EMAIL' => Helper::enc($form->getField('email')),
                         'PHONE' => Helper::enc($form->getField('phone')),
                         'COMPANY_NAME' => Helper::enc($form->getField('company_name')),
+                        'REQUEST_EDIT_LINK' => $requestEditLink,
                     ));
                 }
             }

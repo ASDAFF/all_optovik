@@ -55,12 +55,12 @@ class AjaxForm extends Form
 
         $el = new \CIBlockElement();
 
-        if(!$el->Add(array_merge(array('IBLOCK_ID' => $iblockId), $data)))
+        if(!($id = $el->Add(array_merge(array('IBLOCK_ID' => $iblockId), $data))))
         {
             $this->setError('add_record', 'Произошла ошибка при добавлении записи: ' . $el->LAST_ERROR);
             return false;
         }
-        return true;
+        return $id;
     }
     /**
      * Update record in iblock
