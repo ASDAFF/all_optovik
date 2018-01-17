@@ -55,3 +55,5 @@ form[name="bform"],
 .breadcrumbs {
     font-size: 14px;
 }
+
+.catalog__detail__head__img__work img {max-width: 220px}
