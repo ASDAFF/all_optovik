@@ -19,3 +19,4 @@ Thumbs.db
 ._.DS_Store
 /nbproject
 .vscode-upload.json
+*.komodo*
