@@ -150,7 +150,8 @@ $item = $data->item();
                             <ul>
                                 <? foreach($section['SECTIONS'] as $innerSection): ?>
                                     <li>
-                                        <a href="<?=$innerSection['SECTION_URL'];?>" title="<?=$innerSection['NAME'];?>">
+                                        <a href="<?=$innerSection['SECTION_URL'];?>"<?if($innerSection['ACTIVE']){?> class="active"<?}?>
+                                           title="<?=$innerSection['NAME'];?>">
                                             <?=$innerSection['NAME'];?>
                                         </a>
                                     </li>

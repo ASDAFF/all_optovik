@@ -80,7 +80,7 @@ Loc::loadMessages(__FILE__);
         <span></span>
     </div>
     <!-- END MOBILE MENU -->
-    <div class="header container-fluid active">
+    <div class="header container-fluid<?if($APPLICATION->GetCurDir() == SITE_DIR){?> active<?}?>">
         <!--
         * active только на главной
         -->
