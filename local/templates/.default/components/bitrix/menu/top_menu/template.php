@@ -11,7 +11,7 @@
             <? if($arItem["SELECTED"]):?>
             <li><a href="<?=$arItem["LINK"]?>" data-js-core-switch-element="header" class="selected"><?=$arItem["TEXT"]?></a></li>
         <? else:?>
-            <li><a href="<?=$arItem["LINK"]?>" data-js-core-switch-element="header"><?=$arItem["TEXT"]?></a></li>
+            <li><a href="#" data-js-core-switch-element="header"><?=$arItem["TEXT"]?></a></li>
         <? endif ?>
 
         <? endforeach ?>

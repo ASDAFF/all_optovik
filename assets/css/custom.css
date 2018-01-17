@@ -46,3 +46,8 @@ form[name="bform"],
 .header__form__btn__file {
     color: #5db32c!important;
 }
+
+.catalog__list__item__text {
+    min-height: 150px;
+}
+.catalog__detail__main__list__item__img img {height: 100%}
