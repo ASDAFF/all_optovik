@@ -63,11 +63,14 @@ Loc::loadMessages(__FILE__);
 <?php
 global $bannerSectionFilter;
 $res = \CIBlockSection::GetList(array(), array('IBLOCK_ID' => $arParams['IBLOCK_ID'], 'CODE' => $arResult['VARIABLES']['SECTION_CODE']), false, array('UF_BANNERS'));
-if($row = $res->GetNext()) {
+if($row = $res->GetNext())
+{
     $bannerSectionFilter = array('ID' => $row['UF_BANNERS']);
 }
-?>
-<? $APPLICATION->IncludeComponent('bitrix:news.list', 'catalog_top_slider', array(
+if(!empty($bannerSectionFilter['ID']))
+{
+    ?>
+    <? $APPLICATION->IncludeComponent('bitrix:news.list', 'catalog_top_slider', array(
     'DISPLAY_DATE' => 'Y',
     'DISPLAY_NAME' => 'Y',
     'DISPLAY_PICTURE' => 'Y',
@@ -121,10 +124,10 @@ if($row = $res->GetNext()) {
     'AJAX_OPTION_HISTORY' => 'N',
     'AJAX_OPTION_ADDITIONAL' => '',
 )); ?>
-
+<? } ?>
 <?
 global $sectionElementsFilter;
-    $sectionElementsFilter = array('SECTION_CODE' => $arResult['VARIABLES']['SECTION_CODE']);
+$sectionElementsFilter = array('SECTION_CODE' => $arResult['VARIABLES']['SECTION_CODE']);
 $APPLICATION->IncludeComponent(
     "bitrix:news.list",
     "",
@@ -135,7 +138,7 @@ $APPLICATION->IncludeComponent(
         "SORT_BY1" => $arParams["SORT_BY1"],
         "SORT_ORDER1" => $arParams["SORT_ORDER1"],
         "SORT_BY2" => $arParams["SORT_BY2"],
-		"SECTION_CODE"=>$arResult['VARIABLES']['SECTION_CODE'],
+        "SECTION_CODE" => $arResult['VARIABLES']['SECTION_CODE'],
         "SORT_ORDER2" => $arParams["SORT_ORDER2"],
         "FIELD_CODE" => $arParams["LIST_FIELD_CODE"],
         "PROPERTY_CODE" => $arParams["LIST_PROPERTY_CODE"],
@@ -345,7 +348,7 @@ $APPLICATION->IncludeComponent(
                         "SORT_ORDER2" => "ASC",
                         "STRICT_SECTION_CHECK" => "N",
                         "COMPONENT_TEMPLATE" => "requests_and_suggestions",
-                        "FILE_404" => ""
+                        "FILE_404" => "",
                     ),
                     false
                 ); ?>
@@ -414,7 +417,7 @@ $APPLICATION->IncludeComponent(
                         "SORT_ORDER2" => "ASC",
                         "STRICT_SECTION_CHECK" => "N",
                         "COMPONENT_TEMPLATE" => "requests_and_suggestions",
-                        "FILE_404" => ""
+                        "FILE_404" => "",
                     ),
                     false
                 ); ?>
