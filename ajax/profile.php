@@ -130,6 +130,7 @@ if($form->validate())
                     'OPT_USER' => $form->getField('company_name'),
                     'SECTION' => $sectionName,
                     'SECTION_CODE' => $sectionCode,
+                    'SECTION_URL' => Helper::getFullUrl('/catalog/' . $sectionCode . '/'),
                 ));
             }
         }
@@ -160,6 +161,7 @@ if($form->validate())
                     'OPT_USER' => $form->getField('company_name'),
                     'SECTION' => $sectionName,
                     'SECTION_CODE' => $sectionCode,
+                    'SECTION_URL' => Helper::getFullUrl('/catalog/' . $sectionCode . '/'),
                 )
             );
         }
