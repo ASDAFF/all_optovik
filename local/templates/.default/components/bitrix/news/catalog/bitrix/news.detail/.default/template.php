@@ -26,6 +26,23 @@ $item = $data->item();
     </div>
     <div class="core__line_bg"></div>
     <div class="catalog__detail">
+        <div class="breadcrumbs">
+            <div class="container">
+                <ul itemscope="" itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+                        <a href="/" title="Главная" itemprop="item">Главная</a>
+                    </li>
+                    <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+                        <a href="/cat/lec" title="Раздел" itemprop="item">
+                            <span itemprop="name">Раздел</span>
+                        </a>
+                    </li>
+                    <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+                        <span>Берёзовская балка</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
         <div class="catalog__detail__head">
             <div class="catalog__detail__head__img">
                 <img class="catalog__detail__head__img__control" src="<?=$item->detailPicture();?>">

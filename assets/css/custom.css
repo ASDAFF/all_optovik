@@ -51,3 +51,7 @@ form[name="bform"],
     min-height: 150px;
 }
 .catalog__detail__main__list__item__img img {height: 100%}
+
+.breadcrumbs {
+    font-size: 14px;
+}
