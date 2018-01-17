@@ -58,7 +58,8 @@ $arResult['ELEMENT_SECTIONS'] = array();
 $urlMask = SITE_DIR . 'catalog/%s/%s/';
 foreach($sections as $sectionId => $section)
 {
-    $currentSectionCode = end(explode('/', trim(\Lema\Common\Request::get()->getRequestedPageDirectory())));
+    $uriParts = explode('/', trim(\Lema\Common\Request::get()->getRequestedPageDirectory()));
+    $currentSectionCode = count($uriParts) > 2 ? $uriParts[count($uriParts) - 2] : false;
     //no inner sections, go to next
     if(empty($section['SECTIONS']))
         continue;
@@ -72,7 +73,7 @@ foreach($sections as $sectionId => $section)
         if(!isset($elementsSections[$innerSectionId]))
             continue;
         $innerSection['SECTION_URL'] = sprintf($urlMask, $innerSection['CODE'], $arResult['CODE']);
-        $innerSection['ACTIVE'] = $innerSection['CODE'] = $currentSectionCode;
+        $innerSection['ACTIVE'] = $innerSection['CODE'] == $currentSectionCode;
         $arResult['ELEMENT_SECTIONS'][$sectionId]['SECTIONS'][$innerSectionId] = $innerSection;
     }
     //no inner sections, remove it
