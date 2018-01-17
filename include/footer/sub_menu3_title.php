@@ -1,1 +1,1 @@
-<a href="" title="" class="footer__menu__group__title">Красота и здоровье</a>
+<a href="/catalog/krasota-i-zdorove-dlya-vsey-semi/" title="" class="footer__menu__group__title">Красота и здоровье</a>

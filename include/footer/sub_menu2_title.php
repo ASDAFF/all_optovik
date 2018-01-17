@@ -1,1 +1,1 @@
-<a href="" title="" class="footer__menu__group__title">одежда и товары для детей</a>
+<a href="/catalog/detskaya-odezhda-i-tovary-dlya-detey/" title="" class="footer__menu__group__title">одежда и товары для детей</a>

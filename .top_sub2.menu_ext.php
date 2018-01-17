@@ -3,7 +3,7 @@
 $aMenuLinksExt = array();
 $iCount = null;
 CModule::IncludeModule('iblock');
-$res = CIBlockSection::GetList(Array(),Array("IBLOCK_ID" => 4, "=SECTION_ID" => 15, "ACTIVE" => "Y"),false,Array(),Array());
+$res = CIBlockSection::GetList(Array('SORT' => 'ASC'),Array("IBLOCK_ID" => 4, "=SECTION_ID" => 15, "ACTIVE" => "Y"),false,Array(),Array());
 while($row = $res -> Fetch()){
 
     $iCount++;

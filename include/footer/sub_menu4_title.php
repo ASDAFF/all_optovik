@@ -1,1 +1,1 @@
-<a href="" title="" class="footer__menu__group__title">Хозяйственные товары</a>
+<a href="/catalog/khozyaystvennye-tovary-tovary-dlya-doma/" title="" class="footer__menu__group__title">Хозяйственные товары</a>
