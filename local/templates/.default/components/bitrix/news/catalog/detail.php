@@ -30,7 +30,7 @@ if($row = $res->Fetch())
     {
         echo '<pre style="display:none">', print_r($row, 1), '</pre>';
         if(!empty($row['VALUE']))
-            $catalogDetailBannerFilter['=ID'][] = $row['VALUE'];
+            $catalogDetailBannerFilter['ID'][] = $row['VALUE'];
     }
     echo '<pre style="display:none">', print_r($catalogDetailBannerFilter, 1), '</pre>';
 }
