@@ -14,7 +14,7 @@ $this->setFrameMode(true);
 
 $res = \CIBlockElement::GetList(
     array(),
-    array('IBLOCK_ID' => $arParams['IBLOCK_ID'], 'CODE' => $arResult['VARIABLES']['ELEMENT_CODE']),
+    array('IBLOCK_ID' => $arParams['IBLOCK_ID'], 'CODE' => $arResult['VARIABLES']['ELEMENT_CODE'], 'SECTION_CODE' => $arResult['VARIABLES']['SECTION_CODE']),
     false,
     false,
     array('ID', 'PROPERTY_BANNERS')
