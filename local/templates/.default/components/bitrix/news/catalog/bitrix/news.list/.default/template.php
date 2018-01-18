@@ -19,24 +19,10 @@ Loc::loadMessages(__FILE__);
 $data = new \Lema\Template\TemplateHelper($this);
 
 ?>
+
+<?php \Lema\Components\Breadcrumbs::inc('breadcrumbs'); ?>
+
 <? if($data->itemCount()): ?>
-    <div class="breadcrumbs">
-        <div class="container">
-            <ul itemscope="" itemtype="http://schema.org/BreadcrumbList">
-                <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-                    <a href="/" title="Главная" itemprop="item">Главная</a>
-                </li>
-                <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-                    <a href="/cat/lec" title="Раздел" itemprop="item">
-                        <span itemprop="name">Раздел</span>
-                    </a>
-                </li>
-                <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-                    <span>Берёзовская балка</span>
-                </li>
-            </ul>
-        </div>
-    </div>
     <div class="container">
         <div class="catalog__list">
             <? foreach($data->items() as $item): ?>

@@ -128,6 +128,35 @@ if(!empty($bannerSectionFilter['ID']))
 <?
 global $sectionElementsFilter;
 $sectionElementsFilter = array('SECTION_CODE' => $arResult['VARIABLES']['SECTION_CODE']);
+
+/**
+ * Add section name to breadcrumbs
+ */
+\Bitrix\Main\Loader::includeModule('iblock');
+try
+{
+    $res = \Bitrix\Iblock\SectionTable::getList(array(
+        'filter' => array('IBLOCK_ID' => $arParams['IBLOCK_ID'], 'CODE' => $arResult['VARIABLES']['SECTION_CODE']),
+        'select' => array('ID', 'NAME', 'IBLOCK_SECTION_ID', 'PARENT_SECTION.NAME', 'PARENT_SECTION.CODE'),
+        'limit' => 1,
+    ));
+    if($row = $res->fetch())
+    {
+        if(!empty($row['IBLOCK_SECTION_PARENT_SECTION_NAME']) && !empty($row['IBLOCK_SECTION_PARENT_SECTION_CODE']))
+        {
+            $APPLICATION->AddChainItem(
+                $row['IBLOCK_SECTION_PARENT_SECTION_NAME'],
+                \Lema\Common\Helper::getFullUrl('/catalog/' . $row['IBLOCK_SECTION_PARENT_SECTION_CODE'] . '/')
+            );
+        }
+        $APPLICATION->AddChainItem($row['NAME'], '');
+    }
+}
+catch(\Bitrix\Main\ArgumentException $e)
+{
+    //echo $e->getMessage();
+}
+
 $APPLICATION->IncludeComponent(
     "bitrix:news.list",
     "",
