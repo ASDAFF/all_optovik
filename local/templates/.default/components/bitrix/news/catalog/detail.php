@@ -13,7 +13,7 @@
 $this->setFrameMode(true);
 
 global $catalogDetailBannerFilter;
-$catalogDetailBannerFilter = array('=ID' => false);
+$catalogDetailBannerFilter = array('ID' => array());
 
 $res = \CIBlockElement::GetList(
     array(),
