@@ -28,6 +28,7 @@ if($row = $res->Fetch())
 
     while($row = $res->Fetch())
     {
+        echo '<pre style="display:none">', print_r($row, 1), '</pre>';
         if(!empty($row['VALUE']))
             $catalogDetailBannerFilter['=ID'][] = $row['VALUE'];
     }
