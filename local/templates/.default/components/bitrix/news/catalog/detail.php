@@ -11,6 +11,16 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
+
+$res = \CIBlockElement::GetList(
+    array(),
+    array('IBLOCK_ID' => $arParams['IBLOCK_ID'], 'CODE' => $arResult['VARIABLES']['ELEMENT_CODE']),
+    false,
+    false,
+    array('ID', 'PROPERTY_BANNERS')
+);
+while($row = $res->Fetch())
+    echo '<pre style="display:none">', print_r($row, 1), '</pre>';
 ?>
 <? $APPLICATION->IncludeComponent('bitrix:news.list', 'catalog_top_slider', array(
     'DISPLAY_DATE' => 'Y',
