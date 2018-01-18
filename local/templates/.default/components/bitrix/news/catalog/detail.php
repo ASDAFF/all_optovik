@@ -12,6 +12,9 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 
+global $catalogDetailBannerFilter;
+$catalogDetailBannerFilter = array('=ID' => false);
+
 $res = \CIBlockElement::GetList(
     array(),
     array('IBLOCK_ID' => $arParams['IBLOCK_ID'], 'CODE' => $arResult['VARIABLES']['ELEMENT_CODE'], 'SECTION_CODE' => $arResult['VARIABLES']['SECTION_CODE']),
@@ -22,8 +25,12 @@ $res = \CIBlockElement::GetList(
 if($row = $res->Fetch())
 {
     $res = \CIBlockElement::GetProperty($arParams['IBLOCK_ID'], $row['ID'], array(), array('CODE' => 'BANNERS'));
+
     while($row = $res->Fetch())
-        echo '<pre style="display:none">', print_r($row, 1), '</pre>';
+    {
+        if(!empty($row['VALUE']))
+            $catalogDetailBannerFilter['=ID'][] = $row['VALUE'];
+    }
 }
 ?>
 <? $APPLICATION->IncludeComponent('bitrix:news.list', 'catalog_top_slider', array(
@@ -39,7 +46,7 @@ if($row = $res->Fetch())
     'SORT_ORDER1' => 'DESC',
     'SORT_BY2' => 'SORT',
     'SORT_ORDER2' => 'ASC',
-    'FILTER_NAME' => '',
+    'FILTER_NAME' => 'catalogDetailBannerFilter',
     'FIELD_CODE' => array('ID', 'NAME', 'PREVIEW_PICTURE', 'DETAIL_PICTURE'),
     'PROPERTY_CODE' => array('URL'),
     'CHECK_DATES' => 'Y',
