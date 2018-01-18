@@ -22,7 +22,18 @@ Loc::loadMessages(__FILE__);
 $data = new \Lema\Template\TemplateHelper($this);
 ?>
 <div class="inquiries__block__count">
-    <b><?=$arParams['REQUESTS'];?></b><span>Общее количество запросов - <?= $data->itemCount(); ?></span>
+    <div class="statistic__item">
+        <div class="statistic__item__left">
+            <div class="statistic__item__text">
+                <?=$arParams['REQUESTS'];?>
+            </div>
+        </div>
+        <div class="statistic__item__right">
+            <div class="statistic__item__number">
+                <span><?= $data->itemCount(); ?></span>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="inquiries__block__name">
     <span><?= $data->getName(); ?></span>
