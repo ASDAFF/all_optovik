@@ -1,6 +1,11 @@
 <?
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
+if($APPLICATION->GetShowIncludeAreas())
+{
+    LocalRedirect($APPLICATION->GetCurPageParam('bitrix_include_areas=N', array('bitrix_include_areas')));
+    exit;
+}
 use \Lema\Common\Helper;
 
 $APPLICATION->SetTitle('Личный кабинет');
