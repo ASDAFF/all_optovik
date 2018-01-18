@@ -13,6 +13,18 @@
 $this->setFrameMode(true);
 
 /**
+ * get section name (for h1)
+ */
+$curSectionName = null;
+$res = \Bitrix\Iblock\SectionTable::getList(array(
+    'filter' => array('IBLOCK_ID' => $arParams['IBLOCK_ID'], 'CODE' => $arResult['VARIABLES']['SECTION_CODE']),
+    'select' => array('NAME'),
+    'limit' => 1,
+));
+if($row = $res->fetch())
+    $curSectionName = $row['NAME'];
+
+/**
  * show element banners
  */
 global $catalogDetailBannerFilter;
@@ -96,7 +108,7 @@ if($row = $res->Fetch())
 <? endif; ?>
     <div class="container">
         <div class="core__title">
-            <h1 class="core__title__control"><? $APPLICATION->ShowTitle(false); ?></h1>
+            <h1 class="core__title__control"><? $APPLICATION->ShowTitle(false); ?><?=empty($curSectionName) ? '' : ' - ' . $curSectionName;?></h1>
         </div>
         <div class="core__line_bg"></div>
         <?php \Lema\Components\Breadcrumbs::inc('breadcrumbs'); ?>
