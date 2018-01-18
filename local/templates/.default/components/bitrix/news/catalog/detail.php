@@ -32,6 +32,7 @@ if($row = $res->Fetch())
         if(!empty($row['VALUE']))
             $catalogDetailBannerFilter['=ID'][] = $row['VALUE'];
     }
+    echo '<pre style="display:none">', print_r($catalogDetailBannerFilter, 1), '</pre>';
 }
 ?>
 <? $APPLICATION->IncludeComponent('bitrix:news.list', 'catalog_top_slider', array(
