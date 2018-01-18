@@ -57,3 +57,23 @@ form[name="bform"],
 }
 
 .catalog__detail__head__img__work img {max-width: 220px}
+
+.header__menu__line {}
+.header__menu__line ul {
+    display: table;
+    width: 100%;
+}
+.header__menu__line ul li {
+    display: table-cell;
+    min-height: 70px;
+    height: 100%;
+    vertical-align: middle;
+    float: none;
+}
+.header__menu__line ul li:hover {
+    background: #299a22;
+}
+
+.header__menu__line ul li a {
+    height: 100%;
+}

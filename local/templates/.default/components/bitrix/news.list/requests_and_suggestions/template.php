@@ -41,9 +41,7 @@ $data = new \Lema\Template\TemplateHelper($this);
         </span>
     <? endforeach; ?>
 </div>
-<div class="inquiries__block__all">
-    <span><?= Loc::getMessage('R_AND_S_TOTAL_NUMBER_REQUESTS') ?><?= $data->get('COUNT_ELEMENTS'); ?></span>
-</div>
+
 <div class="inquiries__block__btn">
     <a href="<?= $item->get('LIST_PAGE_URL'); ?>" title="<?= Loc::getMessage('R_AND_S_MORE_REQUESTS'); ?>" class="core__btn core__btn_hidden">
         <span><?= Loc::getMessage('R_AND_S_MORE_REQUESTS'); ?></span>
