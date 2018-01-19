@@ -72,7 +72,7 @@ if($user->get('WORK_COMPANY'))
         <div class="container-fluid inquiries">
             <div class="container">
                 <div class="inquiries__title">
-                    <span>Запросы и предложения</span>
+                    <span>Запросы</span>
                 </div>
                 <?php
                 global $publicRequestsFilter, $privateRequestsFilter;

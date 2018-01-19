@@ -35,6 +35,9 @@ AddEventHandler('sale', 'OnOrderUpdate', array('Lema\Handlers\Order', 'afterUpda
 AddEventHandler('main', 'OnBeforeUserRegister', array('\Lema\Handlers\User', 'beforeAdd'));
 AddEventHandler('main', 'OnBeforeUserUpdate', array('\Lema\Handlers\User', 'beforeUpdate'));
 
+//save file
+AddEventHandler('main', 'OnBeforeChangeFile', array('\Lema\Handlers\EditFile', 'beforeChange'));
+
 //highload blocks
 $eventManager->addEventHandler('', 'UserDataOnUpdate', array('\Lema\Handlers\UserData', 'afterUpdate'));
 $eventManager->addEventHandler('', 'UserDataOnAdd', array('\Lema\Handlers\UserData', 'afterAdd'));
