@@ -20,6 +20,16 @@ if(Helper::propFilled('OPT_USER', $arResult))
     $arResult['USER_DATA'] = \UserData::instance(Helper::propValue('OPT_USER', $arResult));
     $arResult['IS_VIP'] = (bool) \UserData::instance(Helper::propValue('OPT_USER', $arResult))->get('UF_IS_VIP');
     $optUserName = htmlspecialcharsback($arResult['USER_DATA']->get('WORK_COMPANY'));
+    //split phones if multiple
+    $arResult['USER_PHONES'] = array();
+    if(($phones = preg_split('~\\s*?[,;:]+\\s*?~u', $arResult['USER_DATA']->get('WORK_PHONE'))))
+    {
+        foreach($phones as $phone)
+        {
+            $arResult['USER_PHONES'][preg_replace('~\\D+~', '', $phone)] = $phone;
+        }
+
+    }
 
     //get all user elements
     $elements = \Lema\IBlock\Element::getListD7(LIblock::getId('catalog'), array(

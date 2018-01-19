@@ -43,12 +43,12 @@ $item = $data->item();
             <? //$APPLICATION->IncludeFile(SITE_DIR . 'include/catalog/phones.php'); ?>
             <? if($arResult['IS_VIP']): ?>
                 <p style="text-align:right;">
-                    <a class="catalog__detail__head__text__phone" title=""
-                       href="tel:<?=preg_replace('~\\D+~', '', $arResult['USER_DATA']->get('WORK_PHONE'));?>">
-                        <?=$arResult['USER_DATA']->get('WORK_PHONE');?>
-                    </a>
+                    <? foreach($arResult['USER_PHONES'] as $tel => $phone): ?>
+                        <a class="catalog__detail__head__text__phone" title="<?=$phone;?>" href="tel:<?=$tel;?>">
+                            <?=$phone;?>
+                        </a>
+                    <? endforeach; ?>
                 </p>
-                <?=$arResult['USER_DATA']->get('WORK_PHONE');?>
             <? endif; ?>
         </div>
         <div class="catalog__detail__head__inf">
