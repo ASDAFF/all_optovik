@@ -48,6 +48,11 @@ if(Helper::propFilled('PICTURES', $arResult))
             else
                 $data['PRODUCT_NAME'] = $tmp[0];
         }
+        else
+        {
+            if(count($tmp) == 1)
+                $data['PRODUCT_NAME'] = current($tmp);
+        }
         $arResult['PROPERTIES']['PICTURES']['FILE_DATA'][$k] = $data;
     }
 }

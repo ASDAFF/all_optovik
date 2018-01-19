@@ -42,6 +42,12 @@ $item = $data->item();
             </p>
             <? //$APPLICATION->IncludeFile(SITE_DIR . 'include/catalog/phones.php'); ?>
             <? if($arResult['IS_VIP']): ?>
+                <p style="text-align:right;">
+                    <a class="catalog__detail__head__text__phone" title=""
+                       href="tel:<?=preg_replace('~\\D+~', '', $arResult['USER_DATA']->get('WORK_PHONE'));?>">
+                        <?=$arResult['USER_DATA']->get('WORK_PHONE');?>
+                    </a>
+                </p>
                 <?=$arResult['USER_DATA']->get('WORK_PHONE');?>
             <? endif; ?>
         </div>
