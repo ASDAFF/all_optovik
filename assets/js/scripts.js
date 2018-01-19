@@ -377,7 +377,54 @@ var coreJSFixed = {
         });
     }
 };
+var coreJsSwitchHover = {
+    // Переменные
+    // ...
+    $arElements : null,
+    //...
+    init: function () {
+        this.$arElements = $('[data-js-core-switch-hover]');
+        this.load();
+    },
+    load: function () {
+        // Обработка DATA
+        this.$arElements.each(function () {
+            var $this = $(this),
+                $name = $this.data('js-core-switch-hover'),
+                $text = $this.text();
 
+            $this.data({
+                element:     $('.' + $name),
+                text:        $text,
+                textSwitch:  $textSwitch
+            });
+        });
+        this.activation();
+    },
+    activation: function() {
+        this.$arElements.each(function () {
+            var $this = $(this);
+
+
+            $($this).hover(
+                function () {
+                    $this.data('element').addClass('active');
+                },
+               function () {
+                    $this.data('element').removeClass('active');
+                }
+            );
+            $($this.data('element')).hover(
+                function () {
+                    $this.data('element').addClass('active');
+                },
+                function () {
+                    $this.data('element').removeClass('active');
+                }
+            );
+        });
+    }
+};
 var Slider = {
     init: function () {
         // .....

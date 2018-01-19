@@ -70,10 +70,24 @@ form[name="bform"],
     vertical-align: middle;
     float: none;
 }
-.header__menu__line ul li:hover {
+.header__menu__line ul li:hover,
+.header__menu__line ul li.active {
     background: #299a22;
 }
 
 .header__menu__line ul li a {
     height: 100%;
+}
+.header__menu__list.active {
+    display: block;
+}
+.slider__cat__item__name {
+    min-height: 93px;
+}
+.catalog__detail__head {
+    min-height: 100px;
+}
+
+.catalog__list__item__img__work img {
+    width: 210px;
 }

@@ -28,7 +28,7 @@ Loc::loadMessages(__FILE__);
             '/assets/js/lib/slick.js',
             '/assets/js/lib/fancybox/fancybox.min.js',
             '/assets/js/scripts.js',
-            '/assets/js/main.min.js',
+            '/assets/js/main.js',
             '/assets/js/custom.js',
         ));
     ?>
