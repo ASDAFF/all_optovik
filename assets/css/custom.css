@@ -89,5 +89,6 @@ form[name="bform"],
 }
 
 .catalog__list__item__img__work img {
-    width: 210px;
+    width: auto;
+    max-height: 88px;
 }
