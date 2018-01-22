@@ -97,3 +97,9 @@ form[name="bform"],
 .header__menu__line li a:hover, .header__menu__line li a:focus, .header__menu__line li a:active, .header__menu__line li a.active, .header__menu__line li a:active:focus, .header__menu__line li a:active:hover, .header__menu__line li a.active:focus, .header__menu__line li a.active:hover {
     background: transparent;
 }
+.catalog__detail__main__list__item__name{
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 5px;
+    text-overflow: ellipsis;
+}
