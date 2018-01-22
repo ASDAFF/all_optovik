@@ -85,23 +85,23 @@ $item = $data->item();
             <div class="tabs__item active" data-js-core-tabs-id="1">
                 <div class="tabs__item__text">
                     <p>
-                        <?=$arResult['USER_DATA']->get('UF_WORK_COND');?>
+                        <?=nl2br($arResult['USER_DATA']->get('UF_WORK_COND'));?>
                     </p>
                 </div>
             </div>
             <div class="tabs__item" data-js-core-tabs-id="2">
                 <p>
-                    <?=$arResult['USER_DATA']->get('UF_DELIVERY_COND');?>
+                    <?=nl2br($arResult['USER_DATA']->get('UF_DELIVERY_COND'));?>
                 </p>
             </div>
             <div class="tabs__item" data-js-core-tabs-id="3">
                 <p>
-                    <?=$arResult['USER_DATA']->get('UF_PAY_COND');?>
+                    <?=nl2br($arResult['USER_DATA']->get('UF_PAY_COND'));?>
                 </p>
             </div>
             <div class="tabs__item" data-js-core-tabs-id="4">
                 <p>
-                    <?=$arResult['USER_DATA']->get('UF_DISCOUNTS');?>
+                    <?=nl2br($arResult['USER_DATA']->get('UF_DISCOUNTS'));?>
                 </p>
             </div>
             <div class="tabs__item" data-js-core-tabs-id="5">
