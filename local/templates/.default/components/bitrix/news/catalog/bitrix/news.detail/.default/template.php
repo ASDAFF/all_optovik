@@ -137,7 +137,7 @@ $item = $data->item();
             <ul>
                 <? foreach($arResult['ELEMENT_SECTIONS'] as $section): ?>
                     <li>
-                        <a href="<?=$section['SECTION_URL'];?>" title="<?=$section['NAME'];?>"><?=$section['NAME'];?></a>
+                        <span><?=$section['NAME'];?></span>
                         <ul>
                             <? foreach($section['SECTIONS'] as $innerSection): ?>
                                 <li>

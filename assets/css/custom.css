@@ -93,3 +93,7 @@ form[name="bform"],
     width: auto;
     max-height: 88px;
 }
+
+.header__menu__line li a:hover, .header__menu__line li a:focus, .header__menu__line li a:active, .header__menu__line li a.active, .header__menu__line li a:active:focus, .header__menu__line li a:active:hover, .header__menu__line li a.active:focus, .header__menu__line li a.active:hover {
+    background: transparent;
+}
