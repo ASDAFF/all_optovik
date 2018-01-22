@@ -5,6 +5,7 @@
 
         <?
         foreach($arResult as $arItem):
+            ?><pre style="display: none;"><?var_dump($arResult);?></pre><?
             if($arParams["MAX_LEVEL"] == 1 && $arItem["DEPTH_LEVEL"] > 1)
                 continue;
             ?>
