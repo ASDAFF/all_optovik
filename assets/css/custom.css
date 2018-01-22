@@ -85,11 +85,21 @@ form[name="bform"],
     min-height: 93px;
 }
 .catalog__detail__head {
-    min-height: 100px;
+    min-height: 160px;
 }
 
 .catalog__list__item__img__work img,
 .catalog__detail__head__img__work img {
     width: auto;
     max-height: 88px;
+}
+
+.header__menu__line li a:hover, .header__menu__line li a:focus, .header__menu__line li a:active, .header__menu__line li a.active, .header__menu__line li a:active:focus, .header__menu__line li a:active:hover, .header__menu__line li a.active:focus, .header__menu__line li a.active:hover {
+    background: transparent;
+}
+.catalog__detail__main__list__item__name{
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 5px;
+    text-overflow: ellipsis;
 }

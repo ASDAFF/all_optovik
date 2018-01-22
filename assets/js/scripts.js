@@ -330,14 +330,15 @@ var coreJsSwitchElement = {
     activation: function() {
         this.$arElements.each(function () {
             var $this = $(this);
-            $($this).on('click', function(){
+            $($this).on('click', function(e){
+                e.preventDefault();
                 $this.data('element').toggleClass('active');
 
-                if(!!$this.data('textSwitch') && $this.data('element').hasClass('active')){
-                    $this.text($this.data('textSwitch'));
-                }else {
-                    $this.text($this.data('text'));
-                }
+                // if(!!$this.data('textSwitch') && $this.data('element').hasClass('active')){
+                //     $this.text($this.data('textSwitch'));
+                // }else {
+                //     $this.text($this.data('text'));
+                // }
             });
         });
     }

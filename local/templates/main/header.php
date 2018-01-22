@@ -223,19 +223,25 @@ Loc::loadMessages(__FILE__);
         <div class="container-fluid header__menu">
             <div class="container">
                 <nav class="header__menu__line">
-                    <? $APPLICATION->IncludeComponent('bitrix:menu', 'top_menu', array(
-                        'ALLOW_MULTI_SELECT' => 'N',
-                        'ROOT_MENU_TYPE' => 'top',
-                        'CHILD_MENU_TYPE' => 'left',
-                        'DELAY' => 'N',
-                        'MAX_LEVEL' => 1,
-                        'MENU_CACHE_GET_VARS' => array(),
-                        'MENU_CACHE_TIME' => '3600',
-                        'MENU_CACHE_TYPE' => 'A',
-                        'MENU_CACHE_USE_GROUPS' => 'N',
-                        'USE_EXT' => 'Y',
-                        'COMPONENT_TEMPLATE' => '',
-                    )); ?>
+                    <? $APPLICATION->IncludeComponent(
+	"bitrix:menu", 
+	"top_menu", 
+	array(
+		"ALLOW_MULTI_SELECT" => "N",
+		"ROOT_MENU_TYPE" => "top",
+		"CHILD_MENU_TYPE" => "left",
+		"DELAY" => "N",
+		"MAX_LEVEL" => "1",
+		"MENU_CACHE_GET_VARS" => array(
+		),
+		"MENU_CACHE_TIME" => "3600",
+		"MENU_CACHE_TYPE" => "A",
+		"MENU_CACHE_USE_GROUPS" => "N",
+		"USE_EXT" => "Y",
+		"COMPONENT_TEMPLATE" => "top_menu"
+	),
+	false
+); ?>
                 </nav>
             </div>
         </div>
