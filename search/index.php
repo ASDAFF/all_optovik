@@ -1,7 +1,10 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Поиск");
-?><?$APPLICATION->IncludeComponent(
+?>
+<div class="container">
+<br>
+<?$APPLICATION->IncludeComponent(
 	"bitrix:search.page",
 	"",
 	Array(
@@ -32,4 +35,8 @@ $APPLICATION->SetTitle("Поиск");
 		"arrFILTER_iblock_catalog" => array("4"),
 		"arrWHERE" => array("iblock_catalog")
 	)
-);?><br><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+);?><br>
+
+</div>
+
+<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
