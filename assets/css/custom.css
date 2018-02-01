@@ -103,16 +103,3 @@ form[name="bform"],
     padding: 5px;
     text-overflow: ellipsis;
 }
-
-@media (max-width: 1000px) {
-    .banner__one__item {
-        background-size: contain;
-    }
-
-    .catalog__list__item__img__work {
-        position: relative;
-        top: auto;
-        margin-bottom: 30px;
-    }
-}
-
